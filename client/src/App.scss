@@ -1,0 +1,265 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// .logo{
+//   margin-left: 14%;
+// }
+.registerWrapper{
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  background-image: url(../public/img/register-fon.jpeg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+.loginWrapper{
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  background-image: url(../public/img/register-fon.jpeg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+.menu-flagsMy-butMy{
+  border:none!important;
+  font-weight: 600!important;
+  color: #000!important;
+}
+.menu-flagsCustom{
+}
+.menu-flagsCustom ul{
+  border-radius: 18px!important;
+ 
+}
+button{cursor: pointer;}
+
+// ================================== // => Acount common styles
+
+.accountDataBlock{
+  padding: 50px 0;
+  text-align: center;
+
+
+}
+.borderRound{
+  background: #FFFFFF;
+box-shadow: 5px -1px 10px 8px rgba(0, 0, 0, 0.7);
+border-radius: 19px;
+}
+.accTitle{
+  font-weight: 900;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+.accountInput{
+  margin: 25px 0;
+  input{
+    max-width: 600px;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 15px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 27px;
+    border: none; 
+    padding: 17px 23px;
+    border: 1px solid rgba(0,0,0, 0);
+    transition: all .4s ease;
+    &:focus{
+      border: 1px solid #000;
+    }
+    &:focus-visible{
+      border: 1px solid #000;
+      outline: none
+    }
+  }
+  span{
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto 5px;
+    display: block;
+    text-align: left;
+    padding-left: 23px;
+  }
+}
+
+.lockInput{
+  margin: 0 auto;
+  position: relative;
+  max-width: 600px;
+    width: 100%;
+  img{
+    position: absolute;
+    top: 40px;
+    right: 23px;
+  }
+  input{
+    background: #ADBEB9;
+box-shadow: inset 0px 0px 15px 5px rgba(0, 0, 0, 0.15);
+border-radius: 27px;
+  }
+}
+.saveBtn{
+  background: #0F5A51;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25), inset 4px 3px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 27px;
+  color: #fff;
+  max-width: 235px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 24px;
+  padding: 13px;
+  border: none;
+  margin-top: 25px;
+  transition: all .3s ease;
+  &:hover{
+    box-shadow: inset 0px 0px 4px 5px #00B100;
+  }
+}
+.genderBlock{
+  max-width: 600px;
+  width: 100%;
+  margin: 25px auto 0;
+  text-align: left;
+  padding-left: 23px;
+  .genderBlockTitle{
+    margin-bottom: 19px;
+  }
+}
+.genderBlock_val{
+  display: flex;
+  align-items: center;
+ 
+  text-align: left;
+  span{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+    img{
+      margin-right: 8px;
+    }
+  }
+}
+.downloadArea{
+  width: 350px;
+  border: 2px dashed #878787;
+  border-radius: 25px;
+  padding: 120px 22px;
+  margin: 25px auto;
+  position: relative;
+  z-index: 10;
+  &:hover{
+    opacity: 0.7;
+  }
+}
+#input-file-upload{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.changeImg{
+  position: relative;
+  z-index: 12;
+
+}
+.dragActiveClass{
+  opacity: .6;
+}
+.fileInput{
+  //display: none;
+}
+
+.passInputAcc{
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  margin: 25px auto;
+  .changePassButShow{
+    position: absolute;
+    top: 40px;
+    right: 23px;
+    border: none;
+    background-color: transparent;
+  }
+}
+.sponsorInput{
+  max-width: 600px;
+  width: 100%;
+  margin: 25px auto;
+  position: relative;
+  input{
+      
+      background: #ADBEB9!important;
+      box-shadow: inset 0px 0px 15px 5px rgba(0, 0, 0, 0.15);
+      border-radius: 27px;
+  }
+  
+  .copyBtn{
+      position: absolute;
+     top: 38px;
+     right: 17px;
+     background-color: transparent;
+     border: none;
+  }
+}
+#form-file-upload{
+  position: relative;
+}
+#drag-file-element {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.downloadedImgBox{
+  margin: 0 auto;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  .deleteImg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+}
+.dowloadPhoto{
+  border-radius: 50%;
+    border: 6px solid #8faaab;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

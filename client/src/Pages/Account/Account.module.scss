@@ -1,0 +1,63 @@
+.pageWrapper{
+    margin: 0;
+    background-image:url(../../../public/img/page-fon.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh ;
+}
+.accountWrapper{
+    max-width: 1200px;
+    width: 100%;
+    margin: 100px auto 0;
+    padding: 15px;
+    
+
+    .account_title{
+        max-width: 1200px;
+        width: 100%;
+        margin: 30px auto;
+        padding: 15px;
+        background-color: rgba(255,255,255, .6);
+        border-radius: 14px;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+    }
+    .account_box{
+        display: flex;
+        
+        padding: 15px;
+        
+        border-radius: 14px;
+      .navigation{
+        width: 180px;
+        
+        
+        &_link{
+            list-style-type: none;
+            padding: 0;
+            li{
+                cursor: pointer;
+                padding: 4px;
+                transition: all .3s ease;
+                font-weight: 600;
+                &:hover{
+                    opacity: 0.8;
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+    .account_area{
+        padding: 15px;
+        display: flex;
+        flex: 1;
+        background: #FFFFFF;
+        box-shadow: 5px -1px 10px 8px rgba(0, 0, 0, 0.7);
+        border-radius: 19px;
+    }
+    }
+  
+}

@@ -1,0 +1,103 @@
+.formWraper{
+    margin-top: 179px;
+    margin-bottom: 149px;
+    margin-right: 14%;
+    background: #FFFFFF;
+    border-radius: 57px;
+    width: 470px;
+    padding: 58px 65px;
+    h2{
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 58px;
+        margin-top: 0;
+    }
+    label{
+        display: block;
+        padding-left: 23px;
+        padding-top: 31px;
+        padding-bottom: 5px;
+    }
+    input{
+        width: 100%;
+        background: #E8F0FE;
+        box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25), inset 4px 3px 5px rgba(0, 0, 0, 0.15);
+        border-radius: 27px;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 17px 23px;
+        color: #000;
+        border: 2px solid rgba(0, 0, 0, 0);
+        outline: none;
+        &::placeholder{
+            color: #000;
+        }
+        &:focus-visible{
+            border: 2px solid #000000!important;
+        }
+    }
+    .formButs{
+        width: 100%;
+        background: #03323F;
+        border-radius: 27px;
+        font-weight: 600;
+        padding: 17px;
+        color: #fff;
+        margin: 55px 0;
+        &:hover{
+            box-shadow: inset 0px 0px 4px 5px #00B100;
+        }
+    }
+    .flagWrapper{
+        position: relative;
+        input{
+        }
+       
+        .flagWrapperInner{
+            position: absolute;
+            left: 0;
+            top: 65px;
+            width: 120px;
+        }
+    }
+    .inputWrapper{
+        position: relative;
+        .showPass{
+            position: absolute;
+            top: 75px;
+            right: 30px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer
+        }
+    }
+    .langs{
+        text-align: center;
+        .langsButton{
+            font-weight: 600;
+            text-transform: uppercase;
+            background-color: transparent;
+            border: none;
+            margin: 0 5px;
+
+        }
+        .activeLang{
+            border:  1px solid #00B100; 
+            border-radius: 5px;
+        }
+    }
+    .combineInput{
+        display: flex;
+        justify-content: space-between;
+        .leftInput{
+            width: 40%;
+            border-radius: 27px 5px 5px 27px;
+            overflow: hidden;
+        }
+        .rightInput{
+            width: 57%;
+            border-radius: 5px 27px 27px 5px;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif,
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  //background-image: url(../public/img/fon.png);
+
+  // background-image:url(../public/img/page-fon.jpeg);
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // min-height: 100vh ;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
