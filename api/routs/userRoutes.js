@@ -1,12 +1,12 @@
-import { Router } from "express";
-import {
+const { Router } = require("express");
+const {
   nameUpdate,
   avatarUpdate,
   getUplinerInfo,
   contactUpdate,
   passwordUpdate,
-} from "../controllers/user.js";
-import { checkAuth } from "../utils/checkAuth.js";
+} = require("../controllers/user.js");
+const checkAuth = require("../utils/checkAuth.js");
 
 const router = Router();
 
@@ -21,4 +21,4 @@ router.patch("/passwordUpdate", checkAuth, passwordUpdate);
 
 router.get("/getUplinerInfo", checkAuth, getUplinerInfo);
 
-export default router;
+module.exports = router;

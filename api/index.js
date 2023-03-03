@@ -1,11 +1,10 @@
-import express from "express";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
-import cors from "cors";
-import fileUpload from "express-fileupload";
-
-import authRoutes from "./routs/authRoutes.js";
-import userRoutes from "./routs/userRoutes.js";
+const express = require("express");
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const fileUpload = require("express-fileupload");
+const authRoutes = require("./routs/authRoutes.js");
+const userRoutes = require("./routs/userRoutes.js");
 
 const app = express();
 dotenv.config();

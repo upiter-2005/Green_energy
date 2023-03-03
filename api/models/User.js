@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   upliner: { type: String, default: "", required: false },
@@ -20,4 +20,4 @@ const userSchema = new mongoose.Schema({
   matrix: { type: Object, default: {} },
 });
 
-export default mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);

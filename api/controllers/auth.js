@@ -1,9 +1,9 @@
-import User from "../models/User.js";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import mongoose from "mongoose";
+const User = require("../models/User.js");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
 
-export const register = async (req, res) => {
+const register = async (req, res) => {
   try {
     const { upliner, login, email, phone, password } = req.body;
     const existUser = await User.findOne({ email });
@@ -30,7 +30,7 @@ export const register = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
@@ -50,7 +50,7 @@ export const login = async (req, res) => {
   }
 };
 
-export const getMe = async (req, res) => {
+const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.userId);
     if (!user) {
@@ -61,4 +61,10 @@ export const getMe = async (req, res) => {
   } catch (error) {
     res.json({ message: "Access is denied" });
   }
+};
+
+module.exports = {
+  getMe,
+  login,
+  register,
 };

@@ -1,12 +1,13 @@
-import User from "../models/User.js";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import mongoose from "mongoose";
+const User = require("../models/User.js");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
 
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
+const { dirname } = require("path");
+const path = require("path");
+const { fileURLToPath } = require("url");
 
-export const nameUpdate = async (req, res) => {
+const nameUpdate = async (req, res) => {
   try {
     const { name, surname } = req.body;
 
@@ -28,7 +29,7 @@ export const nameUpdate = async (req, res) => {
   }
 };
 
-export const contactUpdate = async (req, res) => {
+const contactUpdate = async (req, res) => {
   try {
     const { phone, telegram, whatsapp, facebook, instagram, twitter } = req.body;
 
@@ -54,7 +55,7 @@ export const contactUpdate = async (req, res) => {
   }
 };
 
-export const passwordUpdate = async (req, res) => {
+const passwordUpdate = async (req, res) => {
   try {
     const { inputCurrent, newPass } = req.body;
 
@@ -81,7 +82,7 @@ export const passwordUpdate = async (req, res) => {
   }
 };
 
-export const avatarUpdate = async (req, res) => {
+const avatarUpdate = async (req, res) => {
   try {
     console.log(req.userId);
     const userId = req.userId;
@@ -89,7 +90,7 @@ export const avatarUpdate = async (req, res) => {
 
     if (req.files) {
       let fileName = Date.now().toString() + req.files.avatar.name;
-      const __dirname = dirname(fileURLToPath(import.meta.url));
+      //const __dirname = dirname(fileURLToPath(import.meta.url));
       req.files.avatar.mv(path.join(__dirname, "..", "uploads", fileName));
       user.avatar = fileName || "";
     }
@@ -100,7 +101,7 @@ export const avatarUpdate = async (req, res) => {
   }
 };
 
-export const getUplinerInfo = async (req, res) => {
+const getUplinerInfo = async (req, res) => {
   try {
     const currentUser = await User.findById(req.userId);
     if (!currentUser.upliner) {
@@ -113,4 +114,12 @@ export const getUplinerInfo = async (req, res) => {
   } catch (error) {
     res.json({ message: "Bad connection" });
   }
+};
+
+module.exports = {
+  getUplinerInfo,
+  avatarUpdate,
+  passwordUpdate,
+  contactUpdate,
+  nameUpdate,
 };
