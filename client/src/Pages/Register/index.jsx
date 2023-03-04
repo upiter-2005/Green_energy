@@ -9,6 +9,7 @@ import {
   cleanStatus,
 } from "../../redux/slices/authSlice";
 import { toast } from "react-toastify";
+import qs from "qs";
 import styles from "./Register.module.scss";
 import ReactFlagsSelect from "react-flags-select";
 import phoneCodes from "../../local_db/phoneCodes.json";
@@ -25,7 +26,7 @@ function Register() {
   const [doublePassword, setDoublePassword] = useState(null);
 
   const [inputType, setInputType] = useState("password");
-  const [upliner, setUpliner] = useState("upiter2005");
+  const [upliner, setUpliner] = useState("");
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -46,6 +47,12 @@ function Register() {
     // if (isAuth) {
     //   navigate("/");
     // }
+    const query = qs.parse(window.location.search.substring(1));
+
+    if (query.upliner) {
+      console.log(query.upliner);
+      setUpliner(query.upliner);
+    }
   }, [status, isAuth, navigate]);
 
   const findCodeByFlag = (flag) => {

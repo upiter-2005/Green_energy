@@ -42,7 +42,10 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  background-image: url(../public/img/register-fon.jpeg);
+  min-height: 100vh;
+  
+  //background-image: url(../public/img/register-fon.jpeg);
+  //height: 100vh;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;

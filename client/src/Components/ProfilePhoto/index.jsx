@@ -70,7 +70,8 @@ function ProfilePhoto() {
 
   useEffect(() => {
     if (user?.avatar) {
-      setAvatar(`http://localhost:3002/${user?.avatar}`);
+      // http://localhost:3002/${user.avatar}
+      setAvatar(`process.env.REACT_APP_IMG_URL${user?.avatar}`);
       setImgIsLoaded(true);
     }
   }, [user]);

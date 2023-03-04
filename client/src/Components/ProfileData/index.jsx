@@ -55,7 +55,7 @@ function ProfileData() {
           <input type="text" value={user?.login} disabled />
           <img src="img/lock.svg" alt="" />
         </div>
-        <div className="genderBlock">
+        {/* <div className="genderBlock">
           <div className="genderBlockTitle">Пол</div>
           <div className="genderBlock_val">
             <span>
@@ -66,7 +66,7 @@ function ProfileData() {
               Женский
             </span>
           </div>
-        </div>
+        </div> */}
         <div>
           <button type="submit" className="saveBtn" onClick={handleUpdate}>
             Сохранить
