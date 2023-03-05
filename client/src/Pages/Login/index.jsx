@@ -68,7 +68,7 @@ export default function Login() {
   return (
     <div className="loginWrapper">
       <div className="logo">
-        <img src="img/logo.svg" alt="" />
+        <img src="img/logo-main.svg" alt="" />
       </div>
       <form onSubmit={(e) => e.preventDefault()} className={styles.formWraper}>
         <h2>Авторизация</h2>

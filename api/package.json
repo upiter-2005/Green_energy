@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Green tour",
   "main": "index.js",
-  "scripts": {
+    "scripts": {
     "dev": "nodemon index.js"
   },
   "keywords": [

@@ -9,12 +9,10 @@ function Main() {
         <img src="img/logo-main.svg" alt="" />
       </div>
       <div className={styles.mainCenter}>
-        <p className={styles.mainCenter_gradient}>
-          Welcome to the exciting world of decentralized technologies!
-        </p>
+        <p className={styles.mainCenter_gradient}>Добро пожаловать в Бизнес Интернет Сообщество!</p>
         <p className={styles.mainCenter_white}>
-          ENERGY GALAXY is a long-term blockchain game in which you have to develop and improve the
-          unusual Galaxy.
+          Green Energy - первая ступень к свободной и перспективной жизни. <br /> Миссия площадки:
+          Зарабатывая сохраняешь, Сохраняя приумножаешь.
         </p>
         <Link to="/login" className={styles.mainLinks}>
           ВХОД

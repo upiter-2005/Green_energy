@@ -1,7 +1,7 @@
 .formWraper{
     margin-top: 179px;
     margin-bottom: 149px;
-    margin-right: 14%;
+    margin-right: calc(50% - 500px);
     background: #FFFFFF;
     border-radius: 57px;
     width: 470px;
@@ -10,7 +10,7 @@
         text-align: center;
         font-size: 36px;
         font-weight: 700;
-        margin-bottom: 58px;
+        margin-bottom: 20px;
         margin-top: 0;
     }
     label{
@@ -45,8 +45,11 @@
         padding: 17px;
         color: #fff;
         margin: 55px 0;
+        border: none;
+        transition: all .3s ease;
         &:hover{
             box-shadow: inset 0px 0px 4px 5px #00B100;
+            transform: scale(1.1)
         }
     }
     .flagWrapper{

@@ -71,7 +71,7 @@ function ProfilePhoto() {
   useEffect(() => {
     if (user?.avatar) {
       // http://localhost:3002/${user.avatar}
-      setAvatar(`process.env.REACT_APP_IMG_URL${user?.avatar}`);
+      setAvatar(`${process.env.REACT_APP_IMG_URLuser?.avatar}`);
       setImgIsLoaded(true);
     }
   }, [user]);

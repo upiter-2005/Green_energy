@@ -13,15 +13,17 @@ function Header() {
   const user = useSelector((state) => state.auth.user);
 
   const copyLink = () => {
-    navigator.clipboard.writeText(`https://greenenergy.vip?upliner=${user?.login}`).then(() => {
-      //setCopiedShow(true);
-      toast("Реферальная ссылка скопирована");
-    });
+    navigator.clipboard
+      .writeText(`https://greenenergy.vip/register?upliner=${user?.login}`)
+      .then(() => {
+        //setCopiedShow(true);
+        toast("Реферальная ссылка скопирована");
+      });
   };
   return (
     <div className={styles.headerWrap}>
       <div>
-        <img src="img/logo.svg" alt="" className={styles.logo} />
+        <img src="img/logo-main.svg" alt="" className={styles.logo} />
       </div>
       <div className={styles.headerCenter}>
         <span className={styles.headerCenter_text}>Реферальная ссылка:</span>

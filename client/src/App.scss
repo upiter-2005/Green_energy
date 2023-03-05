@@ -29,26 +29,44 @@
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
   width: 100%;
   background-image: url(../public/img/register-fon.jpeg);
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  .logo{
+    position: fixed;
+    left: calc(50% - 600px);
+    top: 50%;
+    transform: translate(0,-50%,);
+    img{
+      width: 525px;
+    }
+  }
 }
 .loginWrapper{
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
   width: 100%;
   min-height: 100vh;
   
-  //background-image: url(../public/img/register-fon.jpeg);
+  background-image: url(../public/img/register-fon.jpeg);
   //height: 100vh;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  .logo{
+    position: fixed;
+    left: calc(50% - 600px);
+    top: 50%;
+    transform: translate(0,-50%,);
+    img{
+      width: 525px;
+    }
+  }
 }
 .menu-flagsMy-butMy{
   border:none!important;
@@ -142,6 +160,7 @@ border-radius: 27px;
   transition: all .3s ease;
   &:hover{
     box-shadow: inset 0px 0px 4px 5px #00B100;
+    transform: scale(1.1)
   }
 }
 .genderBlock{
