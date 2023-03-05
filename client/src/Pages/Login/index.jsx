@@ -30,7 +30,7 @@ export default function Login() {
     if (isAuth) {
       navigate("/account");
     }
-  }, [isAuth]);
+  }, [isAuth, dispatch]);
 
   const handleSubmit = () => {
     if (!email && !password) {

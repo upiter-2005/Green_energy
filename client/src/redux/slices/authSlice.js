@@ -7,6 +7,7 @@ const initialState = {
   isLoadng: false,
   status: null,
   formCall: "login",
+  registerEvent: false,
 };
 
 export const passwordUpdate = createAsyncThunk("auth/passwordUpdate", async (params) => {
@@ -168,7 +169,8 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.status = action.payload.message;
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      //state.token = action.payload.token;
+      state.registerEvent = true;
     },
     [registerUser.rejected]: (state, action) => {
       state.status = action.payload.message;

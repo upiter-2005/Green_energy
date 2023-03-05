@@ -17,7 +17,7 @@ function Main() {
         <Link to="/login" className={styles.mainLinks}>
           ВХОД
         </Link>
-        <Link to="/register" className={styles.mainLinks}>
+        <Link to="/register?upliner=GreenEnergy" className={styles.mainLinks}>
           РЕГИСТРАЦИЯ
         </Link>
       </div>

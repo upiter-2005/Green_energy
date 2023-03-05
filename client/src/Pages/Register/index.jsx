@@ -37,6 +37,7 @@ function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const status = useSelector((state) => state.auth.status);
+  const registerEvent = useSelector((state) => state.auth.registerEvent);
   const isAuth = useSelector(checkIsAuth);
 
   useEffect(() => {
@@ -53,7 +54,7 @@ function Register() {
       console.log(query.upliner);
       setUpliner(query.upliner);
     }
-  }, [status, isAuth, navigate]);
+  }, [status, isAuth]);
 
   const findCodeByFlag = (flag) => {
     console.log(flag);
@@ -153,6 +154,11 @@ function Register() {
     inputType === "password" ? setInputType("text") : setInputType("password");
   };
 
+  useEffect(() => {
+    if (registerEvent) {
+      navigate("/login");
+    }
+  }, [registerEvent, navigate]);
   return (
     <div className="registerWrapper">
       <div className="logo">
