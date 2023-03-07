@@ -2,6 +2,11 @@
     flex: 1;
     width: 100%;
     margin-top: -52px;
+    .cabinetTitle_Img{
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
     &_mnu{
         display: flex;
         font-weight: 900;
@@ -34,6 +39,22 @@
             height: 4px;
             background-color: #0F5A51;
             border-radius: 4px;
+        }
+    }
+}
+
+@media(max-width: 992px){
+    .cabinetWrapp{       
+        &_mnu{
+            overflow: auto;
+            white-space: nowrap;
+            &::-webkit-scrollbar {
+                display: none; }
+            span{
+                width: auto;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
         }
     }
 }

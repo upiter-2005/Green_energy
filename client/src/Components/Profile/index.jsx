@@ -10,7 +10,7 @@ function Profile() {
   const [activeTab, setActiveTab] = useState("lk");
   return (
     <div className={styles.cabinetWrapp}>
-      <img src="img/cabinetTitle.svg" alt="" />
+      <img src="img/cabinetTitle.svg" className={styles.cabinetTitle_Img} alt="" />
       <div className="borderRound">
         <div className={styles.cabinetWrapp_mnu}>
           <span

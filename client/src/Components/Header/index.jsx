@@ -20,6 +20,7 @@ function Header() {
         toast("Реферальная ссылка скопирована");
       });
   };
+
   return (
     <div className={styles.headerWrap}>
       <div>
@@ -31,9 +32,6 @@ function Header() {
           className={styles.copyLink}>{`https://greenenergy.vip?upliner=${user?.login}`}</span>{" "}
         <img src="img/link.svg" alt="" className={styles.headerIco} onClick={copyLink} />
         <img src="img/share.svg" alt="" className={styles.headerIco} />
-      </div>
-
-      <div className={styles.headerRight}>
         <img src="img/ru.svg" alt="" className={styles.headerIco} />
         <img
           src="img/logout.svg"
@@ -42,6 +40,16 @@ function Header() {
           className={styles.headerIco}
         />
       </div>
+
+      {/* <div className={styles.headerRight}>
+        <img src="img/ru.svg" alt="" className={styles.headerIco} />
+        <img
+          src="img/logout.svg"
+          alt=""
+          onClick={() => dispatch(logOut())}
+          className={styles.headerIco}
+        />
+      </div> */}
       {copiedShow && <Copied />}
     </div>
   );

@@ -61,3 +61,28 @@
     }
   
 }
+
+@media(max-width: 992px){
+    .accountWrapper{
+        margin-top: 20px;
+        .account_box{
+            padding: 0;
+            flex-direction: column;
+            align-items: center;
+            .navigation{
+                width: 100%;
+                margin: 0 auto;
+                &_link{
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: row;
+                    li{
+                        width: 48%;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+       
+    }
+}

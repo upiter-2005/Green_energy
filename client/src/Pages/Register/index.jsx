@@ -84,8 +84,8 @@ function Register() {
     setLogin(e.target.value);
     console.log("validate");
     console.log(e.target.value);
-    if (e.target.value.length < 7) {
-      setLoginValid("Insert your login! Minimum 7 symbols!");
+    if (e.target.value.length < 4) {
+      setLoginValid("Insert your login! Minimum 4 symbols!");
     }
     // /\S+@\S+\.\S+/.test(email);
     else if (!/^[a-zA-Z](.[a-zA-Z0-9_-]*)$/.test(e.target.value)) {

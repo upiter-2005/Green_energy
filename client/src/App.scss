@@ -285,3 +285,38 @@ border-radius: 27px;
     height: 100%;
     object-fit: cover;
 }
+
+@media(max-width:992px){
+  .accountInput{
+    margin: 20px auto;
+    width: 90%;
+  }
+  .registerWrapper{
+    flex-direction: column;
+    min-height: auto;
+    .logo{
+      position: relative;
+      left: 0!important;
+      top: 30px;
+      transform: translate(0,0);
+      img{
+        width: 300px;
+      }
+    }
+    
+  } 
+  .loginWrapper{
+    flex-direction: column;
+    min-height: auto;
+    .logo{
+      position: relative;
+      left: 0!important;
+      top: 30px;
+      transform: translate(0,0);
+      img{
+        width: 300px;
+      }
+    }
+    
+  } 
+}
