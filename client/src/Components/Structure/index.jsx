@@ -7,7 +7,6 @@ import styles from "./Structure.module.scss";
 function Structure() {
   const dispatch = useDispatch();
   const structure = useSelector((state) => state.auth.structure);
-  const user = useSelector((state) => state.auth.user);
   const [butPopup, setButPopup] = useState(false);
 
   const [telegram, setTelegram] = useState(null);

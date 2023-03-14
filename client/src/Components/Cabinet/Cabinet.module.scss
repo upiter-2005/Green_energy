@@ -1,0 +1,93 @@
+.cabinetWrapp{
+    flex: 1;
+    width: 100%;
+    margin-top: -52px;
+    &_area{
+        padding: 50px 60px;
+    }
+    .cabinetTitle_Img{
+        max-width: 800px;
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+   
+  
+}
+.cabinet_area{
+    padding: 50px 60px;
+    overflow: auto;
+    white-space: nowrap;
+   display: flex;
+    .cabinet_area_left{
+        width: 66%;
+        .cabinet_area_leftTop{
+            border-bottom: 3px solid #B9B9B9;
+            padding-bottom: 54px;
+            display: flex;
+            img{
+                margin-right: 30px;
+                width: 123px;
+                height: 123px;
+                object-fit: cover;
+            }
+            h3{
+                font-weight: 900;
+                font-size: 32px;
+                margin-top: 0;
+                margin-bottom: 20px;
+            }
+            p{
+                color: #0F5A51;
+                font-weight: 900;
+                font-size: 20px;
+                line-height: 23px;
+                span{
+                    color:#737373;
+                }
+                button{
+                    background: radial-gradient(50% 50% at 50% 50%, #02100E 0%, #062622 100%);
+                    border-radius: 8px;
+                    padding: 4px;
+                    outline: none;
+                    border: none;
+                    span{
+                        font-weight: 900;
+                        background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        text-fill-color: transparent;
+                    }
+                }
+            }
+        }
+        .cabinet_area_leftCenter{
+
+        }
+        .cabinet_area_leftRight{
+
+        }
+    }
+    .cabinet_area_right{
+        width: 33%;
+    }
+   
+}
+
+.tableTitile{
+    width: 100%;
+    text-align: center;
+}
+
+
+@media(max-width: 992px){
+    .structure_area{
+        padding:  30px!important;
+    }
+    
+    th, td, th{
+        font-size: 12px!important;
+        padding: 6px!important;
+    }
+}

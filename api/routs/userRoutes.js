@@ -6,6 +6,7 @@ const {
   contactUpdate,
   passwordUpdate,
   getStructureUsers,
+  getAllUsers,
 } = require("../controllers/user.js");
 const checkAuth = require("../utils/checkAuth.js");
 
@@ -25,4 +26,8 @@ router.get("/getUplinerInfo", checkAuth, getUplinerInfo);
 
 // /api/user/getStrucuture
 router.get("/getStrucuture", checkAuth, getStructureUsers);
+
+// /api/user/getStrucuture
+router.get("/getAllUsers", checkAuth, getAllUsers);
+
 module.exports = router;

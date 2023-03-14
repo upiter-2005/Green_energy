@@ -9,8 +9,18 @@ const initialState = {
   formCall: "login",
   registerEvent: false,
   structure: null,
+  allUsers: null,
 };
 
+export const getAllUsers = createAsyncThunk("auth/getAllUsers", async () => {
+  try {
+    const { data } = await axios.get("user/getAllUsers");
+
+    return data.users;
+  } catch (error) {
+    console.log(error);
+  }
+});
 export const getStructure = createAsyncThunk("auth/getStructure", async () => {
   try {
     const { data } = await axios.get("user/getStrucuture");
@@ -126,6 +136,18 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: {
+    //getAllUsers
+    [getAllUsers.pending]: (state) => {
+      state.isLoadng = true;
+      state.status = null;
+    },
+    [getAllUsers.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      console.log(action.payload);
+      state.allUsers = action.payload;
+      //state.token = action.payload.token;
+    },
+    [getAllUsers.rejected]: (state, action) => {},
     //getStructure
     [getStructure.pending]: (state) => {
       state.isLoadng = true;

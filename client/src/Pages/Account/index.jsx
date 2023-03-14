@@ -8,6 +8,7 @@ import Header from "../../Components/Header";
 import Profile from "../../Components/Profile";
 import Staking from "../../Components/Staking";
 import Wallets from "../../Components/Wallets";
+import Cabinet from "../../Components/Cabinet";
 import Structure from "../../Components/Structure";
 
 function Account() {
@@ -28,12 +29,10 @@ function Account() {
         <div className={styles.account_box}>
           <div className={styles.navigation}>
             <ul className={styles.navigation_link}>
-              {/* <li onClick={() => setSection("cabinet")}>
-                <img src="img/cabinet.svg" alt="" />
-              </li> */}
-              <li>
+              <li onClick={() => setSection("cabinet")}>
                 <img src="img/cabinet.svg" alt="" />
               </li>
+
               <li onClick={() => setSection("profile")}>
                 <img src="img/profile.svg" alt="" />
               </li>
@@ -50,7 +49,7 @@ function Account() {
             </ul>
           </div>
 
-          {/* {section === "cabinet" && <Cabinet />} */}
+          {section === "cabinet" && <Cabinet />}
           {section === "profile" && <Profile />}
           {section === "structure" && <Structure />}
           {section === "staking" && <Staking />}

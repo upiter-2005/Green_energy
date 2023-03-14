@@ -142,6 +142,15 @@ const getStructureUsers = async (req, res) => {
   }
 };
 
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json({ users });
+  } catch (e) {
+    res.json({ message: "Not denie" });
+  }
+};
+
 module.exports = {
   getUplinerInfo,
   avatarUpdate,
@@ -149,4 +158,5 @@ module.exports = {
   contactUpdate,
   nameUpdate,
   getStructureUsers,
+  getAllUsers,
 };

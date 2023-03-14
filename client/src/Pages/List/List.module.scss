@@ -13,7 +13,26 @@
     width: 100%;
     margin: 0 auto 0;
     padding: 0;
-    
+    .list_box{
+        color: #ececec;
+        width: 100%;
+        div{
+            display: flex;
+            width: 100%;
+            &:hover{
+                background-color: #939393;
+                cursor: pointer;
+            }
+            span{
+                width: 16%;
+                font-size: 18px;
+                overflow: hidden;
+                margin: 3px;
+                font-weight: 600;
+                color: #ececec;
+            }
+        }
+    }
 
     .account_title{
         max-width: 1200px;
