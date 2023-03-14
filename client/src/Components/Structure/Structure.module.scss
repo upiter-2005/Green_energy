@@ -1,0 +1,76 @@
+.cabinetWrapp{
+    flex: 1;
+    width: 100%;
+    margin-top: -52px;
+    &_area{
+        padding: 50px 60px;
+    }
+    .cabinetTitle_Img{
+        max-width: 800px;
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+   
+  
+}
+.structure_area{
+    padding: 50px 60px;
+    overflow: auto;
+    white-space: nowrap;
+   th{
+    color: #0F5A51;
+    font-size: 16px;
+    font-weight: 900;
+    padding: 10px;
+   }
+   td{
+    padding: 10px;
+    color: #1E1E1E;
+   }
+   .socPopup{
+    background: radial-gradient(50% 50% at 50% 50%, #02100E 0%, #062622 100%);
+    border-radius: 8px;
+    font-weight: 900;
+    padding: 4px 6px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s ease;
+    &:hover{
+        transform: scale(1.1);
+    }
+    span{
+        background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    }
+  
+   }
+}
+table, th, td {
+    border: 1px solid #B9B9B9;
+    border-collapse: collapse;
+  }
+.tableTitile{
+    width: 100%;
+    text-align: center;
+}
+
+
+@media(max-width: 992px){
+    .structure_area{
+        padding:  30px!important;
+    }
+    
+    th, td, th{
+        font-size: 12px!important;
+        padding: 6px!important;
+    }
+}

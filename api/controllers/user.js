@@ -116,10 +116,37 @@ const getUplinerInfo = async (req, res) => {
   }
 };
 
+const getStructureUsers = async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.userId);
+    const users = await User.find(
+      { upliner: currentUser.login },
+      {
+        login: 1,
+        email: 1,
+        status: 1,
+        balance: 1,
+        staking: 1,
+        phone: 1,
+        comand: 1,
+        telegram: 1,
+        whatsapp: 1,
+        facebook: 1,
+        instagram: 1,
+        twitter: 1,
+      },
+    );
+    res.json(users);
+  } catch (e) {
+    res.json({ message: "getStructureUsers not work!" });
+  }
+};
+
 module.exports = {
   getUplinerInfo,
   avatarUpdate,
   passwordUpdate,
   contactUpdate,
   nameUpdate,
+  getStructureUsers,
 };

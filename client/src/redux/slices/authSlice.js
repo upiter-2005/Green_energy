@@ -8,7 +8,18 @@ const initialState = {
   status: null,
   formCall: "login",
   registerEvent: false,
+  structure: null,
 };
+
+export const getStructure = createAsyncThunk("auth/getStructure", async () => {
+  try {
+    const { data } = await axios.get("user/getStrucuture");
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 export const passwordUpdate = createAsyncThunk("auth/passwordUpdate", async (params) => {
   try {
@@ -115,6 +126,18 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: {
+    //getStructure
+    [getStructure.pending]: (state) => {
+      state.isLoadng = true;
+      state.status = null;
+    },
+    [getStructure.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      console.log(action.payload);
+      state.structure = action.payload;
+      //state.token = action.payload.token;
+    },
+    [getStructure.rejected]: (state, action) => {},
     //updateAvatar
     [updateAvatar.pending]: (state) => {
       state.isLoadng = true;

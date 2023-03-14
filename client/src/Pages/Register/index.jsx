@@ -49,11 +49,16 @@ function Register() {
     //   navigate("/");
     // }
     const query = qs.parse(window.location.search.substring(1));
-
-    if (query.upliner) {
-      console.log(query.upliner);
+    if (window.localStorage.getItem("upliner")) {
+      setUpliner(window.localStorage.getItem("upliner"));
+    } else {
+      window.localStorage.setItem("upliner", query.upliner);
       setUpliner(query.upliner);
     }
+    // if (query.upliner) {
+    //   console.log(query.upliner);
+    //   setUpliner(query.upliner);
+    // }
   }, [status, isAuth]);
 
   const findCodeByFlag = (flag) => {

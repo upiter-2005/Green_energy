@@ -10,6 +10,9 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   avatar: { type: String, default: "" },
   balance: { type: Number, default: 0 },
+  staking: { type: Number, default: 0 },
+  status: { type: Boolean, default: false },
+  comand: { type: Number, default: 0 },
   projectTokens: { type: Number, default: 0 },
   wallet: { type: String, default: "0x00" },
   telegram: { type: String, default: "" },
@@ -17,7 +20,6 @@ const userSchema = new mongoose.Schema({
   facebook: { type: String, default: "" },
   instagram: { type: String, default: "" },
   twitter: { type: String, default: "" },
-  matrix: { type: Object, default: {} },
 });
 
 module.exports = mongoose.model("User", userSchema);

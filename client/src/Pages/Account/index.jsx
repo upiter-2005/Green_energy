@@ -37,15 +37,13 @@ function Account() {
               <li onClick={() => setSection("profile")}>
                 <img src="img/profile.svg" alt="" />
               </li>
-              {/* <li onClick={() => setSection("structure")}>
+              <li onClick={() => setSection("structure")}>
                 <img src="img/structure.svg" alt="" />
               </li>
-              <li onClick={() => setSection("staking")}>
+              {/* <li onClick={() => setSection("staking")}>
                 <img src="img/staking.svg" alt="" />
               </li> */}
-              <li>
-                <img src="img/structure.svg" alt="" />
-              </li>
+
               <li>
                 <img src="img/staking.svg" alt="" />
               </li>
