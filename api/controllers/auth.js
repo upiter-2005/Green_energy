@@ -63,8 +63,21 @@ const getMe = async (req, res) => {
   }
 };
 
+const checkUpliner = async (req, res) => {
+  try {
+    const { login } = req.body;
+    const isUserExist = await User.findOne({ login });
+    if (!isUserExist) {
+      return res.json({ message: "not such user" });
+    }
+    res.json(isUserExist);
+  } catch (e) {
+    res.json({ message: "not connect" });
+  }
+};
 module.exports = {
   getMe,
   login,
   register,
+  checkUpliner,
 };

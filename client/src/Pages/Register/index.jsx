@@ -9,6 +9,7 @@ import {
   cleanStatus,
 } from "../../redux/slices/authSlice";
 import { toast } from "react-toastify";
+import axios from "../../utils/axios";
 import qs from "qs";
 import styles from "./Register.module.scss";
 import ReactFlagsSelect from "react-flags-select";
@@ -16,9 +17,10 @@ import phoneCodes from "../../local_db/phoneCodes.json";
 import Error from "../../Components/Error";
 
 function Register() {
-  console.log(phoneCodes);
   const phoneRef = useRef();
 
+  const [uplinerValid, setUplinerValid] = useState(null);
+  const [uplinerDouble, setUplinerDouble] = useState(null);
   const [loginValid, setLoginValid] = useState(null);
   const [emailValid, setEmailValid] = useState(null);
   const [phoneValid, setPhoneValid] = useState(null);
@@ -55,6 +57,7 @@ function Register() {
       window.localStorage.setItem("upliner", query.upliner);
       setUpliner(query.upliner);
     }
+
     // if (query.upliner) {
     //   console.log(query.upliner);
     //   setUpliner(query.upliner);
@@ -69,7 +72,7 @@ function Register() {
   };
 
   const handleSubmit = () => {
-    if (loginValid || emailValid || phoneValid || passwordValid || doublePassword) {
+    if (loginValid || emailValid || phoneValid || passwordValid || doublePassword || uplinerValid) {
       console.log("register error");
       return true;
     }
@@ -159,11 +162,40 @@ function Register() {
     inputType === "password" ? setInputType("text") : setInputType("password");
   };
 
+  const checkUpliner = async (e) => {
+    if (e.target.value.length > 3) {
+      setUplinerValid(null);
+      setUpliner(e.target.value);
+      const { data } = await axios.post("auth/checkUpliner", {
+        login: e.target.value,
+      });
+      if (data.message) {
+        setUplinerValid("Такого спонсора не существует");
+      } else {
+        setUplinerValid(null);
+      }
+    } else {
+      setUplinerValid("Слишком короткий логин");
+    }
+    setUpliner(e.target.value);
+  };
+
   useEffect(() => {
     if (registerEvent) {
       navigate("/login");
     }
   }, [registerEvent, navigate]);
+
+  useEffect(() => {
+    const query = qs.parse(window.location.search.substring(1));
+
+    if (query.upliner !== window.localStorage.getItem("upliner")) {
+      console.log(query.upliner);
+      console.log(window.localStorage.getItem("upliner"));
+      setUplinerDouble("Проверте правильность логина наставника");
+    }
+  }, []);
+
   return (
     <div className="registerWrapper">
       <div className="logo">
@@ -171,7 +203,9 @@ function Register() {
       </div>
       <form onSubmit={(e) => e.preventDefault()} className={styles.formWraper}>
         <h2>Регистрация</h2>
-
+        <div style={{ position: "relative" }}>
+          {uplinerDouble && <Error content={uplinerDouble} />}
+        </div>
         <div className={styles.inputWrapper}>
           <label className="labelEl">Логин наставника</label>
           <input
@@ -180,8 +214,9 @@ function Register() {
             value={upliner}
             placeholder={upliner}
             className="inputCustom"
-            disabled
+            onChange={checkUpliner}
           />
+          {uplinerValid && <Error content={uplinerValid} />}
         </div>
 
         <div className={styles.inputWrapper}>
