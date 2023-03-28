@@ -1,7 +1,9 @@
 .cabinetWrapp{
+    position: relative;
     flex: 1;
     width: 100%;
     margin-top: -52px;
+    z-index: 10;
     &_area{
         padding: 50px 60px;
     }
@@ -13,6 +15,81 @@
     }
    
   
+}
+.new_item{
+    display: block;
+    box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
+    border-radius: 25px;
+    height: 195px;
+    img{
+        width: 100%;
+        height: auto;
+    }
+}
+.socOpen{
+    margin-left: 20px;
+}
+.userPensia{
+    background-image: url(../../../public/img/pensia-fon.png);
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 25px;
+    padding: 20px;
+    color: #fff;
+    position: relative;
+    //box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
+    background-color: transparent;
+    margin: 25px 0;
+    box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
+    .pensiafon_ico{
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: 32px;
+    }
+    h3{
+        white-space: initial;
+        font-weight: 900;
+        font-size: 20px;
+        margin: 0;
+    }
+    &_Balance{
+        width: inherit;
+        background: linear-gradient(94.25deg, #FF9B04 0%, #FFE331 32.24%, #FFF64F 41.09%, #FFEA41 50.39%, #FFAA04 100%);
+        box-shadow: inset 3px 3px 2px #FFF98A;
+        border-radius: 50px;
+        display: inline-block;
+        padding: 6px 23px;
+        text-align: center;
+        color: #000;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    &_info{
+        width: 70%;
+        height: 100%;
+        display: flex;
+    flex-direction: column;
+    align-self: start;
+    justify-content: space-between;
+    button{
+        padding: 5px;
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 16px;
+        background-color: transparent;
+        white-space: initial;
+        text-align: center;
+        max-width: 145px;
+
+    color: #FFFFFF;
+    border: 1px solid #fff;
+    border: 1px solid #FFFFFF;
+border-radius: 8px;
+    }
+    }
 }
 .cabinet_area{
     padding: 50px 60px;
@@ -70,6 +147,7 @@
             justify-content: space-between;
             h4{
                 width: 100%;
+                font-weight: 900;
             }
             .f1{
                 background-image: url(../../../public/img/f1.png);
@@ -156,6 +234,11 @@
                     font-size: 14px;
                     white-space:normal;
                    }
+                .active_pockets_ref{
+                    width: 85px;
+                    font-size: 14px;
+                    white-space:normal;
+                }   
                }
                 .title_text_min{
                     background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
@@ -185,9 +268,10 @@
     .cabinet_area_right{
         width: 33%;
         margin-left: 20px;
+        padding: 0 10px;
         .userInfo{
             text-align: center;
-            padding: 45px 63px;
+            padding: 45px 63px 70px;
             box-shadow: -1px -1px 30px 1px rgba(0, 0, 0, 0.3);
             border-radius: 19px;
             &Item{
@@ -212,7 +296,68 @@
     }
    
 }
-
+.cabinet_area_leftBottom{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.lastUser{
+    background-color: #fff;
+    box-shadow: -1px -1px 30px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    width: 30%;
+    text-align: center;
+    padding: 40px;
+    margin-top: 33px;
+    position: relative;
+    &_img{
+        position: absolute;
+        top: -35px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 77px;
+        height: 77px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    &_name{
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 23px;
+        margin-bottom: 30px;
+    }
+    &_data{
+        margin-bottom: 30px;
+        span{
+            display: block;
+            font-weight: 700;
+            font-size: 20px;
+            color: #737373;
+            font-style: italic;
+            &:first-child{
+                font-size: 16px;
+                font-weight: 400;
+                color: #0F5A51
+            }
+        }
+    }
+    &_soc{
+        background: radial-gradient(50% 50% at 50% 50%, #02100E 0%, #062622 100%);
+        border-radius: 8px;
+        padding: 5px;
+        span{
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 900;
+        font-size: 20px;
+        line-height: 23px;
+        }
+       
+    }
+}
 .tableTitile{
     width: 100%;
     text-align: center;

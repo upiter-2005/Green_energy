@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updateData } from "../../redux/slices/authSlice";
+import { getTree } from "../../redux/slices/optionsSlice";
 import { toast } from "react-toastify";
 
 function ProfileData() {
@@ -9,20 +10,24 @@ function ProfileData() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
+  const [metamask, setMetamask] = useState("");
+  const [payeer, setPayeer] = useState("");
+  const [advcash, setAdvcash] = useState("");
   const user = useSelector((state) => state.auth.user);
-
-  console.log(user);
+  const tree = useSelector((state) => state.options.tree);
 
   const handleUpdate = () => {
     try {
       const data = {
         name,
         surname,
+        payeer,
+        advcash,
       };
 
       console.log(data);
       dispatch(updateData(data));
-      toast("Данные обновлены!");
+      toast.success("Данные обновлены!");
     } catch (e) {
       console.log(e);
     }
@@ -36,8 +41,12 @@ function ProfileData() {
     }
     setName(user?.name);
     setSurname(user?.surname);
-  }, [user]);
-
+    setMetamask(user?.wallet);
+    setPayeer(user?.payeer);
+    setAdvcash(user?.advcash);
+    dispatch(getTree());
+  }, [user, navigate]);
+  console.log(tree);
   return (
     <div className="accountDataBlock">
       <h3 className="accTitle">Основная информация</h3>
@@ -54,6 +63,18 @@ function ProfileData() {
           <span>Логин</span>
           <input type="text" value={user?.login} disabled />
           <img src="img/lock.svg" alt="" />
+        </div>
+        <div className="accountInput">
+          <span>MetaMask</span>
+          <input type="text" value={metamask} onChange={(e) => setMetamask(e.target.value)} />
+        </div>
+        <div className="accountInput">
+          <span>Payeer</span>
+          <input type="text" value={payeer} onChange={(e) => setPayeer(e.target.value)} />
+        </div>
+        <div className="accountInput">
+          <span>AdvCash</span>
+          <input type="text" value={advcash} onChange={(e) => setAdvcash(e.target.value)} />
         </div>
         {/* <div className="genderBlock">
           <div className="genderBlockTitle">Пол</div>

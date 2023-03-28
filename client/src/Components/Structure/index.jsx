@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getStructure } from "../../redux/slices/authSlice";
 import Popup from "../Popup";
+import Jackpot from "../Jackpot";
 import styles from "./Structure.module.scss";
 
 function Structure() {
@@ -31,6 +32,7 @@ function Structure() {
   console.log(structure);
   return (
     <div className={styles.cabinetWrapp}>
+      <Jackpot />
       <img src="img/structureTitle.svg" className={styles.cabinetTitle_Img} alt="" />
       <div className="borderRound">
         <div className={styles.structure_area}>
@@ -52,7 +54,7 @@ function Structure() {
 
                   <td>{obj.email}</td>
                   <td>{obj.phone}</td>
-                  <td>{obj.status ? "Активный" : "Не активный"}</td>
+                  <td>{obj.is_active ? "Активный" : "Не активный"}</td>
                   <td>{obj.staking}</td>
                   <td>{obj.comand}</td>
                   <td>

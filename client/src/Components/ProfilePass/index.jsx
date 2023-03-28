@@ -20,13 +20,13 @@ function ProfilePass() {
   const handleUpdate = () => {
     console.log("Update func");
     if (newPass !== repeatPass) {
-      return toast("Новый пароль не совпадает");
+      return toast.error("Новый пароль не совпадает");
     }
     if (!newPass || !repeatPass) {
-      return toast("Заполните поле с новым паролем");
+      return toast.error("Заполните поле с новым паролем");
     }
     if (!inputCurrent) {
-      return toast("Введите старый пароль");
+      return toast.error("Введите старый пароль");
     }
 
     const data = { inputCurrent, newPass };

@@ -60,7 +60,7 @@ function ProfilePhoto() {
       updatedAvatar.append("avatar", avatar);
       console.log(updatedAvatar);
       dispatch(updateAvatar(updatedAvatar));
-      toast("Изображение обновлено!");
+      toast.success("Изображение обновлено!");
       //setAvatar(`http://localhost:3002/${user.avatar}`);
       //setImgIsLoaded(true);
     } catch (error) {

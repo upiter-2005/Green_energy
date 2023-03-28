@@ -7,9 +7,189 @@ const { dirname } = require("path");
 const path = require("path");
 const { fileURLToPath } = require("url");
 
+const updateBalance = async (req, res) => {
+  try {
+    const { login, balance } = req.body;
+    console.log(login, balance);
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        login: login,
+      },
+      {
+        $inc: { balance },
+      },
+      { returnDocument: "after" },
+    );
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (error) {
+    res.json({ message: "Error!!!" });
+  }
+};
+
+const updateTotalAwards = async (req, res) => {
+  try {
+    const { login, totalAwards } = req.body;
+    console.log(login, totalAwards);
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        login: login,
+      },
+      {
+        $set: { totalAwards },
+      },
+      { returnDocument: "after" },
+    );
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (error) {
+    res.json({ message: "Error!!!" });
+  }
+};
+const updateRefAwards = async (req, res) => {
+  try {
+    const { login, refAwards } = req.body;
+    console.log(login, refAwards);
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        login: login,
+      },
+      {
+        $set: { refAwards },
+      },
+      { returnDocument: "after" },
+    );
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (error) {
+    res.json({ message: "Error!!!" });
+  }
+};
+
+const updateReinvestBalance = async (req, res) => {
+  try {
+    const { login, balanceReinvest } = req.body;
+    console.log(login, balanceReinvest);
+    let updatedUser = null;
+    if (balanceReinvest == 50) {
+      updatedUser = await User.findOneAndUpdate(
+        {
+          login: login,
+        },
+        {
+          $set: { balanceReinvest: 50 },
+        },
+        { returnDocument: "after" },
+      );
+    } else {
+      updatedUser = await User.findOneAndUpdate(
+        {
+          login: login,
+        },
+        {
+          $inc: { balanceReinvest },
+        },
+        { returnDocument: "after" },
+      );
+    }
+
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (error) {
+    res.json({ message: "Error!!!" });
+  }
+};
+
+const updateCashbackBalance = async (req, res) => {
+  try {
+    const { login, cashbackBalance } = req.body;
+    console.log(login, cashbackBalance);
+    let updatedUser = null;
+    if (cashbackBalance == 30) {
+      updatedUser = await User.findOneAndUpdate(
+        {
+          login,
+        },
+        {
+          $set: { cashback_balance: 30 },
+        },
+        { returnDocument: "after" },
+      );
+    } else {
+      updatedUser = await User.findOneAndUpdate(
+        {
+          login,
+        },
+        {
+          $inc: { cashback_balance: cashbackBalance },
+        },
+        { returnDocument: "after" },
+      );
+    }
+
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (error) {
+    res.json({ message: "Error!!!" });
+  }
+};
+
+const updateCashbackReinvest = async (req, res) => {
+  try {
+    const { login, cashbackReinvest } = req.body;
+    console.log(login, cashbackReinvest);
+    let updatedUser = null;
+    if (cashbackReinvest == 50) {
+      updatedUser = await User.findOneAndUpdate(
+        {
+          login: login,
+        },
+        {
+          $set: { cashback_reinvest: 50 },
+        },
+        { returnDocument: "after" },
+      );
+    } else {
+      updatedUser = await User.findOneAndUpdate(
+        {
+          login: login,
+        },
+        {
+          $inc: { cashback_reinvest: cashbackReinvest },
+        },
+        { returnDocument: "after" },
+      );
+    }
+
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (error) {
+    res.json({ message: "Error!!!" });
+  }
+};
+
+const activeOn = async (req, res) => {
+  try {
+    const user = req.userId;
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        _id: user,
+      },
+      {
+        $set: { is_active: true },
+      },
+      { returnDocument: "after" },
+    );
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (error) {
+    res.json({ message: "Error!!!" });
+  }
+};
+
 const nameUpdate = async (req, res) => {
   try {
-    const { name, surname } = req.body;
+    const { name, surname, payeer, advcash } = req.body;
 
     const user = req.userId;
     const updatedUser = await User.findOneAndUpdate(
@@ -17,8 +197,10 @@ const nameUpdate = async (req, res) => {
         _id: user,
       },
       {
-        name: name,
+        payeer,
         surname: surname,
+        payeer,
+        advcash,
       },
       { returnDocument: "after" },
     );
@@ -116,6 +298,18 @@ const getUplinerInfo = async (req, res) => {
   }
 };
 
+const getUserByLogin = async (req, res) => {
+  try {
+    const { login } = req.body;
+
+    const user = await User.findOne({ login });
+
+    res.json({ user });
+  } catch (error) {
+    res.json({ message: "Bad connection" });
+  }
+};
+
 const getStructureUsers = async (req, res) => {
   try {
     const currentUser = await User.findById(req.userId);
@@ -124,7 +318,7 @@ const getStructureUsers = async (req, res) => {
       {
         login: 1,
         email: 1,
-        status: 1,
+        is_active: 1,
         balance: 1,
         staking: 1,
         phone: 1,
@@ -159,4 +353,12 @@ module.exports = {
   nameUpdate,
   getStructureUsers,
   getAllUsers,
+  getUserByLogin,
+  updateBalance,
+  updateReinvestBalance,
+  updateCashbackReinvest,
+  updateCashbackBalance,
+  updateTotalAwards,
+  updateRefAwards,
+  activeOn,
 };

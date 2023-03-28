@@ -34,7 +34,7 @@ function ProfileContacts() {
       twitter,
     };
     dispatch(updateContacts(data));
-    toast("Данные сохранены успешно!");
+    toast.success("Данные сохранены успешно!");
   };
 
   return (

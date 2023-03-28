@@ -1,5 +1,5 @@
 .headerWrap{
-    max-width: 1330px;
+    max-width: 1405px;
     width: 100%;
     margin: 0 auto;
     padding: 30px 30px 30px 25px;
@@ -63,6 +63,13 @@
         &:hover{
            transform: scale(1.1);
         }
+    }
+    .headerIcoAvatar{
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin: 0 5px;
     }
 }
 

@@ -24,7 +24,7 @@ export default function Login() {
   }, []);
   useEffect(() => {
     if (status) {
-      toast(status);
+      toast.error(status);
     }
     dispatch(cleanStatus());
     if (isAuth) {
@@ -34,18 +34,18 @@ export default function Login() {
 
   const handleSubmit = () => {
     if (!email && !password) {
-      toast("Введите логин и пароль");
+      toast.error("Введите логин и пароль");
       return;
     }
     if (!email || !password) {
-      toast("Заполните пропущенное поле");
+      toast.error("Заполните пропущенное поле");
       return;
     }
     try {
       dispatch(loginUser({ email, password }));
       setemail("");
       setPassword("");
-      toast(status);
+      toast.success(status);
     } catch (error) {
       console.log(error);
     }

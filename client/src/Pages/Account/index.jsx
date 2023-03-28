@@ -7,9 +7,11 @@ import { checkIsAuth } from "../../redux/slices/authSlice";
 import Header from "../../Components/Header";
 import Profile from "../../Components/Profile";
 import Staking from "../../Components/Staking";
-import Wallets from "../../Components/Wallets";
+import News from "../../Components/News";
 import Cabinet from "../../Components/Cabinet";
 import Structure from "../../Components/Structure";
+import Education from "../../Components/Education";
+import { toast } from "react-toastify";
 
 function Account() {
   const [section, setSection] = useState("profile");
@@ -42,9 +44,14 @@ function Account() {
               {/* <li onClick={() => setSection("staking")}>
                 <img src="img/staking.svg" alt="" />
               </li> */}
-
-              <li>
+              <li onClick={() => toast.success("В разработке")}>
                 <img src="img/staking.svg" alt="" />
+              </li>
+              <li onClick={() => setSection("news")}>
+                <img src="img/news.svg" alt="" />
+              </li>
+              <li onClick={() => setSection("study")}>
+                <img src="img/Education.svg" alt="" />
               </li>
             </ul>
           </div>
@@ -53,6 +60,8 @@ function Account() {
           {section === "profile" && <Profile />}
           {section === "structure" && <Structure />}
           {section === "staking" && <Staking />}
+          {section === "news" && <News />}
+          {section === "study" && <Education />}
         </div>
       </div>
     </div>

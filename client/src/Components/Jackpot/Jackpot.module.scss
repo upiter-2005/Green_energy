@@ -1,0 +1,72 @@
+.jackpotWrapp{
+    width: 260px;
+    height: 270px;
+    background-image: url(../../../public/img/jackpot_fon.png);
+    background-repeat: no-repeat;
+    //background: radial-gradient(96.99% 186.59% at 3.01% 97.61%, #0D4C44 1.42%, #000000 45.37%, #0F5A51 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
+    border-radius: 25px;
+    position: absolute;
+    right: 0;
+    top: -5px;
+    z-index: -1;
+    &_text{
+        color: #4CFFDF;
+        text-shadow: 0px 0px 4px #4CFFDF;  
+        font-weight: 900;
+        font-size: 16px; 
+        text-align: center;
+        margin: 15px 0 10px ;
+        -webkit-text-stroke: 1px rgb(11, 0, 0);
+    }
+    &_vin{
+        font-style: italic;
+        font-weight: 200;
+        font-size: 16px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        button{
+            background-color: transparent;
+            outline: none;
+            border: none;
+        }
+    }
+    &_user{
+        background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+       
+        font-weight: 900;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 5px;
+    }
+    &_value{
+        width: 165px;
+        padding: 1px;
+        border-radius: 8px;
+        margin: 90px auto 0;
+        overflow: hidden;
+        background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+        span{
+            border-radius: 8px;
+            display: block;
+            background-color: #08332d;
+            text-align: center;
+            color: #4CFFDF;
+            font-size: 36px;
+            font-weight: 700;
+        }
+    }
+  
+
+}
+
+
+@media(max-width: 992px){
+   
+}

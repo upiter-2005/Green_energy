@@ -5,11 +5,13 @@ import ProfileContacts from "../ProfileContacts";
 import ProfilePhoto from "../ProfilePhoto";
 import ProfilePass from "../ProfilePass";
 import ProfileSponsor from "../ProfileSponsor";
+import Jackpot from "../Jackpot";
 
 function Profile() {
   const [activeTab, setActiveTab] = useState("lk");
   return (
     <div className={styles.cabinetWrapp}>
+      <Jackpot />
       <img src="img/cabinetTitle.svg" className={styles.cabinetTitle_Img} alt="" />
       <div className="borderRound">
         <div className={styles.cabinetWrapp_mnu}>

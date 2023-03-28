@@ -7,6 +7,14 @@ const {
   passwordUpdate,
   getStructureUsers,
   getAllUsers,
+  getUserByLogin,
+  updateBalance,
+  updateCashbackBalance,
+  updateCashbackReinvest,
+  updateReinvestBalance,
+  updateTotalAwards,
+  updateRefAwards,
+  activeOn,
 } = require("../controllers/user.js");
 const checkAuth = require("../utils/checkAuth.js");
 
@@ -29,5 +37,29 @@ router.get("/getStrucuture", checkAuth, getStructureUsers);
 
 // /api/user/getStrucuture
 router.get("/getAllUsers", checkAuth, getAllUsers);
+
+// /api/user/getUserByLogin
+router.post("/getUserByLogin", getUserByLogin);
+
+// /api/user/updateBalance
+router.patch("/updateBalance", updateBalance);
+
+// /api/user/updateCashbackBalance
+router.patch("/updateCashbackBalance", updateCashbackBalance);
+
+// /api/user/updateCashbackReinvest
+router.patch("/updateCashbackReinvest", updateCashbackReinvest);
+
+// /api/user/updateReinvestBalance
+router.patch("/updateReinvestBalance", updateReinvestBalance);
+
+// /api/user/updateReinvestBalance
+router.patch("/updateTotalAwards", updateTotalAwards);
+
+// /api/user/updateReinvestBalance
+router.patch("/updateRefAwards", updateRefAwards);
+
+// /api/user/activeOn
+router.patch("/activeOn", checkAuth, activeOn);
 
 module.exports = router;

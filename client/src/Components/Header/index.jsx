@@ -17,7 +17,7 @@ function Header() {
       .writeText(`https://greenenergy.vip/register?upliner=${user?.login}`)
       .then(() => {
         //setCopiedShow(true);
-        toast("Реферальная ссылка скопирована");
+        toast.success("Реферальная ссылка скопирована");
       });
   };
 
@@ -28,11 +28,27 @@ function Header() {
       </div>
       <div className={styles.headerCenter}>
         <span className={styles.headerCenter_text}>Реферальная ссылка:</span>
-        <span
-          className={styles.copyLink}>{`https://greenenergy.vip?upliner=${user?.login}`}</span>{" "}
+        <span className={styles.copyLink}>{`https://greenenergy.vip?upliner=${user?.login}`}</span>
         <img src="img/link.svg" alt="" className={styles.headerIco} onClick={copyLink} />
         <img src="img/share.svg" alt="" className={styles.headerIco} />
+      </div>
+
+      <div className={styles.headerRight}>
+        <a href="https://t.me/GreenEnergyChat" target="blank">
+          <img src="img/tg.svg" alt="" className={styles.headerIco} />
+        </a>
         <img src="img/ru.svg" alt="" className={styles.headerIco} />
+        {user?.avatar ? (
+          <img
+            src={`${process.env.REACT_APP_IMG_URL}${user?.avatar}`}
+            width="45px"
+            alt=""
+            className={styles.headerIcoAvatar}
+          />
+        ) : (
+          <img src="img/avatar-ico.svg" alt="" className={styles.headerIco} />
+        )}
+
         <img
           src="img/logout.svg"
           alt=""
@@ -40,16 +56,6 @@ function Header() {
           className={styles.headerIco}
         />
       </div>
-
-      {/* <div className={styles.headerRight}>
-        <img src="img/ru.svg" alt="" className={styles.headerIco} />
-        <img
-          src="img/logout.svg"
-          alt=""
-          onClick={() => dispatch(logOut())}
-          className={styles.headerIco}
-        />
-      </div> */}
       {copiedShow && <Copied />}
     </div>
   );

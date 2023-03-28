@@ -23,6 +23,9 @@ const register = async (req, res) => {
 
     await newUser.save();
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+
+    const uplinerData = await User.findOneAndUpdate({ login: upliner }, { $inc: { comand: 1 } });
+
     res.json({ newUser, token, message: "User has registered successfully" });
   } catch (error) {
     res.json({ mesage: "Register Error !!" });

@@ -14,7 +14,7 @@ function Popup({ trigger, telegram, whatsapp, facebook, instagram, twitter, setT
 
   const handleOutSideClick = (e) => {
     const path = e.path || (e.composedPath && e.composedPath());
-    console.log(path);
+
     if (path[0] === modalRef.current) {
       setTriggerBut(false);
     }
@@ -22,7 +22,7 @@ function Popup({ trigger, telegram, whatsapp, facebook, instagram, twitter, setT
 
   const copyLink = (link) => {
     navigator.clipboard.writeText(link).then(() => {
-      toast("Cсылка скопирована");
+      toast.success("Cсылка скопирована");
     });
   };
 
