@@ -1,0 +1,206 @@
+.mainWraper{
+   
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    .topPart{
+        padding-top: 153px;
+        padding-bottom: 110px;
+        background-image: url(../../../public/img/top-main.svg);
+       background-size: cover;
+       background-position: bottom left;
+       
+        position: relative;
+        
+        p{
+            font-size: 24px;
+            font-weight: 600;
+             span{
+                background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+            }
+        }
+          h1{
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 96px;
+            margin: 30px 0 0;
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 900;
+            font-style: italic;
+          }
+          .boldy{
+            font-size: 32px;
+            font-weight: 700;
+            max-width: 942px;
+            width: 100%;
+            span{
+                background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+            }
+          }
+          .titleFirstDescr{
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 28px;
+            margin-bottom: 20px;
+            span{
+                background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+            }
+          }
+    }
+   
+    .mainCenter{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &_gradient{
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-style: italic;
+            font-weight: 900;
+            font-size: 32px;
+            line-height: 38px;
+            max-width: 650px;
+            text-align: center;
+        }
+       
+    }
+    
+    
+    .marketingDescr{
+        font-size: 24px;
+        span{
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+    }
+    .mainCenter_white{
+        font-style: italic;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 28px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        max-width: 750px;
+        color: #FFFFFF;
+    }
+    .mainLinks{
+        background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        font-weight: 900;
+        font-size: 36px;
+        border-radius: 8px;
+        border: 1px solid #06AEE5 ;
+        margin: 15px;
+        padding: 4px 10px;
+        transition: all .3s ease;
+        &:hover{
+            transform: scale(1.1)
+        }
+    }
+    .bottomPart{
+        position: relative;
+        
+        background: linear-gradient(0.37deg, #106156 0.32%, rgba(2, 11, 10, 0.141132) 37%, rgba(0, 0, 0, 0) 60.09%, rgba(13, 79, 70, 0) 82.28%), #0C0B19;
+      
+       h2{
+        text-align: center;
+        font-size: 64px;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 23px;
+       }
+       h3{
+        font-size: 32px;
+        font-weight: 900;
+        span{
+            margin-right: 10px;
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+       }
+       p{
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        span{
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+    }
+    .compensation{
+        position: relative;
+        &_label{
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: 320px;
+            max-width: 520px;
+            width: 100%;
+            font-size: 24px;
+            font-weight: 600;
+        }
+    }
+    .marketingDescrFlex{
+      
+        display: flex;
+        span{
+            margin-right: 10px;
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+    }
+    }
+}
+
+
+@media(max-width: 992px){
+    .mainCenter{
+        padding-top: 140px;
+        &_gradient{
+            font-size: 26px!important;
+        }
+        padding-bottom: 30px;
+    }
+    .mainCenter_white{
+        font-size: 18px!important;
+    }
+    .mainLinks{
+        font-size: 30px!important;
+    }
+}

@@ -36,6 +36,9 @@
                     background: #24CAB6;
                     border-radius: 50%;
                 }
+                &:last-child::after{
+                    display: none;
+                }
             }
             span{
                 font-size: 16px;

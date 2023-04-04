@@ -10,6 +10,7 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import List from "./Pages/List";
 import Account from "./Pages/Account";
+import Marketing from "./Pages/Marketing";
 import { useEffect } from "react";
 import { getMe, checkIsAuth } from "./redux/slices/authSlice";
 
@@ -28,6 +29,7 @@ function App() {
     <div className="app_container">
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/marketing" element={<Marketing />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/list" element={<List />} />
