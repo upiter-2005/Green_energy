@@ -24,7 +24,7 @@ export default function Login() {
   }, []);
   useEffect(() => {
     if (status) {
-      toast.error(status);
+      toast.success(status);
     }
     dispatch(cleanStatus());
     if (isAuth) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 import axios from "../../utils/axios";
 import { setTree } from "../../redux/slices/optionsSlice";
 import { getMe, getStructure } from "../../redux/slices/authSlice";
@@ -9,6 +9,7 @@ import Deposit from "../Deposit";
 import Jackpot from "../Jackpot";
 import { toast } from "react-toastify";
 import styles from "./Cabinet.module.scss";
+import { checkIsAuth } from "../../redux/slices/authSlice";
 
 function Cabinet() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function Cabinet() {
   const structure = useSelector((state) => state.auth.structure);
   console.log(structure);
   console.log("tree from server - " + apiTree);
+
+  const navigate = useNavigate();
+  const isAuth = useSelector(checkIsAuth);
 
   const findUplinerTree = (id) => {
     console.log(id);
@@ -209,7 +213,12 @@ function Cabinet() {
     dispatch(getStructure());
     findPocketsNum(user?.login);
     setButType(user?.is_active);
-  }, [user]);
+    // if (!user) {
+    //   navigate("/login");
+    // }
+    console.log(user);
+    console.log("UUUUUUSSSSSSEREERERERERER");
+  }, [user, dispatch]);
 
   useEffect(() => {
     myTeam();
@@ -551,6 +560,9 @@ function Cabinet() {
     addAwards(lastId, true);
   };
 
+  if (!isAuth) {
+    return navigate("/login");
+  }
   return (
     <div className={styles.cabinetWrapp}>
       <Jackpot />
@@ -560,19 +572,19 @@ function Cabinet() {
         <div className={styles.cabinet_area}>
           <div className={styles.cabinet_area_left}>
             <div className={styles.cabinet_area_leftTop}>
-              {user.avatar ? (
+              {user?.avatar ? (
                 <img src={`${process.env.REACT_APP_IMG_URL}${user.avatar}`} alt="" />
               ) : (
                 <img src="img/avatar-default.svg" alt="" />
               )}
 
               <div>
-                <h3>{user.login}</h3>
+                <h3>{user?.login}</h3>
                 <p>
-                  Ваш статус: <span>{user.is_active ? "Активный" : "Не активный"}</span>
+                  Ваш статус: <span>{user?.is_active ? "Активный" : "Не активный"}</span>
                 </p>
                 <p>
-                  Ваш спонсор: <span>{user.upliner ? user.upliner : " --- "}</span>
+                  Ваш спонсор: <span>{user?.upliner ? user.upliner : " --- "}</span>
                   <button className={styles.socOpen} onClick={() => setButPopup(true)}>
                     <span>СОЦСЕТИ</span>
                   </button>
@@ -682,7 +694,7 @@ function Cabinet() {
             <h4>Новые участники в структре:</h4>
             <div className={styles.cabinet_area_leftBottom}>
               <div className={styles.lastUser}>
-                {user.avatar ? (
+                {user?.avatar ? (
                   <img
                     src={`${process.env.REACT_APP_IMG_URL}${user.avatar}`}
                     className={styles.lastUser_img}
@@ -707,7 +719,7 @@ function Cabinet() {
                 </button>
               </div>
               <div className={styles.lastUser}>
-                {user.avatar ? (
+                {user?.avatar ? (
                   <img
                     src={`${process.env.REACT_APP_IMG_URL}${user.avatar}`}
                     className={styles.lastUser_img}
@@ -732,7 +744,7 @@ function Cabinet() {
                 </button>
               </div>
               <div className={styles.lastUser}>
-                {user.avatar ? (
+                {user?.avatar ? (
                   <img
                     src={`${process.env.REACT_APP_IMG_URL}${user.avatar}`}
                     className={styles.lastUser_img}

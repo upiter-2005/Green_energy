@@ -1,0 +1,67 @@
+.headerWrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-image: url(../../../public/img/fon-header.svg);
+    background-position: center bottom;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content:  space-between;
+    border-radius: 14px;
+    padding-bottom: 10px;
+    z-index: 20;
+    .inner{
+        max-width: 1100px;
+        width: 100%;
+        margin: 0 auto;
+        &_top{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            div{
+                font-size: 14px;
+                padding: 0 50px;
+                position: relative;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 40%;
+                    display: block;
+                    width: 7px;
+                    height: 7px;
+                    background: #24CAB6;
+                    border-radius: 50%;
+                }
+            }
+            span{
+                font-size: 16px;
+                color: #24CAB6;
+                font-weight: 900;
+            }
+        }
+    }
+    .logo{
+        width: 200px;
+        margin-right: 100px;
+    }
+    .headerButs{
+        display: flex;
+        .a{
+            margin-right: 35px;
+        }
+    }
+}
+
+@media(max-width: 992px){
+    .headerWrap{
+       flex-direction: column;
+       .headerCenter{
+         flex-wrap: wrap;
+         justify-content: center;
+       }
+    }
+}

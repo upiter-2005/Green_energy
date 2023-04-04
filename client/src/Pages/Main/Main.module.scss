@@ -1,16 +1,74 @@
 .mainWraper{
     // background: radial-gradient(100% 306.89% at 0% 100%, #106156 0%, rgba(0, 0, 0, 0) 49.55%, rgba(2, 11, 10, 0.141132) 56.89%, #0D4F46 100%) , #0C0B19;
-    background-image: url(../../../public/img/register-fon.jpeg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+    // background-image: url(../../../public/img/register-fon.jpeg);
+    // background-attachment: fixed;
+    // background-size: cover;
+    // background-position: center;
+    // position: relative;
+    // display: flex;
+    // flex-direction: column;
+    // width: 100%;
+    // height: 100vh;
+    // margin: 0 auto;
+    // padding: 30px 50px;
+    //background-image: url(../../../public/img/top-main.svg);
     position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    margin: 0 auto;
-    padding: 30px 50px;
+    color: #fff;
+    overflow: hidden;
+    .topPart{
+        padding-top: 137px;
+        padding-bottom: 110px;
+        background-image: url(../../../public/img/top-main.svg);
+       background-size: cover;
+       background-position: bottom left;
+       
+        position: relative;
+        
+        &::after{
+            content: "";
+            display: block;
+            width: 800px;
+            height: 800px;
+            background-image: url(../../../public/img/index-globe.svg);
+            position: absolute;
+            right: -250px;
+            top: 670px;
+            background-repeat: no-repeat;
+          }
+          h1{
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 96px;
+            margin: 30px 0 0;
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 900;
+            font-style: italic;
+          }
+          .titleDesrc{
+            max-width: 233px;
+            width: 100%;
+            margin: 5px auto 34px;
+            font-weight: 600;
+            font-size: 24px;
+            span{
+                background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+            }
+          }
+    }
+    .faq{
+        h2{
+            text-align: center;
+            font-size: 64px;
+            font-weight: 700;
+        }
+    }
     .mainCenter{
         flex: 1;
         display: flex;
@@ -31,6 +89,45 @@
             text-align: center;
         }
        
+    }
+    .bullets{
+        max-width: 1100px;
+        width: 100%;
+        margin: 100px auto 0;
+        display: flex;
+        justify-content: space-between;
+        &Item{
+            padding: 20px 24px;
+            width: 32%;
+            background: radial-gradient(103.98% 136.61% at 50% -15.06%, #106055 0%, #000000 100%);
+            box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
+            border-radius: 25px;
+            p{
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 23px;
+                margin-bottom: 21px;
+            }
+            div{
+                font-weight: 600;
+                margin-bottom: 41px;
+            }
+        }
+        a{
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 600;
+        }
+    }
+    .titleFirstDescr{
+        margin-top: 100px;
+        font-size: 24px;
+    }
+    .titleDesrBlock{
+        font-size: 24px;
     }
     .mainCenter_white{
         font-style: italic;
@@ -60,10 +157,161 @@
             transform: scale(1.1)
         }
     }
-    .mainTop{
-        position: absolute;
+    .bottomPart{
+        position: relative;
+        
+        background: linear-gradient(0.37deg, #106156 0.32%, rgba(2, 11, 10, 0.141132) 37%, rgba(0, 0, 0, 0) 60.09%, rgba(13, 79, 70, 0) 82.28%), #0C0B19;
+        .lastRegister{
+            padding: 60px 0;
+            position: relative;
+            text-align: center;
+            
+            margin: 0 auto;
+            font-size: 36px;
+            font-weight: 700;
+            z-index: 2;
+            &::before{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                display: block;
+
+                background: linear-gradient(140.65deg, #BAFB02 0%, #06AEE5 100%);
+            filter: blur(105.5px);
+            border-radius: 120px;
+            z-index: -1;
+            }
+            h2{
+                margin: 0;
+                font-weight: 700;
+                font-size: 64px;
+                line-height: 75px;
+            }
+            p{
+                font-weight: 600;
+                font-size: 24px;
+                color: #083026;
+            }
+            .lastUsersTable{
+                max-width: 888px;
+                width: 100%;
+                margin: 0 auto; 
+                border: 1px solid #06AEE5;
+                box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
+                background: radial-gradient(100% 193.24% at 0% 0%, #106055 1.63%, #000000 100%);
+                box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
+                border-radius: 25px;
+                &_item{
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    padding: 16px 20px;  
+                    div{
+                        text-align: center;
+                    }
+                }
+            }
+            h3{
+                margin-top: 100px;
+                 -webkit-text-stroke: 1px #000;
+            }
+            p{
+                font-size: 24px;
+                font-weight: 600;
+                color: #083026;
+                max-width: 888px;
+                width: 100%;
+                margin: 0 auto 30px;
+            }
+            .qtyAccounts{
+                font-weight: 700;
+                font-size: 64px;
+                line-height: 75px;
+                -webkit-text-stroke: 1px #000;
+            }
+            .qtyPool{
+                font-weight: 700;
+                font-size: 64px;
+                line-height: 75px;
+                -webkit-text-stroke: 1px #000;
+            }
+            span{
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 28px; 
+                color: #083026;
+            }
+        }
+        .sliderWrapp{
+            position: relative;
+            max-width: 1000px;
+                width: 100%;
+                margin: 0 auto;
+                &::before{
+                    content: url(../../../public/img/slider-fon.png);
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+        }
+        .sliderWrapp{
+            text-align: center;
+
+            img{
+                // max-width: 927px;
+                // width: 100%;
+                margin: 60px auto 120px;
+            }
+        }
+        .mainCab{
+            text-align: center;
+            width: 100%;
+            h2{
+                text-align: center;
+                font-size: 64px;
+                font-weight: 700;
+                position: relative;
+                top: 180px;
+            }
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+        .channels{
+            text-align: center;
+            width: 100%;
+            a{
+                margin: 80px;
+                display: flex;
+                flex-direction: column;
+                text-decoration: none;
+                span{
+                    font-size: 24px;
+                    font-weight: 700;
+                    display: block;
+                    width: 110px;
+                    color: #B9B9B9;
+                    text-decoration: none;
+                    margin-top: 20px;
+                }
+            }
+            h2{
+                text-align: center;
+                font-size: 64px;
+                font-weight: 700;
+                position: relative;
+               margin-top: 100px;
+            }
+        }
     }
 }
+
+
 @media(max-width: 992px){
     .mainCenter{
         padding-top: 140px;

@@ -287,6 +287,9 @@ border-radius: 27px;
 }
 
 @media(max-width:992px){ 
+  .col-6{
+    width: 1000%;
+  }
   .accountInput{
     margin: 20px auto;
     width: 90%;
@@ -352,3 +355,100 @@ border-radius: 27px;
   padding: 18px!important;
   border-radius: 15px!important;
 }
+
+.container_main{
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+.row{
+  display: flex;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+.col-6{
+  width: 50%;
+}
+.globe-fon{
+  position: relative;
+  width: 100%;
+}
+.jc-center{
+  justify-content: center;
+}
+.ai-center{
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.btn-small{
+  padding: 4px 10px;
+  display: inline-block;
+  color: #4CFFDF;
+  font-weight: 600;
+  background: radial-gradient(100% 193.24% at 0% 0%, #106055 1.63%, #000000 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all .3s ease;
+  &:hover{
+    transform: scale(1.1);
+  }
+}
+.header-btn{
+  margin-right: 35px;
+}
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+.slick-list{
+  height: 500px!important;
+}
+.slick-track{
+  height: 550px!important;
+  padding-top: 70px!important;
+  display: flex!important;
+}
+.slide img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.slide {
+  transform: scale(0.95);
+  transition: transform 300ms;
+  opacity: 0.5;
+}
+
+.activeSlide {
+  transform: scale(1.35);
+  opacity: 1;
+  position: relative;
+  z-index: 10;
+}
+
+// .arrow {
+//   background-color: #fff;
+//   position: absolute;
+//   cursor: pointer;
+//   z-index: 10;
+// }
+
+// .arrow svg {
+//   transition: color 300ms;
+// }
+
+// .arrow svg:hover {
+//   color: #68edff;
+// }
+
+// .next {
+//   right: 0%;
+//   top: 50%;
+// }
+
+// .prev {
+//   left: 0%;
+//   top: 50%;
+// }

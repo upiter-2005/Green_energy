@@ -34,7 +34,7 @@ function Header() {
       </div>
 
       <div className={styles.headerRight}>
-        <a href="https://t.me/GreenEnergyChat" target="blank">
+        <a href="https://t.me/Greentur_club" target="blank">
           <img src="img/tg.svg" alt="" className={styles.headerIco} />
         </a>
         <img src="img/ru.svg" alt="" className={styles.headerIco} />

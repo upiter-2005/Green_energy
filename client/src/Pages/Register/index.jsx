@@ -44,7 +44,7 @@ function Register() {
 
   useEffect(() => {
     if (status) {
-      toast.error(status);
+      toast.success(status);
     }
     dispatch(cleanStatus());
     // if (isAuth) {

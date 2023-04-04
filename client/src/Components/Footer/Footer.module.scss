@@ -1,0 +1,18 @@
+.footerWrap{
+    // background: linear-gradient(270deg, rgba(8, 44, 40, 0) 0%, rgba(8, 37, 35, 0.255628) 10.58%, rgba(10, 49, 44, 0.35) 24.66%, rgba(13, 75, 67, 0.35) 47.37%, rgba(9, 52, 46, 0.35) 68.3%, rgba(8, 44, 40, 0.293799) 80.7%, rgba(8, 44, 40, 0) 100%);
+    background-image: url(../../../public/img/footer-bg.png);
+    background-position: center top;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 24px 120px;
+    .copy{
+        margin-left: 50px;
+        width: 310px;
+        color: #1B9578;
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
