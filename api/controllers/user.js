@@ -7,6 +7,39 @@ const { dirname } = require("path");
 const path = require("path");
 const { fileURLToPath } = require("url");
 
+const transferBalance = async (req, res) => {
+  try {
+    const { amount, recepient } = req.body;
+    const from = await User.findOne({ _id: req.userId });
+    if (from.balance >= amount) {
+      const toUser = await User.findOne({ login: recepient });
+      if (!toUser) {
+        return res.json({ message: "Такого пользователя не существует!" });
+      }
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: req.userId },
+        {
+          $inc: { balance: -amount },
+        },
+        { returnDocument: "after" },
+      );
+
+      await User.findOneAndUpdate(
+        { login: recepient },
+        {
+          $inc: { balance: +amount },
+        },
+        { returnDocument: "after" },
+      );
+      res.json({ updatedUser });
+    } else {
+      return res.json({ message: "Не достаточный баланс!" });
+    }
+  } catch (e) {
+    res.json({ message: "No transfer" });
+  }
+};
+
 const updateBalance = async (req, res) => {
   try {
     const { login, balance } = req.body;
@@ -346,6 +379,7 @@ const getAllUsers = async (req, res) => {
 };
 
 module.exports = {
+  transferBalance,
   getUplinerInfo,
   avatarUpdate,
   passwordUpdate,

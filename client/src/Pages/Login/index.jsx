@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { checkIsAuth, loginUser, changeFormState, cleanStatus } from "../../redux/slices/authSlice";
 import { toast } from "react-toastify";
+import Preloader from "../../Components/Preloader";
 import styles from "./Login.module.scss";
 
 export default function Login() {
+  const [preloader, setPreloader] = useState(true);
   const [remember, setRemember] = useState(false);
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +23,9 @@ export default function Login() {
       setemail(window.localStorage.getItem("userEmail"));
       setPassword(window.localStorage.getItem("userPassword"));
     }
+    setTimeout(() => {
+      setPreloader(false);
+    }, 3000);
   }, []);
   useEffect(() => {
     if (status) {
@@ -65,7 +70,9 @@ export default function Login() {
     }
     setRemember(!remember);
   };
-  return (
+  return preloader ? (
+    <Preloader />
+  ) : (
     <div className="loginWrapper">
       <div className="logo">
         <img src="img/logo-main.svg" alt="" />

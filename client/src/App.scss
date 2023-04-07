@@ -286,43 +286,7 @@ border-radius: 27px;
     object-fit: cover;
 }
 
-@media(max-width:992px){ 
-  .col-6{
-    width: 1000%;
-  }
-  .accountInput{
-    margin: 20px auto;
-    width: 90%;
-  }
-  .registerWrapper{
-    flex-direction: column;
-    min-height: auto;
-    .logo{
-      position: relative;
-      left: 0!important;
-      top: 30px;
-      transform: translate(0,0);
-      img{
-        width: 300px;
-      }
-    }
-    
-  } 
-  .loginWrapper{
-    flex-direction: column;
-    min-height: auto;
-    .logo{
-      position: relative;
-      left: 0!important;
-      top: 30px;
-      transform: translate(0,0);
-      img{
-        width: 300px;
-      }
-    }
-    
-  } 
-}
+
 .Toastify__toast--success{
   font-weight: 500;
   font-size: 16px;
@@ -370,12 +334,18 @@ border-radius: 27px;
 .col-6{
   width: 50%;
 }
+.col-12{
+  width: 100%;
+}
 .img-responsve{
   width: 100%;
   height: auto;
 }
 .mg100{
   margin: 100px 0;
+}
+.mt50{
+  margin-top: 50px;
 }
 .pr40{
   padding-right: 50px;
@@ -399,6 +369,7 @@ border-radius: 27px;
 .center{
   text-align: center;
 }
+
 .btn-small{
   padding: 4px 10px;
   display: inline-block;
@@ -468,3 +439,87 @@ border-radius: 27px;
 //   left: 0%;
 //   top: 50%;
 // }
+.d-md-none{
+  display: none;
+}
+.d-md-block{
+  display: block;
+}
+.d-md-none{
+  display: none;
+}
+@media(max-width:992px){ 
+  .mg100{
+    margin: 30px 0;
+  }
+  .d-md-block{
+    display: none;
+  }
+  .d-md-none{
+    display: block;
+  }
+  .row{
+    flex-wrap: wrap;
+  }
+  .col-6{
+    width: 1000%;
+  }
+  .accountInput{
+    margin: 20px auto;
+    width: 90%;
+  }
+  .registerWrapper{
+    flex-direction: column;
+    min-height: auto;
+    .logo{
+      position: relative;
+      left: 0!important;
+      top: 30px;
+      transform: translate(0,0);
+      img{
+        width: 300px;
+      }
+    }
+    
+  } 
+  .loginWrapper{
+    flex-direction: column;
+    min-height: auto;
+    .logo{
+      position: relative;
+      left: 0!important;
+      top: 30px;
+      transform: translate(0,0);
+      img{
+        width: 300px;
+      }
+    }
+    
+  } 
+  .pk{
+    display: none;
+}
+.slick-list{
+  height: 250px!important;
+}
+.slick-track{
+  height: 250px!important;
+  padding-top: 30px!important;
+  display: flex!important;
+}
+.mt50{
+  margin-top: 30px;
+}
+.pr40{
+  padding-right: 0;
+}
+.pl40{
+  padding-left: 0;
+}
+.pb100{
+  padding-bottom: 55px;
+}
+.d-md-none{
+  display: block!important;
+}
+}

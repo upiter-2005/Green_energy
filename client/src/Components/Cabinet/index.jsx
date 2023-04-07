@@ -6,6 +6,7 @@ import { setTree } from "../../redux/slices/optionsSlice";
 import { getMe, getStructure } from "../../redux/slices/authSlice";
 import Popup from "../Popup";
 import Deposit from "../Deposit";
+import Transfer from "../Transfer";
 import Jackpot from "../Jackpot";
 import { toast } from "react-toastify";
 import styles from "./Cabinet.module.scss";
@@ -15,6 +16,7 @@ function Cabinet() {
   const dispatch = useDispatch();
   const [butPopup, setButPopup] = useState(false);
   const [depositOpen, setDepositOpen] = useState(false);
+  const [transferOpen, setTransferOpen] = useState(false);
   const [team, setTeam] = useState(false);
   const [nonActive, setNonActive] = useState(false);
   const [pocketNum, setPoketNum] = useState(0);
@@ -455,29 +457,75 @@ function Cabinet() {
   };
 
   const test = async () => {
-    const apiTree222 = {
-      root: "root_login",
-      v: "GreenEnergy",
-      id: "6404d74471238bcb42d89a03",
-      l: {
-        id: "6404e8d771238bcb42d89a59",
-        v: "domblaga",
-        l: null,
-        r: null,
-      },
-      r: null,
-    };
+    console.log(zigzagOrder(parsedTree));
 
-    const newTree = JSON.stringify(apiTree222);
+    // const apiTree222 = {
+    //   root: "root_login",
+    //   v: "GreenEnergy",
+    //   id: "6404d74471238bcb42d89a03",
+    //   l: {
+    //     id: "6404e8d771238bcb42d89a59",
+    //     v: "domblaga",
+    //     l: null,
+    //     r: null,
+    //   },
+    //   r: null,
+    // };
 
-    dispatch(
-      setTree({
-        id: id,
-        tree: newTree,
-      }),
-    );
+    // const newTree = JSON.stringify(apiTree222);
+
+    // dispatch(
+    //   setTree({
+    //     id: id,
+    //     tree: newTree,
+    //   }),
+    // );
   };
 
+  var verticalOrder = function (root) {
+    var store = {};
+    traverse(parsedTree, 0, store);
+    var columnKey = Object.keys(store).sort(function (a, b) {
+      return a - b;
+    });
+    var results = [];
+    for (var i = 0; i < columnKey.length; i++) {
+      results.push(store[columnKey[i]]);
+    }
+    return results;
+  };
+
+  var traverse = (node, count, columns) => {
+    if (!node) return;
+    if (columns[count]) columns[count].push(node.v);
+    else columns[count] = [node.v];
+    if (node.l) traverse(node.l, count - 1, columns);
+    if (node.r) traverse(node.r, count + 1, columns);
+  };
+
+  const zigzagOrder = (root) => {
+    if (!root) return [];
+    const queue = [root];
+    const result = [];
+    let count = 0;
+
+    while (queue.length) {
+      let len = queue.length;
+
+      if (count % 2 === 0) {
+        result.push(queue.map((node) => node.v));
+      } else {
+        result.push(queue.map((node) => node.v).reverse());
+      }
+      count++;
+      while (len--) {
+        let node = queue.shift();
+        if (node.l) queue.push(node.l);
+        if (node.r) queue.push(node.r);
+      }
+    }
+    return result;
+  };
   const myTeam = async () => {
     const myTee = await findUplinerTree(user._id);
     console.log(myTee);
@@ -598,7 +646,7 @@ function Cabinet() {
               <div className={`${styles.balanceItem} ${styles.f1}`}>
                 <div className={styles.flexRow}>
                   <span className={styles.title_text}>$USD</span>{" "}
-                  <button className={styles.transfer}>
+                  <button className={styles.transfer} onClick={() => setTransferOpen(true)}>
                     <img src="img/transfer.svg" alt="" />
                   </button>
                 </div>
@@ -606,7 +654,7 @@ function Cabinet() {
                 <div className={styles.flexRow}>
                   <div className={styles.flexRow_gorizont}>
                     <span className={styles.fz14}>Основной баланс:</span>
-                    <span className={styles.fz20}>{user.balance} USD</span>
+                    <span className={styles.fz20}>{user?.balance} USD</span>
                   </div>
                   <div className={styles.flexRow_gorizont}>
                     <button className={styles.buyUsdt} onClick={() => setDepositOpen(true)}>
@@ -648,7 +696,7 @@ function Cabinet() {
                   </div>
                   <div className={styles.flexRow_gorizont}>
                     <span className={styles.fz14}>Реинвест баланс:</span>
-                    <span className={styles.fz16}>{user.balanceReinvest} USD</span>
+                    <span className={styles.fz16}>{user?.balanceReinvest} USD</span>
                   </div>
                 </div>
               </div>
@@ -663,10 +711,10 @@ function Cabinet() {
                 <div className={styles.flexRow}>
                   <div className={styles.flexRow_gorizont}>
                     <span className={styles.fz14}>Мои токены:</span>
-                    <span className={styles.fz20}>{user.tokens} ENERGY</span>
+                    <span className={styles.fz20}>{user?.tokens} ENERGY</span>
                   </div>
                   <div className={styles.flexRow_gorizont}>
-                    <span className={styles.title_text_24}>${user.tokens * 10}</span>
+                    <span className={styles.title_text_24}>${user?.tokens * 10}</span>
                   </div>
                 </div>
               </div>
@@ -823,6 +871,8 @@ function Cabinet() {
         <h2>telegram</h2>
       </Popup>
       <Deposit trigger={depositOpen} setTriggerBut={setDepositOpen} />
+
+      <Transfer trigger={transferOpen} setTriggerBut={setTransferOpen} />
     </div>
   );
 }

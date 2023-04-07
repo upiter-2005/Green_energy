@@ -31,6 +31,16 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 800;
   font-size: 24px;
+  span{
+    img{
+      translate: rotate(0);
+      transition: all .3s ease;
+      .rotated{
+        translate: rotate(180deg);
+      }
+    }
+    
+  }
 }
 
 /* Style the accordion chevron icon */
@@ -41,7 +51,7 @@
 
 /* Style to rotate icon when state is active */
 .rotate {
-  transform: rotate(90deg);
+  transform: rotate(180deg);
 }
 
 /* Style the accordion content panel. Note: hidden by default */
@@ -57,5 +67,13 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 800;
   font-size: 24px;
-  padding: 18px;
+  padding:  0 18px 18px;
+  p{
+    margin-top: 0;
+  }
+}
+@media(max-width: 992px){
+  .accordion__title{
+    line-height: 18px;
+  }
 }

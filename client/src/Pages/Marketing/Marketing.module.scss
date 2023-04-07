@@ -3,8 +3,15 @@
     position: relative;
     color: #fff;
     overflow: hidden;
+    .market_title{
+        position: relative;
+        top: -50px;
+        margin: 0 auto;
+        display: block;
+
+    }
     .topPart{
-        padding-top: 153px;
+        padding-top: 183px;
         padding-bottom: 110px;
         background-image: url(../../../public/img/top-main.svg);
        background-size: cover;
@@ -62,7 +69,7 @@
             }
           }
     }
-   
+
     .mainCenter{
         flex: 1;
         display: flex;
@@ -160,6 +167,16 @@
             text-fill-color: transparent;
         }
     }
+    .example{
+        h3{
+            max-width: 825px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .fondTitle{
+            margin-top: 30px;
+           }
+    }
     .compensation{
         position: relative;
         &_label{
@@ -190,6 +207,58 @@
 
 
 @media(max-width: 992px){
+    .topPart{
+        padding-top: 117px!important;
+        .boldy{
+            font-size: 20px!important;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .titleFirstDescr{
+            font-size: 14px!important;
+            padding-left: 20px;
+            padding-right: 20px;
+            line-height: 16px!important;
+        }
+    }
+    .bottomPart{
+        h2{
+           font-size: 20px!important;
+           line-height: 23px!important; 
+           margin-bottom: 10px!important;
+        }
+        h3{
+            font-size: 16px!important;
+            padding-left: 20px!important;
+            padding-right: 20px!important;
+        }
+        p{
+            font-size: 14px!important;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .compensation{
+            position: relative;
+            img{
+                width: 90%!important;
+                padding: 0 20px ;
+            }
+            &_label{
+               
+                right: 0;
+                top: 110px!important;
+                max-width: 220px!important;
+                width: 100%;
+                font-size: 10px!important;
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        .fondTitle{
+            font-size: 20px!important;
+            margin-top: 30px!important;
+        }
+    }
     .mainCenter{
         padding-top: 140px;
         &_gradient{
@@ -203,4 +272,18 @@
     .mainLinks{
         font-size: 30px!important;
     }
+    .market_title{
+        width: 230px;
+        top: -23px!important;
+        
+    }
+    .example{
+        img{
+            width: 90%;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+   
+    
 }

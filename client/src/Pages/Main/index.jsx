@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Main.module.scss";
 import { Link } from "react-router-dom";
 import Accordion from "../../Components/Accordion";
 import Footer from "../../Components/Footer";
+import Preloader from "../../Components/Preloader";
 import HeaderPage from "../../Components/HeaderPage";
 import Slider from "react-slick";
 function Main() {
   const [imageIndex, setImageIndex] = useState(0);
+  const [preloader, setPreloader] = useState(true);
 
   const images = ["img/s1.png", "img/s2.png", "img/s3.png", "img/s4.png", "img/s5.png"];
 
@@ -26,16 +28,22 @@ function Main() {
     beforeChange: (current, next) => setImageIndex(next),
   };
 
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setPreloader(false);
+    }, 3000);
+  }, []);
+  return !preloader ? (
     <div className={styles.mainWraper}>
       <HeaderPage />
       <div className={styles.topPart}>
         <div className="container_main center">
           <div>
-            <img src="img/jackpot-main.png" alt="" />
+            <img src="img/jackpot-main.svg" alt="" />
           </div>
           <div className={styles.centerBlock}>
-            <h1 className={styles.title}> GREEN ENERGY </h1>
+            {" "}
+            <img src="img/main-title.svg" alt="" />{" "}
           </div>
           <p className={styles.titleDesrc}>
             Инструмент <span>№1</span> <br /> по заработку денег
@@ -48,16 +56,16 @@ function Main() {
         <div className="row globe-fon">
           <div className="col-6">
             <p className={styles.titleFirstDescr}>
-              "Green Energy" - это крупномасштабный международный проект, который был создан для
-              обеспечения бесконечного финансового потока его участникам.
+              <span>GREEN ENERGY</span> - это крупномасштабный международный проект, который был
+              создан для обеспечения бесконечного финансового потока его участникам.
             </p>
             <p className={styles.titleDesrBlock}>
-              Вы можете зарабатывать более $2046, даже без необходимости приглашать других
-              участников!
+              Вы можете зарабатывать более <span>$2046</span> , даже без необходимости приглашать
+              других участников!
             </p>
             <p className={styles.titleDesrBlock}>
-              А чтобы убедиться, что вы получите наилучший старт, мы дарим вам подарок $5 за
-              регистрацию, а также бонус в $1 в токенах проекта!
+              А чтобы убедиться, что вы получите наилучший старт, мы дарим вам подарок{" "}
+              <span>$5</span> за регистрацию, а также бонус в <span>$1</span> в токенах проекта!
             </p>
             <p className={styles.titleDesrBlock}>
               Не упустите возможность стать частью этого захватывающего проекта и позвольте себе
@@ -271,6 +279,8 @@ function Main() {
         </Link>
       </div> */}
     </div>
+  ) : (
+    <Preloader />
   );
 }
 

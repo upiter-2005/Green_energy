@@ -1,0 +1,23 @@
+<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_920_9241)">
+<rect x="14" y="14" width="39" height="39" rx="5" fill="url(#paint0_radial_920_9241)" shape-rendering="crispEdges"/>
+<path d="M22.5 24L44.5 43M44.5 24L22.5 43" stroke="#4CFFDF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<filter id="filter0_d_920_9241" x="0" y="0" width="65" height="65" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="3" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_920_9241"/>
+<feOffset dx="-1" dy="-1"/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_920_9241"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_920_9241" result="shape"/>
+</filter>
+<radialGradient id="paint0_radial_920_9241" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(14 14) rotate(45) scale(55.1543 70.2157)">
+<stop offset="0.0162837" stop-color="#106055"/>
+<stop offset="1"/>
+</radialGradient>
+</defs>
+</svg>

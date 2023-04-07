@@ -16,7 +16,7 @@
     color: #fff;
     overflow: hidden;
     .topPart{
-        padding-top: 137px;
+        padding-top: 158px;
         padding-bottom: 110px;
         background-image: url(../../../public/img/top-main.svg);
        background-size: cover;
@@ -40,10 +40,19 @@
             font-size: 96px;
             margin: 30px 0 0;
             background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+
+
+//text-shadow: 5px -1px 5px rgba(0, 0, 0, 0.7);
+
+            // background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            // -webkit-background-clip: text;
+            // -webkit-text-fill-color: transparent;
+            // background-clip: text;
+            // text-fill-color: transparent;
             font-weight: 900;
             font-style: italic;
           }
@@ -96,6 +105,8 @@
         margin: 100px auto 0;
         display: flex;
         justify-content: space-between;
+        position: relative;
+        z-index: 20;
         &Item{
             padding: 20px 24px;
             width: 32%;
@@ -123,11 +134,29 @@
         }
     }
     .titleFirstDescr{
+        font-family: 'Red Hat Display', sans-serif;
+        font-weight: 700;
         margin-top: 100px;
         font-size: 24px;
+        span{
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
     }
     .titleDesrBlock{
+        font-family: 'Red Hat Display', sans-serif;
+        font-weight: 700;
         font-size: 24px;
+        span{
+            background: linear-gradient(90deg, #BAFB02 1.46%, #06AEE5 91.95%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
     }
     .mainCenter_white{
         font-style: italic;
@@ -173,13 +202,14 @@
             &::before{
                 content: '';
                 position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
+                width: 118%;
+                height: 86%;
+                top: 120px;
+                left: 50%;
+                transform: translate(-50%,0);
                 display: block;
 
-                background: linear-gradient(140.65deg, #BAFB02 0%, #06AEE5 100%);
+                background: linear-gradient(140.65deg, #91ff08 0%, #06AEE5 100%);
             filter: blur(105.5px);
             border-radius: 120px;
             z-index: -1;
@@ -224,7 +254,7 @@
                 color: #083026;
                 max-width: 888px;
                 width: 100%;
-                margin: 0 auto 30px;
+                margin: 30px auto 30px;
             }
             .qtyAccounts{
                 font-weight: 700;
@@ -275,7 +305,7 @@
                 font-size: 64px;
                 font-weight: 700;
                 position: relative;
-                top: 180px;
+                top: 230px;
             }
             img{
                 width: 100%;
@@ -290,6 +320,10 @@
                 display: flex;
                 flex-direction: column;
                 text-decoration: none;
+                transition: all .3s ease;
+                &:hover{
+                    transform: scale(1.1);
+                }
                 span{
                     font-size: 24px;
                     font-weight: 700;
@@ -313,17 +347,150 @@
 
 
 @media(max-width: 992px){
+    .mainWraper{
+        .bottomPart{
+           p{
+            font-size: 16px!important;
+            padding-left: 20px;
+            padding-right: 20px;
+           }
+           .qtyAccounts, .qtyPool{
+            font-size: 48px!important;
+            line-height: 45px!important;
+            margin-top: 14px!important;
+           }
+        }
+    }
     .mainCenter{
         padding-top: 140px;
         &_gradient{
             font-size: 26px!important;
         }
         padding-bottom: 30px;
+        
     }
     .mainCenter_white{
         font-size: 18px!important;
     }
     .mainLinks{
         font-size: 30px!important;
+    }
+    .topPart{
+        padding-bottom: 12px!important;
+        img{
+            width: 90%;
+        }
+        &::after{
+            opacity: 0.2;
+            width: 300px!important;   
+            height: 300px!important;
+            background-size: contain;
+            right: -80px!important;
+            top: 560px!important;
+        }
+        .titleDesrBlock{
+            font-size: 16px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .titleFirstDescr{
+            margin-top: 48px;
+            font-size: 16px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+    .bullets{
+        margin-top: 50px!important;
+        flex-wrap: wrap;
+        
+        &Item{
+            width: 100%!important;
+            margin: 10px 20px;
+            p{
+                margin-bottom: 10px!important;
+                margin-top: 0!important;
+            }
+            div{
+                font-size: 15px;
+                color: #B9B9B9;
+                margin-bottom: 16px!important;
+            }
+            img{
+                width: 20px;
+                position: relative;
+                top: 2px;
+            }
+        }
+    }
+    h2{font-size: 36px!important; line-height: 42px!important;}
+    .lastUsersTable{
+       
+        &_item{
+         
+            div{
+                font-size: 16px;
+            }
+        }
+    }
+    .lastRegister{
+        &::before{
+            width: 186%!important;
+            height: 97%!important;
+            top: 100px!important;
+            // background-image: url(../../../public/img/rainbow.png)!important;     
+            filter: blur(61.5px);
+            
+
+            
+        }
+        h3{
+            margin-top: 50px!important;
+        }
+        p{
+            margin: 10px 0!important;
+        }
+    }
+    .sliderWrapp{
+         &::before{
+                    width: 100%;
+                }
+        img{
+            width: 90%;
+            margin: 40px 0 0!important;
+            position: relative;
+            z-index: 30;
+        }
+    }
+    .mainCab{
+        h2{
+            top: 52px!important;
+            max-width: 250px!important;
+            margin: 0 auto!important;
+        }
+    }
+    .faq{
+        padding: 0 20px;
+        position: relative;
+        z-index: 15;
+    }
+    .channels{
+        padding-bottom: 40px;
+        h2{
+            margin: 50px 0 20px!important;
+            padding: 0 25px;
+        }
+        a{
+            margin: 18px!important;
+            display: block;
+            img{
+                width: 90px!important;
+                margin: 0 auto!important;
+            }
+        }
+        span{
+            font-size: 20px!important;
+            margin-top: 10px!important;
+        }
     }
 }

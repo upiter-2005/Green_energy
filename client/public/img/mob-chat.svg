@@ -1,0 +1,23 @@
+<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_998_1756)">
+<rect x="14" y="14" width="46" height="45.5445" rx="10" fill="url(#paint0_radial_998_1756)" shape-rendering="crispEdges"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M27.3438 26C26.0493 26 25 27.0493 25 28.3437V41.625C25 42.9194 26.0493 43.9687 27.3438 43.9687H28.8571L28.2086 47.6241C28.081 48.3431 28.9218 48.8285 29.4806 48.3585L34.7011 43.9687H47.6563C48.9507 43.9687 50 42.9194 50 41.625V28.3437C50 27.0493 48.9507 26 47.6563 26H27.3438ZM28.125 38.8906C28.125 38.2434 28.6497 37.7188 29.2969 37.7188H41.0156C41.6628 37.7188 42.1875 38.2434 42.1875 38.8906C42.1875 39.5378 41.6628 40.0625 41.0156 40.0625H29.2969C28.6497 40.0625 28.125 39.5378 28.125 38.8906ZM29.2969 29.9062C28.6497 29.9062 28.125 30.4309 28.125 31.0781C28.125 31.7253 28.6497 32.25 29.2969 32.25H45.7031C46.3503 32.25 46.875 31.7253 46.875 31.0781C46.875 30.4309 46.3503 29.9062 45.7031 29.9062H29.2969Z" fill="#4CFFDF"/>
+</g>
+<defs>
+<filter id="filter0_d_998_1756" x="0" y="0" width="72" height="71.5444" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="3" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_998_1756"/>
+<feOffset dx="-1" dy="-1"/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_998_1756"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_998_1756" result="shape"/>
+</filter>
+<radialGradient id="paint0_radial_998_1756" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(14 14) rotate(44.7149) scale(64.7325 82.4054)">
+<stop offset="0.0162837" stop-color="#106055"/>
+<stop offset="1"/>
+</radialGradient>
+</defs>
+</svg>

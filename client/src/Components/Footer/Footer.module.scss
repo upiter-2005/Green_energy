@@ -16,3 +16,14 @@
         font-weight: 700;
     }
 }
+@media(max-width: 992px){
+    .footerWrap{
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+        .copy{
+            margin: 0;
+            font-size: 20px;
+        }
+    }
+}

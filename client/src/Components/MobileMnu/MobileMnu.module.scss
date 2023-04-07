@@ -1,0 +1,99 @@
+.popupMNU{
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(2px);
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0, .6);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 50px;
+    &_inner{
+        position: relative;
+        padding: 24px;
+        width: 160px;
+        background: radial-gradient(100% 193.24% at 0% 0%, #106055 1.63%, #000000 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+        box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            margin: -2px;
+            border-radius: inherit;
+            background-image: linear-gradient(90deg, #BAFB02, #06AEE5);
+        }
+        .mnu_link{
+            color: #4CFFDF;
+            font-weight: 600;
+            font-size: 16px;
+            background: radial-gradient(100% 193.24% at 0% 0%, #106055 1.63%, #000000 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+            box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
+            border-radius: 25px;
+            padding: 4px 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+       .langs{
+        text-transform: uppercase;
+        color: #4CFFDF;
+        font-weight: 600;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 20px;
+       }
+       .tgBox{
+        text-align: center;
+        a{
+            display: inline-block;
+            width: 46px;
+            img{
+                width: 100%;
+            }
+        }
+       }
+    }
+    .close{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        
+    }
+
+}
+@media(max-width: 992px){
+    .popupMNU{
+        &_inner{
+            padding: 20px;
+            max-width: 315px;
+            h3{
+                font-size: 24px;
+            }
+            img{
+                width: 30px;
+            }
+            input{
+                padding: 12px 15px!important;
+            }
+            .popupCopy{
+                top: 10px!important;
+                right: 5px!important;
+                img{
+                    width: 18px;
+                }
+            }
+        }
+    }
+    
+}

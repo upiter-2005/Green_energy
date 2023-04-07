@@ -15,10 +15,13 @@ const {
   updateTotalAwards,
   updateRefAwards,
   activeOn,
+  transferBalance,
 } = require("../controllers/user.js");
 const checkAuth = require("../utils/checkAuth.js");
 
 const router = Router();
+
+router.patch("/transferBalance", checkAuth, transferBalance);
 
 router.patch("/nameUpdate", checkAuth, nameUpdate);
 

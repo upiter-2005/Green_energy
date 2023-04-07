@@ -31,6 +31,15 @@ export const getStructure = createAsyncThunk("auth/getStructure", async () => {
   }
 });
 
+export const goTansfer = createAsyncThunk("auth/goTansfer", async (params) => {
+  try {
+    const { data } = await axios.patch("user/transferBalance", params);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 export const passwordUpdate = createAsyncThunk("auth/passwordUpdate", async (params) => {
   try {
     const { data } = await axios.patch("user/passwordUpdate", params);
@@ -172,6 +181,21 @@ export const authSlice = createSlice({
       //state.token = action.payload.token;
     },
     [updateAvatar.rejected]: (state, action) => {
+      state.status = action.payload.message;
+      state.isLoadng = false;
+    },
+    //goTansfer
+    [goTansfer.pending]: (state) => {
+      state.isLoadng = true;
+      state.status = null;
+    },
+    [goTansfer.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      console.log(action.payload);
+      state.user = action.payload.updatedUser;
+      //state.token = action.payload.token;
+    },
+    [goTansfer.rejected]: (state, action) => {
       state.status = action.payload.message;
       state.isLoadng = false;
     },

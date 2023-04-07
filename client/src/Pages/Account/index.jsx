@@ -11,11 +11,12 @@ import News from "../../Components/News";
 import Cabinet from "../../Components/Cabinet";
 import Structure from "../../Components/Structure";
 import Education from "../../Components/Education";
+import Preloader from "../../Components/Preloader";
 import { toast } from "react-toastify";
 
 function Account() {
   const [section, setSection] = useState("profile");
-
+  const [preloader, setPreloader] = useState(true);
   const navigate = useNavigate();
   const isAuth = useSelector(checkIsAuth);
   useEffect(() => {
@@ -24,7 +25,15 @@ function Account() {
     }
   }, [isAuth]);
 
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setPreloader(false);
+    }, 3000);
+  }, []);
+
+  return preloader ? (
+    <Preloader />
+  ) : (
     <div className={styles.pageWrapper}>
       <Header />
       <div className={styles.accountWrapper}>

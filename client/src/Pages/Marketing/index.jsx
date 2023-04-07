@@ -1,17 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Marketing.module.scss";
 import { Link } from "react-router-dom";
 import Accordion from "../../Components/Accordion";
+import Preloader from "../../Components/Preloader";
 import Footer from "../../Components/Footer";
 import HeaderPage from "../../Components/HeaderPage";
 
 function Marketing() {
-  return (
+  const [preloader, setPreloader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setPreloader(false);
+    }, 3000);
+  }, []);
+  return preloader ? (
+    <Preloader />
+  ) : (
     <div className={styles.mainWraper}>
       <HeaderPage />
       <div className={styles.topPart}>
         <img src="img/marketing.png" alt="" className="img-responsve" />
-
+        <img src="img/marketing-title.svg" alt="" className={styles.market_title} />
         <div className="container_main">
           <h3 className={styles.boldy}>
             Приобретая пакет за <span>$30</span>, Вы автоматически занимаете место в матрице, что
@@ -20,7 +29,7 @@ function Marketing() {
         </div>
 
         <div className="row ">
-          <div className="col-6">
+          <div className="col-12">
             <p className={styles.titleFirstDescr}>
               Проект предусматривает <span>10 уровней</span>, и каждый новый участник,
               присоединившийся позже, который находится в Вашей структуре, приносит Вам доход в
@@ -41,7 +50,7 @@ function Marketing() {
           </div>
         </div>
         <div className="container_main">
-          <img src="img/video.png" alt="" className="img-responsve mg100" />
+          <img src="img/video.png" alt="" className="img-responsve mt50 " />
         </div>
       </div>
 
@@ -54,7 +63,7 @@ function Marketing() {
             </p>
             <h2>Компенсационный план</h2>
             <p className="center">*без учета реферальных вознаграждений</p>
-            <img src="img/grafik.svg" alt="" className="img-responsive mg100" />
+            <img src="img/grafik.svg" alt="" className="img-responsve mg100" />
             <p>
               Изображение наглядно демонстрирует, что заполнение всего 10 уровней матрицы приводит к
               доходу более $2046. А если вы приобретете несколько пакетов, ваш доход увеличится
@@ -102,7 +111,7 @@ function Marketing() {
                 </p>
                 <p className={styles.marketingDescrFlex}>
                   <span>$3</span>
-                  <span>направляются на развитие проекта, рекламу и бонусы.</span>
+                  <div>направляются на развитие проекта, рекламу и бонусы.</div>
                 </p>
                 <p className={styles.marketingDescrFlex}>
                   <span>$1</span>
@@ -128,7 +137,7 @@ function Marketing() {
             <h3 className="center">
               Пример получения прибыли с каждого человека в Вашей структуре:
             </h3>
-            <img src="img/tree-ex.png" alt="" className="img-responsive mg100" />
+            <img src="img/tree-ex.png" alt="" className="img-responsve mg100" />
             <p>
               Так как в проекте предусмотрены мощные переливы за счет выделяемых средств на рекламу
               и вышестоящих лидеров, то эта система хороша как для активных участников, так и для
@@ -140,8 +149,8 @@ function Marketing() {
             </p>
             <p>Побеждайте в различных конкурсах, получайте призы и поощрения! И ЭТО ЕЩЕ НЕ ВСЕ!</p>
 
-            <img src="img/example.png" alt="" />
-            <h3>Наш частный пенсионный фонд</h3>
+            <img src="img/fond.png" alt="" className="img-responsve" />
+            <h3 className={styles.fondTitle}>Наш частный пенсионный фонд</h3>
             <p>
               В проект <span>GREEN ENERGY</span> входит наш частный пенсионный фонд, который поможет
               Вам обеспечить финансовую стабильность на всю жизнь. Наша накопительная программа

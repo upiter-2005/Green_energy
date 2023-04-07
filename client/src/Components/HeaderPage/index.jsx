@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import styles from "./HeaderPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import MobileMnu from "../MobileMnu";
 
 function HeaderPage() {
   const user = useSelector((state) => state.auth.user);
+  const [butPopup, setButPopup] = useState(false);
 
   return (
     <div className={styles.headerWrap}>
       <div className={styles.inner}>
+        <div className="d-md-none">
+          <img src="img/mob-logo.svg" alt="" width={40} />
+        </div>
         <div className={styles.inner_top}>
           <div>
             Всего участников <span>1750</span>
@@ -18,10 +23,19 @@ function HeaderPage() {
             Присоеденились за 24 часа <span>247</span>
           </div>
           <div>
-            Заработали за все время <span>792 945</span>
+            Заработали за все время <span> $ 792 945</span>
           </div>
         </div>
-        <div className="row ai-center">
+        <div className="d-md-none">
+          <img
+            src="img/mnu.svg"
+            alt=""
+            className={styles.mnu}
+            onClick={() => setButPopup(true)}
+            width={40}
+          />
+        </div>
+        <div className="row ai-center pk">
           <img src="img/logo-main.svg" alt="" className={styles.logo} />
           <div className={styles.headerButs}>
             <Link to="/" className="btn-small header-btn">
@@ -39,6 +53,7 @@ function HeaderPage() {
           </div>
         </div>
       </div>
+      <MobileMnu trigger={butPopup} setTriggerBut={setButPopup} />
     </div>
   );
 }

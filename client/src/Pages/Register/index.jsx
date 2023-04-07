@@ -15,10 +15,11 @@ import styles from "./Register.module.scss";
 import ReactFlagsSelect from "react-flags-select";
 import phoneCodes from "../../local_db/phoneCodes.json";
 import Error from "../../Components/Error";
+import Preloader from "../../Components/Preloader";
 
 function Register() {
   const phoneRef = useRef();
-
+  const [preloader, setPreloader] = useState(true);
   const [uplinerValid, setUplinerValid] = useState(null);
   const [uplinerDouble, setUplinerDouble] = useState(null);
   const [loginValid, setLoginValid] = useState(null);
@@ -194,9 +195,14 @@ function Register() {
       console.log(window.localStorage.getItem("upliner"));
       setUplinerDouble("Проверте правильность логина наставника");
     }
+    setTimeout(() => {
+      setPreloader(false);
+    }, 3000);
   }, []);
 
-  return (
+  return preloader ? (
+    <Preloader />
+  ) : (
     <div className="registerWrapper">
       <div className="logo">
         <img src="img/logo-main.svg" alt="" />

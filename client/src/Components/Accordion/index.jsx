@@ -22,7 +22,17 @@ function Accordion(props) {
         className={`${styles.accordion} ${active ? `${styles.active}` : ""}`}
         onClick={toggleAccordion}>
         <p className={styles.accordion__title}>{props.title}</p>
-        <span style={{ marginLeft: "20px" }}>{active ? "-" : "+"}</span>
+        <span style={{ marginLeft: "20px" }}>
+          {active ? (
+            <img
+              src="img/faq-arr.svg"
+              className={`${styles.accordion__icon} ${styles.rotate}`}
+              alt=""
+            />
+          ) : (
+            <img src="img/faq-arr.svg" className={`${styles.accordion__icon}`} alt="" />
+          )}
+        </span>
       </div>
       <div ref={content} style={{ maxHeight: `${height}` }} className={styles.accordion__content}>
         <div
