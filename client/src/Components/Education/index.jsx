@@ -8,7 +8,7 @@ function Education() {
   return (
     <div className={styles.cabinetWrapp}>
       <Jackpot />
-      <img src="img/news.png" className={styles.cabinetTitle_Img} alt="" />
+      <img src="img/education.png" className={styles.cabinetTitle_Img} alt="" />
       <div className="borderRound">
         <div className={styles.structure_area}>Education</div>
       </div>

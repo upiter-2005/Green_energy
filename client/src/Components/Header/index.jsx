@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkIsAuth, logOut } from "../../redux/slices/authSlice";
 import { useState } from "react";
 import Copied from "../Copied";
+import MobileMnu from "../MobileMnu";
 import { toast } from "react-toastify";
 function Header() {
   const isAuth = useSelector(checkIsAuth);
   const dispatch = useDispatch();
   const [copiedShow, setCopiedShow] = useState(false);
+  const [butPopup, setButPopup] = useState(false);
   const user = useSelector((state) => state.auth.user);
 
   const copyLink = () => {
@@ -23,8 +25,21 @@ function Header() {
 
   return (
     <div className={styles.headerWrap}>
+      <div className={`d-md-none ${styles.mobLogo}`}>
+        <img src="img/mob-logo.svg" alt="" width={40} />
+      </div>
       <div>
         <img src="img/logo-main.svg" alt="" className={styles.logo} />
+      </div>
+
+      <div className={`d-md-none ${styles.mnuMob}`}>
+        <img
+          src="img/account-mnu.svg"
+          alt=""
+          className={styles.mnu}
+          onClick={() => setButPopup(true)}
+          width={40}
+        />
       </div>
       <div className={styles.headerCenter}>
         <span className={styles.headerCenter_text}>Реферальная ссылка:</span>
@@ -57,6 +72,7 @@ function Header() {
         />
       </div>
       {copiedShow && <Copied />}
+      <MobileMnu trigger={butPopup} setTriggerBut={setButPopup} />
     </div>
   );
 }

@@ -68,5 +68,10 @@
 
 
 @media(max-width: 992px){
-   
+    .jackpotWrapp{
+        position: relative;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
 }

@@ -106,6 +106,8 @@ border-radius: 19px;
     width: 100%;
     background: #FFFFFF;
     box-shadow: inset 0px 0px 15px 5px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: inset 0px 0px 15px 5px rgba(0, 0, 0, 0.15);
+    -webkit-appearance:none;
     border-radius: 27px;
     border: none; 
     padding: 17px 23px;
@@ -439,9 +441,7 @@ border-radius: 27px;
 //   left: 0%;
 //   top: 50%;
 // }
-.d-md-none{
-  display: none;
-}
+
 .d-md-block{
   display: block;
 }

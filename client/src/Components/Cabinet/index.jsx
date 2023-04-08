@@ -640,6 +640,31 @@ function Cabinet() {
               </div>
             </div>
 
+            <div
+              className={`${styles.userInfo} ${styles.mobVisible} ${styles.mobVisible_statstic}`}>
+              <div className={styles.userInfoItem}>
+                <p>{team + nonActive} </p>
+                Моя команда
+              </div>
+              <div className={styles.userInfoItem}>
+                <p>{user.comand}</p>
+                Лично приглашенные
+              </div>
+              <div className={styles.userInfoItem}>
+                <p>{team}</p>
+                {/* <p>{team === 0 ? team : team - 1}</p> */}
+                Активные партнеры
+              </div>
+              <div className={styles.userInfoItem}>
+                <p>$ {user.refAwards}</p>
+                Реферальные награды
+              </div>
+              <div className={styles.userInfoItem}>
+                <p>$ {user.totalAwards}</p>
+                Всего заработано
+              </div>
+            </div>
+
             <div className={styles.cabinet_area_leftCenter}>
               <h4>Балансы счетов:</h4>
 
@@ -766,6 +791,7 @@ function Cabinet() {
                   <span>СОЦСЕТИ</span>
                 </button>
               </div>
+
               <div className={styles.lastUser}>
                 {user?.avatar ? (
                   <img
@@ -791,6 +817,7 @@ function Cabinet() {
                   <span>СОЦСЕТИ</span>
                 </button>
               </div>
+
               <div className={styles.lastUser}>
                 {user?.avatar ? (
                   <img
@@ -819,7 +846,7 @@ function Cabinet() {
             </div>
           </div>
           <div className={styles.cabinet_area_right}>
-            <div className={styles.userInfo}>
+            <div className={`${styles.userInfo} ${styles.pkVisible}`}>
               <div className={styles.userInfoItem}>
                 <p>{team + nonActive} </p>
                 Моя команда

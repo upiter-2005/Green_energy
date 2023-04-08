@@ -108,6 +108,7 @@ border-radius: 8px;
                 width: 123px;
                 height: 123px;
                 object-fit: cover;
+                border-radius: 26px;
             }
             h3{
                 font-weight: 900;
@@ -361,15 +362,107 @@ border-radius: 8px;
     width: 100%;
     text-align: center;
 }
-
+.pkVisible{
+    display: block;
+}
+.mobVisible{
+    display: none;
+}
 
 @media(max-width: 992px){
+    .cabinetWrapp{
+        margin-top: 0;
+    }
+    .pkVisible{
+        display: none;
+    }
+    .mobVisible{
+        display: block;
+    }
     .structure_area{
         padding:  30px!important;
     }
-    
+    .cabinet_area_leftBottom{
+        flex-wrap: wrap;
+    }
+    .lastUser{
+        width: 210px;
+        margin: 30px auto;
+    }
     th, td, th{
         font-size: 12px!important;
         padding: 6px!important;
+    }
+    .cabinetTitle_Img{
+        margin-top: 10px!important;
+    }
+    .cabinet_area{
+        flex-direction: column;
+        .mobVisible_statstic{
+            background: #FFFFFF;    
+            box-shadow: -1px -1px 30px 1px rgba(0, 0, 0, 0.3);
+            border-radius: 19px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 10px auto;
+            padding: 10px;
+            .userInfoItem{
+                width: 30%;
+                text-align: center;
+                font-size: 12px;
+                font-weight: 600;
+                color: #737373;
+                white-space: normal;
+                line-height: 14px;
+                p{
+                    font-size: 24px;
+                    font-weight: 700;
+                    color: #000;
+                    margin: 7px 0;
+                }
+            }
+        }
+        .cabinet_area_left{
+            width: 100%;
+            .cabinet_area_leftTop{
+                padding-bottom: 10px;
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+                img{
+                    margin-right: 13px;
+                }
+                h3{
+                    font-size: 20px;
+                    margin-bottom: 4px;
+                }
+                p{
+                    font-size: 14px!important;
+                    margin: 4px 0!important;
+                    line-height: 16px;
+                }
+                button{
+                    display: block;
+                    margin: 0;
+                    margin-top: 12px;
+                }
+            }
+            .cabinet_area_leftCenter{
+                
+                h4{
+                   
+                }
+                
+                .balanceItem{
+                    margin: 10px auto;
+                }
+            }
+        }
+        .cabinet_area_right{
+            width: 100%;
+        }
     }
 }

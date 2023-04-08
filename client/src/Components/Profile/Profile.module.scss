@@ -47,7 +47,9 @@
 }
 
 @media(max-width: 992px){
-    .cabinetWrapp{       
+    .cabinetWrapp{   
+        margin-top: 0;    
+        
         &_mnu{
             overflow: auto;
             white-space: nowrap;

@@ -435,11 +435,14 @@ text-fill-color: transparent;
     }
     .lastRegister{
         &::before{
-            width: 186%!important;
-            height: 97%!important;
-            top: 100px!important;
-            // background-image: url(../../../public/img/rainbow.png)!important;     
-            filter: blur(61.5px);
+            width: 100%!important;
+            height: 110%!important;
+            top: 10px!important;
+             background-image: url(../../../public/img/yelow-blue.svg)!important;
+             background-position: center;
+             background-size: contain;
+             background-repeat: no-repeat;     
+             filter: blur(45.5px)!important;
             
 
             
