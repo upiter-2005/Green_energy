@@ -9,9 +9,10 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    animation:  3s linear 0s 1 forwards fadeOut;
+   
     img{
-        width: 70px;
+        width: 140px;
+        //animation:  3s linear 0s 1 forwards fadeOut;
     }
 }
 @keyframes fadeOut {

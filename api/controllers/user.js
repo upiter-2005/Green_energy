@@ -40,16 +40,16 @@ const transferBalance = async (req, res) => {
   }
 };
 
-const updateBalance = async (req, res) => {
+const updateBalanceAdmin = async (req, res) => {
   try {
-    const { login, balance } = req.body;
-    console.log(login, balance);
+    const { userId, balance } = req.body;
+    console.log(userId, balance);
     const updatedUser = await User.findOneAndUpdate(
       {
-        login: login,
+        _id: userId,
       },
       {
-        $inc: { balance },
+        $set: { balance },
       },
       { returnDocument: "after" },
     );
@@ -244,6 +244,27 @@ const nameUpdate = async (req, res) => {
   }
 };
 
+const updateBalance = async (req, res) => {
+  try {
+    const { userId, newBalance } = req.body;
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        _id: userId,
+      },
+      {
+        $set: {
+          balnce: newBalance,
+        },
+      },
+      { returnDocument: "after" },
+    );
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (e) {
+    res.json({ message: e });
+  }
+};
+
 const contactUpdate = async (req, res) => {
   try {
     const { phone, telegram, whatsapp, facebook, instagram, twitter } = req.body;
@@ -395,4 +416,5 @@ module.exports = {
   updateTotalAwards,
   updateRefAwards,
   activeOn,
+  updateBalanceAdmin,
 };

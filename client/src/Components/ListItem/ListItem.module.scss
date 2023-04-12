@@ -1,7 +1,25 @@
+.saveBtn{
+    background: linear-gradient(270deg, rgba(0, 255, 223, 0) -2.67%, #00FFDF 52.88%, rgba(0, 255, 223, 0) 104.42%);
+    border: none;
+    font-weight: 900;
+    padding: 4px 12px;
+    text-transform: uppercase;
+    border: 2px solid #00FFDF;
+    border-radius: 6px;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+input{
+    border-radius: 8px;
+    width: 80px;
+    text-align: center;
+    margin-right: 12px;
+    font-weight: 800;
+}
 .pageWrapper{
     margin: 0;
-    background-color: #0C0B19;
-     //background-image:url(../../../public/img/page-fon.jpeg);
+     background-image:url(../../../public/img/page-fon.jpeg);
     //background: radial-gradient(100% 306.89% at 0% 100%, #106156 0%, rgba(0, 0, 0, 0) 49.55%, rgba(2, 11, 10, 0.141132) 56.89%, #0D4F46 100%) ;
     background-size: cover;
     background-attachment: fixed;
@@ -10,11 +28,31 @@
     min-height: 100vh ;
 }
 .accountWrapper{
-    max-width: 1410px;
+    max-width: 1330px;
     width: 100%;
     margin: 0 auto 0;
     padding: 0;
-    
+    .list_box{
+        color: #ececec;
+        width: 100%;
+        div{
+            display: flex;
+            width: 100%;
+            margin-bottom: 8px;
+            &:hover{
+                background-color: #939393;
+                cursor: pointer;
+            }
+            span{
+                width: 16%;
+                font-size: 14px;
+                overflow: hidden;
+                margin: 3px;
+                font-weight: 600;
+                color: #ececec;
+            }
+        }
+    }
 
     .account_title{
         max-width: 1200px;
@@ -28,15 +66,13 @@
         font-weight: 700;
     }
     .account_box{
-        margin-top: 50px;
         display: flex;
         
         padding: 12px 30px 12px 8px;
         
         border-radius: 14px;
       .navigation{
-        margin-top: 40px;
-        width: 170px;
+        width: 180px;
         
         
         &_link{
@@ -64,31 +100,4 @@
     }
     }
   
-}
-
-@media(max-width: 992px){
-    .accountWrapper{
-        margin-top: 0px;
-        .account_box{
-            padding: 0 10px;
-            margin-top: 0;
-            margin-bottom: 15px;
-            flex-direction: column;
-            align-items: center;
-            .navigation{
-                width: 100%;
-                margin: 0 auto;
-                &_link{
-                    display: flex;
-                    flex-wrap: wrap;
-                    flex-direction: row;
-                    li{
-                        width: 48%;
-                        margin: 0;
-                    }
-                }
-            }
-        }
-       
-    }
 }

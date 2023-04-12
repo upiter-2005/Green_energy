@@ -16,6 +16,7 @@ const {
   updateRefAwards,
   activeOn,
   transferBalance,
+  updateBalanceAdmin,
 } = require("../controllers/user.js");
 const checkAuth = require("../utils/checkAuth.js");
 
@@ -24,6 +25,8 @@ const router = Router();
 router.patch("/transferBalance", checkAuth, transferBalance);
 
 router.patch("/nameUpdate", checkAuth, nameUpdate);
+
+router.patch("/updateBalanceAdmin", checkAuth, updateBalanceAdmin);
 
 router.patch("/avatarUpdate", checkAuth, avatarUpdate);
 

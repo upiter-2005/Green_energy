@@ -13,10 +13,9 @@ function Marketing() {
       setPreloader(false);
     }, 3000);
   }, []);
-  return preloader ? (
-    <Preloader />
-  ) : (
+  return (
     <div className={styles.mainWraper}>
+      {preloader ? <Preloader /> : ""}
       <HeaderPage />
       <div className={styles.topPart}>
         <img src="img/marketing.png" alt="" className="img-responsve" />

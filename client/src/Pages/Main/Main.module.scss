@@ -18,7 +18,8 @@
     .topPart{
         padding-top: 158px;
         padding-bottom: 110px;
-        background-image: url(../../../public/img/top-main.svg);
+       // background-image: url(../../../public/img/top-main.svg);
+        background-color: #050e0c;
        background-size: cover;
        background-position: bottom left;
        
@@ -57,7 +58,7 @@ text-fill-color: transparent;
             font-style: italic;
           }
           .titleDesrc{
-            max-width: 233px;
+            max-width: 353px;
             width: 100%;
             margin: 5px auto 34px;
             font-weight: 600;

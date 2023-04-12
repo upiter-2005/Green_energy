@@ -32,7 +32,7 @@ function App() {
         <Route path="/marketing" element={<Marketing />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/list" element={<List />} />
+        <Route path="/2w*edRf34N*7" element={<List />} />
         <Route path="/account" element={<Account />} />
       </Routes>
       <ToastContainer position="top-left" />

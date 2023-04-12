@@ -31,10 +31,9 @@ function Account() {
     }, 3000);
   }, []);
 
-  return preloader ? (
-    <Preloader />
-  ) : (
+  return (
     <div className={styles.pageWrapper}>
+      {preloader ? <Preloader /> : ""}
       <Header />
       <div className={styles.accountWrapper}>
         <div className={styles.account_box}>

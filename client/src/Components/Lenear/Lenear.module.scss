@@ -1,0 +1,28 @@
+.lenearWrap{
+    width: 100%;
+    padding: 0;
+    .lenearTitile{
+        font-size: 40px;
+        font-weight: 900;
+        color: #0F5A51;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .lenearStripe{
+        background: #FFFFFF;
+        box-shadow: -1px -1px 30px 1px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        padding: 10px 15px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        &_btn{
+            background: #0F5A51;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 900;
+        }
+    }
+}

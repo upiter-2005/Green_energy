@@ -33,8 +33,9 @@ function Main() {
       setPreloader(false);
     }, 3000);
   }, []);
-  return !preloader ? (
+  return (
     <div className={styles.mainWraper}>
+      {preloader ? <Preloader /> : ""}
       <HeaderPage />
       <div className={styles.topPart}>
         <div className="container_main center">
@@ -46,7 +47,7 @@ function Main() {
             <img src="img/main-title.svg" alt="" />{" "}
           </div>
           <p className={styles.titleDesrc}>
-            Инструмент <span>№1</span> <br /> по заработку денег
+            Инструмент <span>№1</span> <br /> для получения пожизненного дохода
           </p>
           <Link to="/register" className="btn-small">
             <span>Регистрация</span>
@@ -81,7 +82,7 @@ function Main() {
               Тщательно разработанная механика роста цены токена, которая позволяет пользователям
               получать большие дополнительные доходы в проекте
             </div>
-            <a href="google.com">
+            <a href="https://t.me/Greentur_club" target="blank">
               Получить ENERGY <img src="img/arr.svg" alt="" />
             </a>
           </div>
@@ -250,10 +251,11 @@ function Main() {
           <div className="container_main">
             <h2>Официальные каналы</h2>
             <div className="row jc-center">
-              <a href="#">
+              <a href="https://t.me/GreenEnergy_channel" target="blank">
                 <img src="img/ch-telegram.svg" alt="" /> <span>Telegram канал</span>
               </a>
-              <a href="#">
+
+              <a href="https://t.me/Greentur_club" target="blank">
                 <img src="img/ch-telegram.svg" alt="" /> <span>Telegram чат</span>
               </a>
             </div>
@@ -279,8 +281,6 @@ function Main() {
         </Link>
       </div> */}
     </div>
-  ) : (
-    <Preloader />
   );
 }
 

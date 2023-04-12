@@ -8,24 +8,36 @@
     background-position: center;
     min-height: 100vh ;
 }
+.listSearch{
+    position: relative;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 24px;
+    input{
+        margin-left: 15px;
+        width: 150px;
+        padding: 6px 12px;
+    }
+}
 .accountWrapper{
-    max-width: 1330px;
+    max-width: 1130px;
     width: 100%;
-    margin: 0 auto 0;
-    padding: 0;
+    margin: 0 auto ;
+    padding: 24px;
     .list_box{
         color: #ececec;
         width: 100%;
         div{
             display: flex;
             width: 100%;
+            margin-bottom: 8px;
             &:hover{
                 background-color: #939393;
                 cursor: pointer;
             }
             span{
-                width: 16%;
-                font-size: 18px;
+                width: 10%;
+                font-size: 14px;
                 overflow: hidden;
                 margin: 3px;
                 font-weight: 600;
