@@ -31,7 +31,12 @@ function ListItem({ data, num, updateList }) {
       <span>{data.name}</span>
       <span>{data.phone}</span>
       <span>{data.upliner}</span>
-      <input type="number" value={balanceVal} onChange={(e) => setBalanceVal(e.target.value)} />
+      <input
+        className={styles.balanceInput}
+        type="number"
+        value={balanceVal}
+        onChange={(e) => setBalanceVal(e.target.value)}
+      />
       <button className={styles.saveBtn} onClick={saveData}>
         save
       </button>
