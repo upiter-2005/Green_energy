@@ -457,29 +457,27 @@ function Cabinet() {
   };
 
   const test = async () => {
-    console.log(zigzagOrder(parsedTree));
+    const apiTree222 = {
+      root: "root_login",
+      v: "GreenEnergy",
+      id: "6404d74471238bcb42d89a03",
+      l: {
+        id: "6404e8d771238bcb42d89a59",
+        v: "domblaga",
+        l: null,
+        r: null,
+      },
+      r: null,
+    };
 
-    // const apiTree222 = {
-    //   root: "root_login",
-    //   v: "GreenEnergy",
-    //   id: "6404d74471238bcb42d89a03",
-    //   l: {
-    //     id: "6404e8d771238bcb42d89a59",
-    //     v: "domblaga",
-    //     l: null,
-    //     r: null,
-    //   },
-    //   r: null,
-    // };
+    const newTree = JSON.stringify(apiTree222);
 
-    // const newTree = JSON.stringify(apiTree222);
-
-    // dispatch(
-    //   setTree({
-    //     id: id,
-    //     tree: newTree,
-    //   }),
-    // );
+    dispatch(
+      setTree({
+        id: id,
+        tree: newTree,
+      }),
+    );
   };
 
   var verticalOrder = function (root) {
