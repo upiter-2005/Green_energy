@@ -17,10 +17,16 @@ const {
   activeOn,
   transferBalance,
   updateBalanceAdmin,
+  balanceMinus,
+  balanceReinvestZero,
 } = require("../controllers/user.js");
 const checkAuth = require("../utils/checkAuth.js");
 
 const router = Router();
+
+router.patch("/balanceMinus", checkAuth, balanceMinus);
+
+router.patch("/balanceReinvestZero", checkAuth, balanceReinvestZero);
 
 router.patch("/transferBalance", checkAuth, transferBalance);
 

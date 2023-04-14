@@ -4,6 +4,7 @@ import styles from "./Header.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { checkIsAuth, logOut } from "../../redux/slices/authSlice";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Copied from "../Copied";
 import MobileMnu from "../MobileMnu";
 import { toast } from "react-toastify";
@@ -61,7 +62,9 @@ function Header() {
             className={styles.headerIcoAvatar}
           />
         ) : (
-          <img src="img/avatar-ico.svg" alt="" className={styles.headerIco} />
+          <Link to="/account">
+            <img src="img/avatar-ico.svg" alt="" className={styles.headerIco} />
+          </Link>
         )}
 
         <img

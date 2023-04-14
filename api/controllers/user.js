@@ -246,14 +246,57 @@ const nameUpdate = async (req, res) => {
 
 const updateBalance = async (req, res) => {
   try {
-    const { userId, newBalance } = req.body;
+    const { login, balance } = req.body;
     const updatedUser = await User.findOneAndUpdate(
       {
-        _id: userId,
+        login,
+      },
+      {
+        $inc: {
+          balance: balance,
+        },
+      },
+      { returnDocument: "after" },
+    );
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (e) {
+    res.json({ message: e });
+  }
+};
+
+const balanceReinvestZero = async (req, res) => {
+  try {
+    const { idUser } = req.body;
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        _id: idUser,
       },
       {
         $set: {
-          balnce: newBalance,
+          balanceReinvest: 0,
+          cashback_reinvest: 0,
+        },
+      },
+      { returnDocument: "after" },
+    );
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (e) {
+    res.json({ message: e });
+  }
+};
+
+const balanceMinus = async (req, res) => {
+  try {
+    const { idUser, minusBalance } = req.body;
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        _id: idUser,
+      },
+      {
+        $inc: {
+          balance: -minusBalance,
         },
       },
       { returnDocument: "after" },
@@ -417,4 +460,6 @@ module.exports = {
   updateRefAwards,
   activeOn,
   updateBalanceAdmin,
+  balanceMinus,
+  balanceReinvestZero,
 };

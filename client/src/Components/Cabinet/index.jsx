@@ -30,7 +30,7 @@ function Cabinet() {
   const id = useSelector((state) => state.options.id);
   const structure = useSelector((state) => state.auth.structure);
   console.log(structure);
-  console.log("tree from server - " + apiTree);
+  console.log(apiTree);
 
   const navigate = useNavigate();
   const isAuth = useSelector(checkIsAuth);
@@ -68,7 +68,8 @@ function Cabinet() {
     let nodesQueue = [];
     let nodesInCurrentLevel = 1;
     let nodesInNextLevel = 0;
-    nodesQueue.push(parsedTree);
+    const myTree = await findUplinerTree(user._id);
+    nodesQueue.push(myTree);
     while (nodesQueue.length !== 0) {
       let currNode = nodesQueue[0];
       nodesQueue.splice(0, 1);
@@ -87,7 +88,12 @@ function Cabinet() {
         nodesInNextLevel = 0;
       }
     }
-    setPoketNum(count);
+    console.log(count);
+    if (count === 1) {
+      setPoketNum(0);
+    } else {
+      setPoketNum(count);
+    }
   };
 
   // params (userTree, upliner login)
@@ -453,10 +459,12 @@ function Cabinet() {
         }
       }
       dispatch(getMe());
+      toast.success("Покупка места в структуре прошла успешно!");
     }
   };
 
   const test = async () => {
+    //FOR DEPLOY
     const apiTree222 = {
       root: "root_login",
       v: "GreenEnergy",
@@ -469,6 +477,32 @@ function Cabinet() {
       },
       r: null,
     };
+    //FOR DEPLOY
+
+    //FOR TEST
+    // const apiTree222 = {
+    //   root: "root_login",
+    //   v: "GreenEnergy",
+    //   id: "6404d74471238bcb42d89a03",
+    //   l: {
+    //     id: "64142282ededa8e759728028",
+    //     v: "new_11",
+    //     l: null,
+    //     r: null,
+    //   },
+    //   r: {
+    //     id: "641ae6baefff04ef66398d49",
+    //     v: "pavel11",
+    //     l: {
+    //       id: "641ae733efff04ef66398d4f",
+    //       v: "pavel22",
+    //       l: null,
+    //       r: null,
+    //     },
+    //     r: null,
+    //   },
+    // };
+    //FOR TEST
 
     const newTree = JSON.stringify(apiTree222);
 
@@ -561,49 +595,69 @@ function Cabinet() {
   }, [parsedTree]);
 
   const buyCell = async () => {
-    // if (user.balance < 30) {
-    //   alert("insufficient balace!");
-    // }
-    // function -30$ from current account
-    const rootId = "6404d74471238bcb42d89a03";
-    let uplinerId = null;
-    const { data } = await axios.get("/user/getUplinerInfo");
-    await axios.patch("/user/activeOn", {});
-
-    if (data.upliner.is_active) {
-      uplinerId = data.upliner._id;
+    if (user.balance < 30) {
+      toast.error("Не достаточно средств для покупки пакета!");
+      return true;
     } else {
-      uplinerId = rootId;
+      await axios.patch("/user/balanceMinus", { idUser: user?._id, minusBalance: 30 });
+      // function -30$ from current account
+      const rootId = "6404d74471238bcb42d89a03";
+      let uplinerId = null;
+      const { data } = await axios.get("/user/getUplinerInfo");
+      await axios.patch("/user/activeOn", {});
+
+      if (data.upliner.is_active) {
+        uplinerId = data.upliner._id;
+      } else {
+        uplinerId = rootId;
+      }
+
+      const uplinerTree = await findUplinerTree(uplinerId);
+      console.log(uplinerTree);
+      const lastId = await addNewUser(uplinerTree, user.login, user._id);
+      // if buy pensia   const lastId = addNewUser(uplinerTree, user.login);
+
+      await updateApiTree(uplinerId, uplinerTree);
+      updateTree();
+      //setNewId(lastId);
+      setButType(true);
+      addAwards(lastId);
     }
-
-    const uplinerTree = await findUplinerTree(uplinerId);
-    console.log(uplinerTree);
-    const lastId = await addNewUser(uplinerTree, user.login, user._id);
-    // if buy pensia   const lastId = addNewUser(uplinerTree, user.login);
-
-    await updateApiTree(uplinerId, uplinerTree);
-    updateTree();
-    //setNewId(lastId);
-    setButType(true);
-    addAwards(lastId);
-    // later switch on active status!!!
   };
 
   const buyPensia = async () => {
-    // if (user.balance < 30) {
-    //   alert("insufficient balace!");
-    // }
-    // function -30$ from current account
+    if (user.balanceReinvest === 50) {
+      await axios.patch("/user/balanceReinvestZero", { idUser: user?._id });
+      const uplinerTree = await findUplinerTree(user?._id);
+      console.log(user?._id);
+      const lastId = await addNewUser(uplinerTree, user.login);
 
-    const uplinerTree = await findUplinerTree(user?._id);
-    console.log(user?._id);
-    const lastId = await addNewUser(uplinerTree, user.login);
-    // if buy pensia   const lastId = addNewUser(uplinerTree, user.login);
+      await updateApiTree(user._id, uplinerTree);
+      updateTree();
 
-    await updateApiTree(user._id, uplinerTree);
-    updateTree();
+      addAwards(lastId, true);
+      console.log("Fund enough!!!)))");
+    } else {
+      //user.balanceReinvest // 20$
+      let remain = 50 - user.balanceReinvest; //30$
+      if (user.balance < remain) {
+        toast.error("Не достаточно средств для покупки пакета!");
+        return true;
+      } else {
+        await axios.patch("/user/balanceReinvestZero", { idUser: user?._id });
+        await axios.patch("/user/balanceMinus", { idUser: user?._id, minusBalance: remain });
+        const uplinerTree = await findUplinerTree(user?._id);
+        console.log(user?._id);
+        const lastId = await addNewUser(uplinerTree, user.login);
 
-    addAwards(lastId, true);
+        await updateApiTree(user._id, uplinerTree);
+        updateTree();
+
+        addAwards(lastId, true);
+        console.log("Fund enough balance/Reinvest!!!)))");
+        console.log(remain + " remain funds");
+      }
+    }
   };
 
   if (!isAuth) {
