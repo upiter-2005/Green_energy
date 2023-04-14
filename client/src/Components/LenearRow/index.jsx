@@ -4,7 +4,7 @@ import LenearItem from "../LenearItem";
 
 function LenearRow({ data, level }) {
   console.log(data);
-  return (
+  return level < 10 ? (
     <div className={styles.lenearWrap}>
       <div className={styles.lenearTitile}>LVL {level}</div>
       <div className={styles.lenearStripe}>
@@ -18,6 +18,8 @@ function LenearRow({ data, level }) {
       <LenearItem /> */}
       </div>
     </div>
+  ) : (
+    ""
   );
 }
 
