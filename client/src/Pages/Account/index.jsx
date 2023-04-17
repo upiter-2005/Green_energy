@@ -15,7 +15,7 @@ import Preloader from "../../Components/Preloader";
 import { toast } from "react-toastify";
 
 function Account() {
-  const [section, setSection] = useState("cabinet");
+  const [section, setSection] = useState("profile");
   const [preloader, setPreloader] = useState(true);
   const navigate = useNavigate();
   const isAuth = useSelector(checkIsAuth);

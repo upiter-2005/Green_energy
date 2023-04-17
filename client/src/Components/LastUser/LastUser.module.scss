@@ -1,0 +1,13 @@
+.LastUserItem{
+    display: flex;
+   
+    font-size: 20px;
+    div{
+        width: 25%;
+        border-right: 1px solid rgba(#4CFFDF, .3);
+        padding: 8px 0;
+        &:last-child{
+            border: none;
+        }
+    }
+}

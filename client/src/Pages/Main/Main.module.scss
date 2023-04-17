@@ -227,6 +227,10 @@ text-fill-color: transparent;
                 color: #083026;
             }
             .lastUsersTable{
+                position: relative;
+                padding-top: 53px;
+                display: flex;
+                flex-direction: column-reverse;
                 max-width: 888px;
                 width: 100%;
                 margin: 0 auto; 
@@ -235,6 +239,23 @@ text-fill-color: transparent;
                 background: radial-gradient(100% 193.24% at 0% 0%, #106055 1.63%, #000000 100%);
                 box-shadow: -1px -1px 10px 3px rgba(0, 0, 0, 0.7);
                 border-radius: 25px;
+                .lastUsersTableTitles{
+                    position: absolute;
+                    top: 0;
+                    display: flex;
+                    font-size: 24px;
+                    width: 100%;
+                    div{
+                        width: 25%;
+                        border-right: 1px solid rgba(#4CFFDF, .3);
+                        padding: 8px 0;
+                        color: #4CFFDF;
+                        font-size: 32px;
+                        font-weight: 700;
+                        border-bottom: 1px solid rgba(#4CFFDF, .3);
+                        
+                    }
+                }
                 &_item{
                     display: flex;
                     width: 100%;
