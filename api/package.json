@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Green tour",
   "main": "index.js",
-    "scripts": {
+  "scripts": {
     "dev": "nodemon index.js"
   },
   "keywords": [
@@ -20,7 +20,8 @@
     "express-fileupload": "^1.4.0",
     "express-validator": "^6.14.3",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.9.1"
+    "mongoose": "^6.9.1",
+    "nodemailer": "^6.9.1"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",

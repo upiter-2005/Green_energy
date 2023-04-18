@@ -137,7 +137,7 @@ function Main() {
                 <div>Дата</div>
               </div>
               {console.log(users)}
-              {users && users?.map((obj, i) => <LastUser data={obj} index={i} />)}
+              {users && users?.slice(-9).map((obj, i) => <LastUser data={obj} index={i} />)}
             </div>
             <h3>Результаты партнеров</h3>
             <p>

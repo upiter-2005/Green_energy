@@ -30,7 +30,9 @@ function Header() {
         <img src="img/mob-logo.svg" alt="" width={40} />
       </div>
       <div>
-        <img src="img/logo-main.svg" alt="" className={styles.logo} />
+        <Link to="/">
+          <img src="img/logo-main.svg" alt="" className={styles.logo} />
+        </Link>
       </div>
 
       <div className={`d-md-none ${styles.mnuMob}`}>

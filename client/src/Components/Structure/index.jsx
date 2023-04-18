@@ -5,13 +5,14 @@ import Popup from "../Popup";
 import Jackpot from "../Jackpot";
 import Lenear from "../Lenear";
 import styles from "./Structure.module.scss";
+import Preloader from "../../Components/Preloader";
 
 function Structure() {
   const dispatch = useDispatch();
   const structure = useSelector((state) => state.auth.structure);
   const [butPopup, setButPopup] = useState(false);
   const [lenear, setLenear] = useState(false);
-
+  const [preloader, setPreloader] = useState(true);
   const [telegram, setTelegram] = useState(null);
   const [whatsapp, setWhatsapp] = useState(null);
   const [facebook, setFacebook] = useState(null);
@@ -21,6 +22,14 @@ function Structure() {
   useEffect(() => {
     dispatch(getStructure());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (preloader) {
+      setTimeout(() => {
+        setPreloader(false);
+      }, 3000);
+    }
+  }, []);
 
   const passSocials = (telegram, whatsapp, facebook, instagram, twitter) => {
     setTelegram(telegram);
@@ -34,6 +43,7 @@ function Structure() {
   console.log(structure);
   return (
     <div className={styles.cabinetWrapp}>
+      {preloader ? <Preloader /> : ""}
       <Jackpot />
       <img src="img/structureTitle.svg" className={styles.cabinetTitle_Img} alt="" />
       <div className="borderRound">

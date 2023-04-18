@@ -7,13 +7,24 @@ import FaqEarn from "../FaqEarn";
 import FaqSave from "../FaqSave";
 import FaqMultiple from "../FaqMultiple";
 import FaqReklama from "../FaqReklama";
+import Preloader from "../../Components/Preloader";
 
 import styles from "./Education.module.scss";
 
 function Education() {
   const [activeTab, setActiveTab] = useState("kabinet");
+  const [preloader, setPreloader] = useState(true);
+
+  useEffect(() => {
+    if (preloader) {
+      setTimeout(() => {
+        setPreloader(false);
+      }, 3000);
+    }
+  }, []);
   return (
     <div className={styles.cabinetWrapp}>
+      {preloader ? <Preloader /> : ""}
       <Jackpot />
       <img src="img/education.png" className={styles.cabinetTitle_Img} alt="" />
       <div className="borderRound">

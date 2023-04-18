@@ -11,12 +11,14 @@ import Jackpot from "../Jackpot";
 import { toast } from "react-toastify";
 import styles from "./Cabinet.module.scss";
 import { checkIsAuth } from "../../redux/slices/authSlice";
+import Preloader from "../../Components/Preloader";
 
 function Cabinet() {
   const dispatch = useDispatch();
   const [butPopup, setButPopup] = useState(false);
   const [depositOpen, setDepositOpen] = useState(false);
   const [transferOpen, setTransferOpen] = useState(false);
+  const [preloader, setPreloader] = useState(true);
   const [team, setTeam] = useState(false);
   const [nonActive, setNonActive] = useState(false);
   const [pocketNum, setPoketNum] = useState(0);
@@ -34,6 +36,14 @@ function Cabinet() {
 
   const navigate = useNavigate();
   const isAuth = useSelector(checkIsAuth);
+
+  useEffect(() => {
+    if (preloader) {
+      setTimeout(() => {
+        setPreloader(false);
+      }, 3000);
+    }
+  }, []);
 
   const findUplinerTree = (id) => {
     console.log(id);
@@ -90,7 +100,7 @@ function Cabinet() {
     }
     console.log(count);
     if (count === 1) {
-      setPoketNum(0);
+      setPoketNum(count);
     } else {
       setPoketNum(count);
     }
@@ -205,7 +215,6 @@ function Cabinet() {
     const result = structure?.filter((obj) => {
       if (!obj.is_active) return true;
     });
-    console.log();
     setNonActive(result?.length);
   };
   useEffect(() => {
@@ -215,24 +224,15 @@ function Cabinet() {
 
   useEffect(() => {
     const jsonparseTree = JSON.parse(apiTree);
-    console.log(jsonparseTree);
     setParsedTree(jsonparseTree);
 
     dispatch(getStructure());
     findPocketsNum(user?.login);
     setButType(user?.is_active);
-    // if (!user) {
-    //   navigate("/login");
-    // }
-    console.log(user);
-    console.log("UUUUUUSSSSSSEREERERERERER");
   }, [user, dispatch]);
 
   useEffect(() => {
     myTeam();
-    console.log("renew treeeeeeeeee");
-    //addAwards();
-    console.log(parsedTree);
     findPocketsNum(user?.login);
   }, [apiTree]);
 
@@ -296,9 +296,7 @@ function Cabinet() {
 
       if (refferal) {
         let refAwr = data.user.refAwards + 15;
-        console.log(refAwr);
         let totalAwr = data.user.totalAwards + 15;
-        console.log(totalAwr);
 
         const resultOne = await axios.patch("/user/updateRefAwards", { login, refAwards: refAwr });
         const resultTwo = await axios.patch("/user/updateTotalAwards", {
@@ -307,7 +305,6 @@ function Cabinet() {
         });
       } else {
         let totalAwr = data.user.totalAwards + 1;
-        console.log(totalAwr);
         const resultTwo = await axios.patch("/user/updateTotalAwards", {
           login,
           totalAwards: totalAwr,
@@ -600,7 +597,6 @@ function Cabinet() {
       return true;
     } else {
       await axios.patch("/user/balanceMinus", { idUser: user?._id, minusBalance: 30 });
-      // function -30$ from current account
       const rootId = "6404d74471238bcb42d89a03";
       let uplinerId = null;
       const { data } = await axios.get("/user/getUplinerInfo");
@@ -613,13 +609,10 @@ function Cabinet() {
       }
 
       const uplinerTree = await findUplinerTree(uplinerId);
-      console.log(uplinerTree);
       const lastId = await addNewUser(uplinerTree, user.login, user._id);
-      // if buy pensia   const lastId = addNewUser(uplinerTree, user.login);
 
       await updateApiTree(uplinerId, uplinerTree);
       updateTree();
-      //setNewId(lastId);
       setButType(true);
       addAwards(lastId);
     }
@@ -629,14 +622,12 @@ function Cabinet() {
     if (user.balanceReinvest === 50) {
       await axios.patch("/user/balanceReinvestZero", { idUser: user?._id });
       const uplinerTree = await findUplinerTree(user?._id);
-      console.log(user?._id);
       const lastId = await addNewUser(uplinerTree, user.login);
 
       await updateApiTree(user._id, uplinerTree);
       updateTree();
 
       addAwards(lastId, true);
-      console.log("Fund enough!!!)))");
     } else {
       //user.balanceReinvest // 20$
       let remain = 50 - user.balanceReinvest; //30$
@@ -647,15 +638,12 @@ function Cabinet() {
         await axios.patch("/user/balanceReinvestZero", { idUser: user?._id });
         await axios.patch("/user/balanceMinus", { idUser: user?._id, minusBalance: remain });
         const uplinerTree = await findUplinerTree(user?._id);
-        console.log(user?._id);
         const lastId = await addNewUser(uplinerTree, user.login);
 
         await updateApiTree(user._id, uplinerTree);
         updateTree();
 
         addAwards(lastId, true);
-        console.log("Fund enough balance/Reinvest!!!)))");
-        console.log(remain + " remain funds");
       }
     }
   };
@@ -666,6 +654,7 @@ function Cabinet() {
   return (
     <div className={styles.cabinetWrapp}>
       <Jackpot />
+      {preloader ? <Preloader /> : ""}
       <button onClick={() => test()}>Init tree</button>
       <img src="img/cabTitle.svg" className={styles.cabinetTitle_Img} alt="" />
       <div className="borderRound">

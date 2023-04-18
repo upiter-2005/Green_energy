@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { checkIsAuth, loginUser, changeFormState, cleanStatus } from "../../redux/slices/authSlice";
 import { toast } from "react-toastify";
 import Preloader from "../../Components/Preloader";
@@ -75,7 +76,9 @@ export default function Login() {
   ) : (
     <div className="loginWrapper">
       <div className="logo">
-        <img src="img/logo-main.svg" alt="" />
+        <Link to="/">
+          <img src="img/logo-main.svg" alt="" />
+        </Link>
       </div>
       <form onSubmit={(e) => e.preventDefault()} className={styles.formWraper}>
         <h2>Авторизация</h2>
@@ -123,9 +126,12 @@ export default function Login() {
           Войти
         </button>
         <div className={styles.langs}>
-          Сменить язык
+          <Link to="/register" className={styles.registerString}>
+            Зарегистрироваться
+          </Link>
+          {/* Сменить язык
           <button className={`${styles.langsButton} ${styles.activeLang}`}>ru</button>
-          <button className={styles.langsButton}>en</button>
+          <button className={styles.langsButton}>en</button> */}
         </div>
       </form>
     </div>

@@ -2,10 +2,21 @@ import { useState, useEffect } from "react";
 
 import Jackpot from "../Jackpot";
 import styles from "./News.module.scss";
+import Preloader from "../../Components/Preloader";
 
 function News() {
+  const [preloader, setPreloader] = useState(true);
+
+  useEffect(() => {
+    if (preloader) {
+      setTimeout(() => {
+        setPreloader(false);
+      }, 3000);
+    }
+  }, []);
   return (
     <div className={styles.newsWrapp}>
+      {preloader ? <Preloader /> : ""}
       <Jackpot />
       <img src="img/news.png" className={styles.cabinetTitle_Img} alt="" />
       <div className="borderRound">

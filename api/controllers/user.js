@@ -222,7 +222,7 @@ const activeOn = async (req, res) => {
 
 const nameUpdate = async (req, res) => {
   try {
-    const { name, surname, payeer, advcash } = req.body;
+    const { name, surname, payeer, advcash, wallet } = req.body;
 
     const user = req.userId;
     const updatedUser = await User.findOneAndUpdate(
@@ -231,9 +231,10 @@ const nameUpdate = async (req, res) => {
       },
       {
         payeer,
-        surname: surname,
+        surname,
         payeer,
         advcash,
+        wallet,
       },
       { returnDocument: "after" },
     );

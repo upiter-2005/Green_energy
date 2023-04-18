@@ -26,7 +26,7 @@ const register = async (req, res) => {
 
     const uplinerData = await User.findOneAndUpdate({ login: upliner }, { $inc: { comand: 1 } });
 
-    res.json({ newUser, token, message: "User has registered successfully" });
+    res.json({ newUser, token, message: "Вы успешно зарегистрировались!" });
   } catch (error) {
     res.json({ mesage: "Register Error !!" });
     console.log(error.message);

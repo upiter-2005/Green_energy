@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateData } from "../../redux/slices/authSlice";
 import { getTree } from "../../redux/slices/optionsSlice";
 import { toast } from "react-toastify";
+import Preloader from "../../Components/Preloader";
 
 function ProfileData() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [preloader, setPreloader] = useState(true);
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [metamask, setMetamask] = useState("");
@@ -23,6 +25,7 @@ function ProfileData() {
         surname,
         payeer,
         advcash,
+        wallet: metamask,
       };
 
       console.log(data);
@@ -46,9 +49,19 @@ function ProfileData() {
     setAdvcash(user?.advcash);
     dispatch(getTree());
   }, [user, navigate]);
+
+  useEffect(() => {
+    if (preloader) {
+      setTimeout(() => {
+        setPreloader(false);
+      }, 3000);
+    }
+  }, []);
+
   console.log(tree);
   return (
     <div className="accountDataBlock">
+      {preloader ? <Preloader /> : ""}
       <h3 className="accTitle">Основная информация</h3>
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="accountInput">
@@ -58,6 +71,11 @@ function ProfileData() {
         <div className="accountInput">
           <span>Фамилия</span>
           <input type="text" value={surname} onChange={(e) => setSurname(e.target.value)} />
+        </div>
+        <div className="accountInput lockInput">
+          <span>Логин</span>
+          <input type="text" value={user?.email} disabled />
+          <img src="img/lock.svg" alt="" />
         </div>
         <div className="accountInput lockInput">
           <span>Логин</span>

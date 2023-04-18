@@ -1,17 +1,27 @@
 import { useEffect, useState } from "react";
 import styles from "./Metamask.module.scss";
 import detectEthereumProvider from "@metamask/detect-provider";
+import { useSelector, useDispatch } from "react-redux";
 import { ethers } from "ethers";
+import { toast } from "react-toastify";
+import { updateBalance } from "../../redux/slices/authSlice";
+import { getMe } from "../../redux/slices/authSlice";
+import axios from "../../utils/axios";
 
 function Metamask() {
+  const dispatch = useDispatch();
+  const [isDeposit, setIsDeposit] = useState(false);
   const [usdtAmount, setUsdtAmount] = useState(0);
   const [account, setAccount] = useState(null);
   const [usdtBalance, setUsdtBalance] = useState(0);
   const [metamaskInstall, setMetamaskInstall] = useState(false);
 
+  const user = useSelector((state) => state.auth.user);
+
   console.log(usdtBalance);
   //  read data from the USDT contract
-  const usdtAddress = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd";
+  //const usdtAddress = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd";
+  const usdtAddress = "0x55d398326f99059ff775485246999027b3197955";
 
   const usdtAbi = [
     // Some details about the token
@@ -25,6 +35,26 @@ function Metamask() {
 
   // 1. Connect Metamask with Dapp
   async function connectMetamask() {
+    if (window.ethereum.networkVersion !== "56") {
+      alert("Please connect to BSC Smart Chain");
+      window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            chainId: `0x${Number(56).toString(16)}`,
+            rpcUrls: ["https://bsc-dataseed.binance.org/"],
+            chainName: "Smart Chain",
+            nativeCurrency: {
+              name: "Binance Smart Chain",
+              symbol: "BNB",
+              decimals: 18,
+            },
+            blockExplorerUrls: ["https://bscscan.com"],
+          },
+        ],
+      });
+    }
+
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const [selectedAddress] = await window.ethereum.request({
@@ -37,7 +67,7 @@ function Metamask() {
       const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
       const myBalance = await usdtContract.balanceOf(selectedAddress);
       const amount = myBalance / 1e18;
-      setUsdtBalance(amount);
+      setUsdtBalance(amount.toFixed(2));
 
       setAccount(selectedAddress);
       //await getBalance();
@@ -47,7 +77,11 @@ function Metamask() {
         const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
         const myBalance = await usdtContract.balanceOf(newAddress);
         const amount = myBalance / 1e18;
-        setUsdtBalance(amount);
+        setUsdtBalance(amount.toFixed(2));
+      });
+
+      window.ethereum.on("chainChanged", async ([networkId]) => {
+        connectMetamask();
       });
     } catch (e) {
       console.log(e);
@@ -60,12 +94,29 @@ function Metamask() {
       const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
       const myBalance = await usdtContract.balanceOf(account);
       const amount = myBalance / 1e18;
-      setUsdtBalance(amount);
+      setUsdtBalance(amount.toFixed(2));
       return amount;
     } catch (e) {
       console.log(e);
     }
   };
+
+  const updateBalance = async (login, deposit) => {
+    try {
+      const usdtBal = parseInt(deposit);
+      const params = {
+        login,
+        balance: usdtBal,
+      };
+      const { data } = await axios.patch("/user/updateBalance", params);
+      dispatch(getMe());
+      toast.success("Ваш счет успешно пополнен!");
+      setIsDeposit(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // 4. Send Usdt to one account to another
   async function sendUsdtToAccount() {
     try {
@@ -79,9 +130,11 @@ function Metamask() {
       const usdtVal = ethers.utils.parseEther(usdtAmount.toString());
       const txId = await usdtContract
         .connect(signer)
-        .transfer("0xb4218bD2F98f83a0d55d9F10E5b95fEfA7B21Bca", usdtVal);
+        .transfer("0xA5a470c4620E1255574cAC8820c2C8931fdA24B7", usdtVal);
       await txId.wait().then(() => {
         console.log(`Done!!!!!! ${txId.hash}`);
+
+        updateBalance(user.login, usdtAmount.toString());
       });
     } catch (e) {
       console.log(e);
@@ -96,7 +149,7 @@ function Metamask() {
     const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
     const myBalance = await usdtContract.balanceOf(account);
     const amount = myBalance / 1e18;
-    setUsdtBalance(amount);
+    setUsdtBalance(amount.toFixed(2));
     console.log("update walet after change acc");
   };
 
@@ -167,7 +220,11 @@ function Metamask() {
     detectMetamask();
   }, []);
 
-  return (
+  return isDeposit ? (
+    <div className={styles.payMthod_box}>
+      <h3 className={styles.payHeader}>Ваш счет успешно пополнен</h3>
+    </div>
+  ) : (
     <div className={styles.payMthod_box}>
       <h3 className={styles.payHeader}>ПОПОЛНЕНИЕ</h3>
       <div className={styles.inputField}>
@@ -183,7 +240,7 @@ function Metamask() {
       </div>
       {metamaskInstall && (
         <button className={styles.submitPay} onClick={sendUsdtToAccount}>
-          Одобрить пополнение USDT
+          Пополнение USDT
         </button>
       )}
     </div>

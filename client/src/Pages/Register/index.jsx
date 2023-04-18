@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   registerUser,
   checkIsAuth,
@@ -90,9 +91,9 @@ function Register() {
   };
 
   const validateLogin = (e) => {
-    setLogin(e.target.value);
+    setLogin(e.target.value.toLowerCase());
     console.log("validate");
-    console.log(e.target.value);
+    console.log(login);
     if (e.target.value.length < 4) {
       setLoginValid("Insert your login! Minimum 4 symbols!");
     }
@@ -105,7 +106,8 @@ function Register() {
   };
 
   const validateEmail = (e) => {
-    setEmail(e.target.value);
+    setEmail(e.target.value.toLowerCase());
+    console.log(email);
     if (e.target.value.length === 0) {
       setEmailValid("Insert your email!");
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(e.target.value)) {
@@ -205,7 +207,9 @@ function Register() {
   ) : (
     <div className="registerWrapper">
       <div className="logo">
-        <img src="img/logo-main.svg" alt="" />
+        <Link to="/">
+          <img src="img/logo-main.svg" alt="" />
+        </Link>
       </div>
       <form onSubmit={(e) => e.preventDefault()} className={styles.formWraper}>
         <h2>Регистрация</h2>
@@ -326,9 +330,12 @@ function Register() {
           Регистрация
         </button>
         <div className={styles.langs}>
-          Сменить язык
+          <Link to="/login" className={styles.registerString}>
+            Войти в систему
+          </Link>
+          {/* Сменить язык
           <button className={`${styles.langsButton} ${styles.activeLang}`}>ru</button>
-          <button className={styles.langsButton}>en</button>
+          <button className={styles.langsButton}>en</button> */}
         </div>
       </form>
     </div>
