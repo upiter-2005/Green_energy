@@ -134,7 +134,7 @@ export const authSlice = createSlice({
       state.user = null;
       state.token = null;
       state.isLoadng = false;
-      state.status = "You logout from system";
+      state.status = "Вы вышли из системы";
       window.localStorage.removeItem("token");
     },
     changeFormState: (state, action) => {

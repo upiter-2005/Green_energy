@@ -9,7 +9,7 @@ function LastUser({ data, index }) {
         <div>{data.login}</div>
         <div>{data.upliner}</div>
         <div>{moment(data.updatedAt).format("HH:MM:SS")}</div>
-        <div>{moment(data.updatedAt).format("YY.MM.DD")}</div>
+        <div>{moment(data.updatedAt).format("DD.MM.YYYY")}</div>
       </div>
     </>
   );

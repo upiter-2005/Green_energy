@@ -10,6 +10,7 @@ import axios from "../../utils/axios";
 
 function Metamask() {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [isDeposit, setIsDeposit] = useState(false);
   const [usdtAmount, setUsdtAmount] = useState(0);
   const [account, setAccount] = useState(null);
@@ -112,6 +113,7 @@ function Metamask() {
       dispatch(getMe());
       toast.success("Ваш счет успешно пополнен!");
       setIsDeposit(true);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -124,6 +126,7 @@ function Metamask() {
         alert("insurficient balance!");
         return;
       }
+      setIsLoading(true);
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
@@ -226,6 +229,26 @@ function Metamask() {
     </div>
   ) : (
     <div className={styles.payMthod_box}>
+      {isLoading && (
+        <div className={styles.loading}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            class="spinner"
+            viewBox="0 0 32 32">
+            <path
+              class="bg"
+              d="M16 0a16 16 0 0 0 0 32 16 16 0 0 0 0-32m0 4a12 12 0 0 1 0 24 12 12 0 0 1 0-24"
+            />
+            <path
+              class="fg"
+              d="M16 0a16 16 0 0 1 16 16h-4A12 12 0 0 0 16 4V0zm0 32A16 16 0 0 1 0 16h4a12 12 0 0 0 12 12v4z"
+            />
+          </svg>
+        </div>
+      )}
+
       <h3 className={styles.payHeader}>ПОПОЛНЕНИЕ</h3>
       <div className={styles.inputField}>
         <div className={styles.inputField_info}>

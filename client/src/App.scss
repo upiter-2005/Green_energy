@@ -565,3 +565,17 @@ border-radius: 27px;
   display: block!important;
 }
 }
+
+.spinner {
+  position: absolute;
+ 
+  z-index: 25;
+  width: 100px; height: 100px; }
+.spinner .fg { fill: rgb(88, 249, 118)   }
+.spinner .bg { fill: rgba(23, 212, 254, 0.33) }
+.spinner { animation: spin .8s infinite linear }
+
+@keyframes spin {
+  0%   { transform: rotate(0deg)   }
+  100% { transform: rotate(360deg) }
+}

@@ -18,6 +18,8 @@ const {
   transferBalance,
   updateBalanceAdmin,
   balanceMinus,
+  pocketPlus,
+  tokenPlus,
   balanceReinvestZero,
 } = require("../controllers/user.js");
 const checkAuth = require("../utils/checkAuth.js");
@@ -25,6 +27,10 @@ const checkAuth = require("../utils/checkAuth.js");
 const router = Router();
 
 router.patch("/balanceMinus", checkAuth, balanceMinus);
+
+router.patch("/tokenPlus", checkAuth, tokenPlus);
+
+router.patch("/pocketPlus", checkAuth, pocketPlus);
 
 router.patch("/balanceReinvestZero", checkAuth, balanceReinvestZero);
 

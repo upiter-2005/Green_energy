@@ -288,6 +288,26 @@ const balanceReinvestZero = async (req, res) => {
   }
 };
 
+const pocketPlus = async (req, res) => {
+  try {
+    const { idUser } = req.body;
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        _id: idUser,
+      },
+      {
+        $inc: {
+          qtyPocket: 1,
+        },
+      },
+      { returnDocument: "after" },
+    );
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (e) {
+    res.json({ message: e });
+  }
+};
 const balanceMinus = async (req, res) => {
   try {
     const { idUser, minusBalance } = req.body;
@@ -298,6 +318,26 @@ const balanceMinus = async (req, res) => {
       {
         $inc: {
           balance: -minusBalance,
+        },
+      },
+      { returnDocument: "after" },
+    );
+    console.log(updatedUser);
+    res.json({ updatedUser });
+  } catch (e) {
+    res.json({ message: e });
+  }
+};
+const tokenPlus = async (req, res) => {
+  try {
+    const { idUser } = req.body;
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        _id: idUser,
+      },
+      {
+        $inc: {
+          tokens: 0.1,
         },
       },
       { returnDocument: "after" },
@@ -462,5 +502,7 @@ module.exports = {
   activeOn,
   updateBalanceAdmin,
   balanceMinus,
+  tokenPlus,
+  pocketPlus,
   balanceReinvestZero,
 };

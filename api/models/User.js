@@ -29,6 +29,7 @@ const userSchema = new mongoose.Schema(
     instagram: { type: String, default: "" },
     twitter: { type: String, default: "" },
     is_active: { type: Boolean, default: false },
+    qtyPocket: { type: Number, default: 0 },
   },
   { timestamps: true },
 );

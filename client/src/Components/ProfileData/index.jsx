@@ -73,7 +73,7 @@ function ProfileData() {
           <input type="text" value={surname} onChange={(e) => setSurname(e.target.value)} />
         </div>
         <div className="accountInput lockInput">
-          <span>Логин</span>
+          <span>Email</span>
           <input type="text" value={user?.email} disabled />
           <img src="img/lock.svg" alt="" />
         </div>

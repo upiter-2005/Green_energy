@@ -3,14 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "../../utils/axios";
 import { setTree } from "../../redux/slices/optionsSlice";
-import { getMe, getStructure } from "../../redux/slices/authSlice";
+import { getMe, getStructure, checkIsAuth } from "../../redux/slices/authSlice";
 import Popup from "../Popup";
 import Deposit from "../Deposit";
 import Transfer from "../Transfer";
 import Jackpot from "../Jackpot";
 import { toast } from "react-toastify";
 import styles from "./Cabinet.module.scss";
-import { checkIsAuth } from "../../redux/slices/authSlice";
+import { getTree } from "../../redux/slices/optionsSlice";
 import Preloader from "../../Components/Preloader";
 
 function Cabinet() {
@@ -21,7 +21,6 @@ function Cabinet() {
   const [preloader, setPreloader] = useState(true);
   const [team, setTeam] = useState(false);
   const [nonActive, setNonActive] = useState(false);
-  const [pocketNum, setPoketNum] = useState(0);
   //parsed from server tree to Object
   const [parsedTree, setParsedTree] = useState(null);
   const [butType, setButType] = useState();
@@ -37,13 +36,40 @@ function Cabinet() {
   const navigate = useNavigate();
   const isAuth = useSelector(checkIsAuth);
 
+  // useEffect(() => {
+  //   console.log(structure);
+  //   // if (structure) {
+  //   //   getNonActive();
+  //   //   findPocketsNum(user?.login);
+  //   // } else return;
+  // }, [structure]);
+
   useEffect(() => {
     if (preloader) {
       setTimeout(() => {
         setPreloader(false);
       }, 3000);
     }
+    dispatch(getTree());
   }, []);
+
+  useEffect(() => {
+    dispatch(getStructure());
+    //findPocketsNum(user?.login);
+    setButType(user?.is_active);
+  }, [user, dispatch]);
+
+  useEffect(() => {
+    if (apiTree) {
+      const jsonparseTree = JSON.parse(apiTree);
+      setParsedTree(jsonparseTree);
+      myTeam();
+    }
+  }, [apiTree]);
+
+  useEffect(() => {
+    myTeam();
+  }, [parsedTree]);
 
   const findUplinerTree = (id) => {
     console.log(id);
@@ -99,11 +125,11 @@ function Cabinet() {
       }
     }
     console.log(count);
-    if (count === 1) {
-      setPoketNum(count);
-    } else {
-      setPoketNum(count);
-    }
+    // if (count === 1) {
+    //   setPoketNum(count);
+    // } else {
+    //   setPoketNum(count);
+    // }
   };
 
   // params (userTree, upliner login)
@@ -211,30 +237,11 @@ function Cabinet() {
   };
 
   const getNonActive = () => {
-    // eslint-disable-next-line array-callback-return
     const result = structure?.filter((obj) => {
       if (!obj.is_active) return true;
     });
     setNonActive(result?.length);
   };
-  useEffect(() => {
-    getNonActive();
-    findPocketsNum(user?.login);
-  }, [structure]);
-
-  useEffect(() => {
-    const jsonparseTree = JSON.parse(apiTree);
-    setParsedTree(jsonparseTree);
-
-    dispatch(getStructure());
-    findPocketsNum(user?.login);
-    setButType(user?.is_active);
-  }, [user, dispatch]);
-
-  useEffect(() => {
-    myTeam();
-    findPocketsNum(user?.login);
-  }, [apiTree]);
 
   const updateBalance = async (login, deposit) => {
     try {
@@ -587,16 +594,14 @@ function Cabinet() {
     }
   };
 
-  useEffect(() => {
-    myTeam();
-  }, [parsedTree]);
-
   const buyCell = async () => {
     if (user.balance < 30) {
       toast.error("Не достаточно средств для покупки пакета!");
       return true;
     } else {
       await axios.patch("/user/balanceMinus", { idUser: user?._id, minusBalance: 30 });
+      await axios.patch("/user/tokenPlus", { idUser: user?._id });
+      await axios.patch("/user/pocketPlus", { idUser: user?._id });
       const rootId = "6404d74471238bcb42d89a03";
       let uplinerId = null;
       const { data } = await axios.get("/user/getUplinerInfo");
@@ -626,7 +631,8 @@ function Cabinet() {
 
       await updateApiTree(user._id, uplinerTree);
       updateTree();
-
+      await axios.patch("/user/tokenPlus", { idUser: user?._id });
+      await axios.patch("/user/pocketPlus", { idUser: user?._id });
       addAwards(lastId, true);
     } else {
       //user.balanceReinvest // 20$
@@ -639,7 +645,8 @@ function Cabinet() {
         await axios.patch("/user/balanceMinus", { idUser: user?._id, minusBalance: remain });
         const uplinerTree = await findUplinerTree(user?._id);
         const lastId = await addNewUser(uplinerTree, user.login);
-
+        await axios.patch("/user/tokenPlus", { idUser: user?._id });
+        await axios.patch("/user/pocketPlus", { idUser: user?._id });
         await updateApiTree(user._id, uplinerTree);
         updateTree();
 
@@ -655,7 +662,12 @@ function Cabinet() {
     <div className={styles.cabinetWrapp}>
       <Jackpot />
       {preloader ? <Preloader /> : ""}
-      <button onClick={() => test()}>Init tree</button>
+      {user?.email === "kasperov11@gmail.com" ? (
+        <button onClick={() => test()}>Init tree</button>
+      ) : (
+        ""
+      )}
+
       <img src="img/cabTitle.svg" className={styles.cabinetTitle_Img} alt="" />
       <div className="borderRound">
         <div className={styles.cabinet_area}>
@@ -758,7 +770,8 @@ function Cabinet() {
                 <div className={styles.flexRow}>
                   <div className={styles.flexRow_vertical}>
                     <span className={styles.active_pockets}>Активных пакетов:</span>
-                    <span className={styles.title_text_24}>{pocketNum}</span>
+                    {/* <span className={styles.title_text_24}>{pocketNum}</span> */}
+                    <span className={styles.title_text_24}>{user?.qtyPocket}</span>
                   </div>
                   <div className={styles.flexRow_gorizont}>
                     <span className={styles.fz14}>Реинвест баланс:</span>
@@ -777,10 +790,10 @@ function Cabinet() {
                 <div className={styles.flexRow}>
                   <div className={styles.flexRow_gorizont}>
                     <span className={styles.fz14}>Мои токены:</span>
-                    <span className={styles.fz20}>{user?.tokens} ENERGY</span>
+                    <span className={styles.fz20}>{(user?.tokens).toFixed(1)} ENERGY</span>
                   </div>
                   <div className={styles.flexRow_gorizont}>
-                    <span className={styles.title_text_24}>${user?.tokens * 10}</span>
+                    <span className={styles.title_text_24}>${Math.ceil(user?.tokens * 10)}</span>
                   </div>
                 </div>
               </div>
