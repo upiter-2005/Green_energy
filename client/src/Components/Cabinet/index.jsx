@@ -752,14 +752,16 @@ function Cabinet() {
                 </div>
                 <button>
                   {butType ? (
-                    ""
+                    <img
+                      src="img/pensiya-buy.svg"
+                      alt=""
+                      className={styles.buy_pocket}
+                      //onClick={buyPensia}
+                      onClick={() => {
+                        toast.error("Покупка пакета будет активна 1-го мая");
+                      }}
+                    />
                   ) : (
-                    // <img
-                    //   src="img/pensiya-buy.svg"
-                    //   alt=""
-                    //   className={styles.buy_pocket}
-                    //   onClick={buyPensia}
-                    // />
                     <img
                       src="img/buy_packet.svg"
                       alt=""

@@ -17,7 +17,7 @@ function Advcash() {
       <h3 className={styles.payHeader}>Пополнение через платежную систему ADVCASH</h3>
       <div className={styles.pay_text}>
         Для пополнения баланса на своём счёте в Green Energy необходимо выполнить перевод с вашего
-        счета AdvCash на счет P1039128630 , указав нужную сумму увеличенную на 2% эквивалентных
+        счета AdvCash на счет U 7460 0985 1146, указав нужную сумму увеличенную на 2% эквивалентных
         денежных средств в USD.
       </div>
       <div className={styles.inputField}>

@@ -52,7 +52,7 @@ function Structure() {
           <button
             className={!lenear ? " switcherBtn activeSwitcher" : "switcherBtn"}
             onClick={() => setLenear(false)}>
-            Табличный
+            Таблица ЛП
           </button>
           <button
             className={lenear ? " switcherBtn activeSwitcher" : "switcherBtn"}
