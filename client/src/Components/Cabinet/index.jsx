@@ -738,7 +738,11 @@ function Cabinet() {
                     <button className={styles.buyUsdt} onClick={() => setDepositOpen(true)}>
                       <img src="img/buy.svg" alt="" />
                     </button>
-                    <button className={styles.withdraw}>
+                    <button
+                      className={styles.withdraw}
+                      onClick={() => {
+                        toast.error("Вывод будет доступен 22-го апреля ");
+                      }}>
                       <img src="img/withdraw.svg" alt="" />
                     </button>
                   </div>
