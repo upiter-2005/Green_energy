@@ -48,7 +48,7 @@ function Cabinet() {
     if (preloader) {
       setTimeout(() => {
         setPreloader(false);
-      }, 3000);
+      }, 2000);
     }
     dispatch(getTree());
   }, []);
@@ -662,11 +662,11 @@ function Cabinet() {
     <div className={styles.cabinetWrapp}>
       <Jackpot />
       {preloader ? <Preloader /> : ""}
-      {user?.email === "kasperov11@gmail.com" ? (
+      {/* {user?.email === "kasperov11@gmail.com" ? (
         <button onClick={() => test()}>Init tree</button>
       ) : (
         ""
-      )}
+      )} */}
 
       <img src="img/cabTitle.svg" className={styles.cabinetTitle_Img} alt="" />
       <div className="borderRound">
@@ -752,13 +752,14 @@ function Cabinet() {
                 </div>
                 <button>
                   {butType ? (
-                    <img
-                      src="img/pensiya-buy.svg"
-                      alt=""
-                      className={styles.buy_pocket}
-                      onClick={buyPensia}
-                    />
+                    ""
                   ) : (
+                    // <img
+                    //   src="img/pensiya-buy.svg"
+                    //   alt=""
+                    //   className={styles.buy_pocket}
+                    //   onClick={buyPensia}
+                    // />
                     <img
                       src="img/buy_packet.svg"
                       alt=""
@@ -928,7 +929,7 @@ function Cabinet() {
               <img src="img/pensiafon-ico.png" alt="" className={styles.pensiafon_ico} />
               <div className={styles.userPensia_info}>
                 <h3>Мои пенсионные накопления:</h3>
-                <div className={styles.userPensia_Balance}>$5</div>
+                <div className={styles.userPensia_Balance}>${user?.staking}</div>
                 <button onClick={() => toast.success("В разработке")}>
                   Посмотреть мои накопления
                 </button>

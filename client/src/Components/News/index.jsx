@@ -11,7 +11,7 @@ function News() {
     if (preloader) {
       setTimeout(() => {
         setPreloader(false);
-      }, 3000);
+      }, 2000);
     }
   }, []);
   return (
