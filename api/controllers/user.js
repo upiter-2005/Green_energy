@@ -42,14 +42,14 @@ const transferBalance = async (req, res) => {
 
 const updateBalanceAdmin = async (req, res) => {
   try {
-    const { userId, balance } = req.body;
+    const { userId, balance, staking } = req.body;
     console.log(userId, balance);
     const updatedUser = await User.findOneAndUpdate(
       {
         _id: userId,
       },
       {
-        $set: { balance },
+        $set: { balance, staking },
       },
       { returnDocument: "after" },
     );
@@ -230,7 +230,7 @@ const nameUpdate = async (req, res) => {
         _id: user,
       },
       {
-        payeer,
+        name,
         surname,
         payeer,
         advcash,

@@ -20,7 +20,7 @@ function FaqCabinet() {
         <iframe
           width="100%"
           height="100%"
-          src="https://www.youtube.com/embed/nRgiQYILfOo"
+          src="https://www.youtube.com/embed/AdrmQ8J01qM"
           title="кабинет"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

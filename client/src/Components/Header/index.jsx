@@ -16,12 +16,10 @@ function Header() {
   const user = useSelector((state) => state.auth.user);
 
   const copyLink = () => {
-    navigator.clipboard
-      .writeText(`https://greenenergy.vip/register?upliner=${user?.login}`)
-      .then(() => {
-        //setCopiedShow(true);
-        toast.success("Реферальная ссылка скопирована");
-      });
+    navigator.clipboard.writeText(`https://greenenergy.vip/?upliner=${user?.login}`).then(() => {
+      //setCopiedShow(true);
+      toast.success("Реферальная ссылка скопирована");
+    });
   };
 
   return (

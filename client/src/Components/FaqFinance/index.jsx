@@ -6,7 +6,12 @@ function FaqFinance() {
       <h3 className="accTitle">Финансы</h3>
       <h4>ВНИМАНИЕ!!!</h4>
       <p>Прежде чем делать перевод, согласуйте с службой поддержки!</p>
-      <p>Телеграмм канал @domblaga </p>
+      <p>
+        Телеграмм канал{" "}
+        <a href="https://t.me/domblaga" target="blank">
+          @domblaga
+        </a>
+      </p>
       <p>E-mail: itgrenclub@gmail.com</p>
       <h4>Инструкция по вводу денег на интернет площадку Green Energy</h4>
       <p>
@@ -34,27 +39,6 @@ function FaqFinance() {
           allowfullscreen></iframe>
       </div>
 
-      <h4>2️. Установка сети BSC в MetaMask: </h4>
-      <p>
-        {" "}
-        <a
-          href="https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain"
-          target="blank">
-          Перейти к руководству
-        </a>
-      </p>
-
-      <h4>3️ Как пользоваться PancakeSwap:</h4>
-      <div className="video">
-        <iframe
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed/IER97_LypW8"
-          title="PANCAKESWAP - ВИДЕО ИСПОЛЬЗУЮТ МОШЕННИКИ ДЛЯ СКАМА."
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
-      </div>
       <h4>
         Регистрация на Meta Mask{" "}
         <a href="https://metamask.io/" target="blank">
@@ -71,8 +55,49 @@ function FaqFinance() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen></iframe>
       </div>
+
+      <h4>2️. Установка сети BSC в MetaMask: </h4>
+      <p>
+        {" "}
+        <a
+          href="https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain"
+          target="blank">
+          Перейти к руководству
+        </a>
+      </p>
+
+      <h4>3️. Как пользоваться PancakeSwap:</h4>
+      <div className="video">
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/xxtzmC-e7iM"
+          title="Pancake swap как пользоваться чтобы купить токены?"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
       <br />
       <br />
+
+      <h4>4. Биржа для покупки BNB и USDT:</h4>
+      <p>Установи к себе приложение на телефон или используй в веб-версию на компьютере.</p>
+      <a href="https://www.bybit.com/promo/events/ReferralDoubleDelight/?ref=669XOL" target="blank">
+        Ссылка на регистрацию
+      </a>
+
+      <h4>Как торговать на Байбит</h4>
+      <div className="video">
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/qRmwgEVYb5g"
+          title="КАК ТОРГОВАТЬ НА BYBiT (обзор крипто биржи Байбит)"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+
       <h4>
         {" "}
         Для всех кто не имеет своего кошелька на Paeer, рекомендуем пройти регистрацию посмотрев

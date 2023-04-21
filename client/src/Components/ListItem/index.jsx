@@ -5,12 +5,14 @@ import { toast } from "react-toastify";
 
 function ListItem({ data, num, updateList }) {
   const [balanceVal, setBalanceVal] = useState(0);
+  const [stakingVal, setStakingVal] = useState(0);
 
   const saveData = async () => {
     console.log("saveData");
     const res = await axios.patch("/user/updateBalanceAdmin", {
       userId: data._id,
       balance: balanceVal,
+      staking: stakingVal,
     });
     if (res) {
       toast.success(`Баланс пользователя ${data.login} обновлен успешно!`);
@@ -21,6 +23,7 @@ function ListItem({ data, num, updateList }) {
 
   useEffect(() => {
     setBalanceVal(data.balance);
+    setStakingVal(data.staking);
   }, []);
   return (
     <div>
@@ -36,6 +39,12 @@ function ListItem({ data, num, updateList }) {
         type="number"
         value={balanceVal}
         onChange={(e) => setBalanceVal(e.target.value)}
+      />
+      <input
+        className={styles.balanceInput}
+        type="number"
+        value={stakingVal}
+        onChange={(e) => setStakingVal(e.target.value)}
       />
       <button className={styles.saveBtn} onClick={saveData}>
         save

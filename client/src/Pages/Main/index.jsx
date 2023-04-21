@@ -9,6 +9,7 @@ import Preloader from "../../Components/Preloader";
 import HeaderPage from "../../Components/HeaderPage";
 import LastUser from "../../Components/LastUser";
 import Slider from "react-slick";
+import qs from "qs";
 import { getAllUsers } from "../../redux/slices/authSlice";
 
 function Main() {
@@ -45,6 +46,9 @@ function Main() {
 
   useEffect(() => {
     dispatch(getAllUsers());
+    const query = qs.parse(window.location.search.substring(1));
+
+    window.localStorage.setItem("upliner", query.upliner);
   }, []);
 
   return (

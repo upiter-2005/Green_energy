@@ -56,6 +56,7 @@ function List() {
             <span>Phone</span>
             <span>Upliner / Sponsor</span>
             <span>Balance USD</span>
+            <span>Staking</span>
             <span>SaveUser</span>
           </div>
           <br />
