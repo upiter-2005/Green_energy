@@ -36,6 +36,9 @@
             top: 670px;
             background-repeat: no-repeat;
           }
+          .banerJackpot{
+            margin: 40px 0;
+          }
           h1{
             font-family: 'Red Hat Display', sans-serif;
             font-size: 96px;
@@ -401,7 +404,11 @@ text-fill-color: transparent;
         padding-bottom: 12px!important;
         img{
             width: 90%;
+            
         }
+        .banerJackpot{
+            margin: 20px 0 30px!important;
+          }
         &::after{
             opacity: 0.2;
             width: 300px!important;   
@@ -447,7 +454,7 @@ text-fill-color: transparent;
     }
     h2{font-size: 36px!important; line-height: 42px!important;}
     .lastUsersTable{
-       
+        padding-top: 37px!important;
         &_item{
          
             div{
@@ -475,6 +482,11 @@ text-fill-color: transparent;
         p{
             margin: 10px 0!important;
         }
+        .lastUsersTableTitles{
+            div{
+                font-size: 18px!important;
+            }
+        }
     }
     .sliderWrapp{
          &::before{
@@ -499,6 +511,7 @@ text-fill-color: transparent;
         position: relative;
         z-index: 15;
     }
+   
     .channels{
         padding-bottom: 40px;
         h2{

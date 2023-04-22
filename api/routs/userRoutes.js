@@ -54,7 +54,7 @@ router.get("/getUplinerInfo", checkAuth, getUplinerInfo);
 router.get("/getStrucuture", checkAuth, getStructureUsers);
 
 // /api/user/getStrucuture
-router.get("/getAllUsers", checkAuth, getAllUsers);
+router.get("/getAllUsers", getAllUsers);
 
 // /api/user/getUserByLogin
 router.post("/getUserByLogin", getUserByLogin);

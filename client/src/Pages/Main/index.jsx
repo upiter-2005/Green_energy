@@ -58,7 +58,7 @@ function Main() {
       <div className={styles.topPart}>
         <div className="container_main center">
           <div>
-            <img src="img/jackpot-main.svg" alt="" />
+            <img src="img/jackpot-main.svg" className={styles.banerJackpot} alt="" />
           </div>
           <div className={styles.centerBlock}>
             {" "}

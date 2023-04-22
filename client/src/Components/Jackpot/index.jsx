@@ -9,12 +9,12 @@ function Jackpot() {
       <div className={styles.jackpotWrapp_value}>
         <span>$1000</span>
       </div>
-      <div className={styles.jackpotWrapp_text}>Розыгрыш: 01.05.2023</div>
+      <div className={styles.jackpotWrapp_text}>Розыгрыш: 01.06.2023</div>
       <div className={styles.jackpotWrapp_vin}>
         Последний победитель:{" "}
-        <button>
+        {/* <button>
           <img src="img/ask.svg" alt="" />
-        </button>
+        </button> */}
       </div>
       <div className={styles.jackpotWrapp_user}>User 001</div>
     </div>

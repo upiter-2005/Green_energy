@@ -45,16 +45,6 @@ function FaqFinance() {
           https://metamask.io/
         </a>{" "}
       </h4>
-      <div className="video">
-        <iframe
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed/IER97_LypW8"
-          title="PANCAKESWAP - ВИДЕО ИСПОЛЬЗУЮТ МОШЕННИКИ ДЛЯ СКАМА."
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
-      </div>
 
       <h4>2️. Установка сети BSC в MetaMask: </h4>
       <p>

@@ -8,6 +8,7 @@ import FaqSave from "../FaqSave";
 import FaqMultiple from "../FaqMultiple";
 import FaqReklama from "../FaqReklama";
 import Preloader from "../../Components/Preloader";
+import FaqDogovor from "../../Components/FaqDogovor";
 
 import styles from "./Education.module.scss";
 
@@ -59,6 +60,11 @@ function Education() {
             onClick={() => setActiveTab("reklama")}>
             Рекламная
           </span>
+          <span
+            className={activeTab === "dogovor" ? styles.activeTab : undefined}
+            onClick={() => setActiveTab("dogovor")}>
+            Договор
+          </span>
         </div>
 
         <div className={styles.cabinetWrap_area}>
@@ -68,6 +74,7 @@ function Education() {
           {activeTab === "save" && <FaqSave />}
           {activeTab === "multiple" && <FaqMultiple />}
           {activeTab === "reklama" && <FaqReklama />}
+          {activeTab === "dogovor" && <FaqDogovor />}
         </div>
       </div>
     </div>

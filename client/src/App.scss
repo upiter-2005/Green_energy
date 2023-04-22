@@ -458,7 +458,25 @@ border-radius: 27px;
 
   }
 }
-
+.downloadLink{
+  font-weight: 800;
+  margin-left: 10px;
+  color:#0F5A51;
+}
+.dogovorBlock{
+  p{
+    margin-bottom: 30px;
+    text-align: left!important;
+    font-size: 14px;
+    span{
+      color: red;
+      font-weight: 700;
+    }
+    .blue{
+      color:rgb(1, 103, 255);
+    }
+  }
+}
 // .arrow {
 //   background-color: #fff;
 //   position: absolute;

@@ -79,6 +79,7 @@ function Register() {
       return true;
     }
     try {
+      console.log(upliner, login, email, phone, password);
       dispatch(registerUser({ upliner, login, email, phone, password }));
       setEmail("");
       setPassword("");
