@@ -6,6 +6,7 @@ import { setTree } from "../../redux/slices/optionsSlice";
 import { getMe, getStructure, checkIsAuth } from "../../redux/slices/authSlice";
 import Popup from "../Popup";
 import Deposit from "../Deposit";
+import Withdraw from "../Withdraw";
 import Transfer from "../Transfer";
 import Jackpot from "../Jackpot";
 import { toast } from "react-toastify";
@@ -17,6 +18,7 @@ function Cabinet() {
   const dispatch = useDispatch();
   const [butPopup, setButPopup] = useState(false);
   const [depositOpen, setDepositOpen] = useState(false);
+  const [withdrawOpen, setWithdrawOpen] = useState(false);
   const [transferOpen, setTransferOpen] = useState(false);
   const [preloader, setPreloader] = useState(true);
   const [team, setTeam] = useState(false);
@@ -741,7 +743,7 @@ function Cabinet() {
                     <button
                       className={styles.withdraw}
                       onClick={() => {
-                        toast.error("Вывод будет доступен 22-го апреля ");
+                        setWithdrawOpen(true);
                       }}>
                       <img src="img/withdraw.svg" alt="" />
                     </button>
@@ -959,6 +961,7 @@ function Cabinet() {
         <h2>telegram</h2>
       </Popup>
       <Deposit trigger={depositOpen} setTriggerBut={setDepositOpen} />
+      <Withdraw trigger={withdrawOpen} setTriggerBut={setWithdrawOpen} />
 
       <Transfer trigger={transferOpen} setTriggerBut={setTransferOpen} />
     </div>
