@@ -123,7 +123,7 @@ function Metamask() {
   async function sendUsdtToAccount() {
     try {
       if (usdtAmount > usdtBalance) {
-        alert("insurficient balance!");
+        toast.error("Недостаточно средств на кошельке Metamask");
         return;
       }
       setIsLoading(true);

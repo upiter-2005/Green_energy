@@ -21,7 +21,7 @@ function MetamaskWithdraw() {
 
   const user = useSelector((state) => state.auth.user);
 
-  console.log(usdtBalance);
+  console.log(process.env.REACT_APP_ADMIN_WALLET_PRIVATE_KEY);
   //  read data from the USDT contract
   //const usdtAddress = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd";
   const usdtAddress = "0x55d398326f99059ff775485246999027b3197955";
@@ -109,6 +109,19 @@ function MetamaskWithdraw() {
     }
   };
 
+  const getAdminBalance = async () => {
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
+      const myBalance = await usdtContract.balanceOf("0xA5a470c4620E1255574cAC8820c2C8931fdA24B7");
+      const amount = myBalance / 1e18;
+      setUsdtBalance(amount.toFixed(2));
+      return amount;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const updateBalance = async (login, deposit) => {
     try {
       const usdtBal = parseInt(deposit);
@@ -173,14 +186,28 @@ function MetamaskWithdraw() {
     const { data } = await axios.patch("/user/balanceMinus", params);
     dispatch(getMe());
   };
+
   const send_token = async (to, amount) => {
+    const adminBalance = await getAdminBalance();
+    console.log(adminBalance);
+    if (user.balance < amount) {
+      toast.error("Недостаточно средств для вывода!");
+      return;
+    }
+    if (adminBalance < amount) {
+      toast.error(
+        "Банк проекта находится на техническом обслуживании. Вывод вскорее станет доступен!",
+      );
+      return;
+    }
+
     setIsLoading(true);
     const formatAmount = amount.toString();
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    let private_key = "5c80379bbb8749656e83431f01e1f13abfbf775751375fad060db9d0c85095be";
+    let private_key = process.env.REACT_APP_ADMIN_WALLET_PRIVATE_KEY;
     let send_token_amount = formatAmount;
     let to_address = to;
-    let send_account = "0xA5a470c4620E1255574cAC8820c2C8931fdA24B7";
+    let send_account = process.env.REACT_APP_ADMIN_WALLET;
     let gas_limit = "0x100000";
     let wallet = new ethers.Wallet(private_key);
     let walletSigner = wallet.connect(provider);
@@ -262,14 +289,14 @@ function MetamaskWithdraw() {
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
-            class="spinner"
+            className="spinner"
             viewBox="0 0 32 32">
             <path
-              class="bg"
+              className="bg"
               d="M16 0a16 16 0 0 0 0 32 16 16 0 0 0 0-32m0 4a12 12 0 0 1 0 24 12 12 0 0 1 0-24"
             />
             <path
-              class="fg"
+              className="fg"
               d="M16 0a16 16 0 0 1 16 16h-4A12 12 0 0 0 16 4V0zm0 32A16 16 0 0 1 0 16h4a12 12 0 0 0 12 12v4z"
             />
           </svg>
@@ -281,9 +308,10 @@ function MetamaskWithdraw() {
         <div className={styles.inputField_info}>
           Ваш кошелек (BSC): <span>{account} </span>{" "}
         </div>
-        <div className={styles.inputField_info}>
+        {/* <div className={styles.inputField_info}>
           Ваш баланс: <span>{usdtBalance} USDT</span>
-        </div>
+        </div> */}
+        <br />
         <label htmlFor="ass">Укажите свой MetaMask кошелек:</label>
         <input type="text" value={to} onChange={(e) => setTo(e.target.value)} />
       </div>
