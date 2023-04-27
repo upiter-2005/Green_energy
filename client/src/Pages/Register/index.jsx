@@ -56,8 +56,8 @@ function Register() {
     if (window.localStorage.getItem("upliner")) {
       setUpliner(window.localStorage.getItem("upliner"));
     } else {
-      window.localStorage.setItem("upliner", query.upliner);
-      setUpliner(query.upliner);
+      window.localStorage.setItem("upliner", "GreenEnergy");
+      setUpliner("GreenEnergy");
     }
 
     // if (query.upliner) {

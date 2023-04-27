@@ -48,7 +48,11 @@ function Main() {
     dispatch(getAllUsers());
     const query = qs.parse(window.location.search.substring(1));
 
-    window.localStorage.setItem("upliner", query.upliner);
+    if (query.upliner) {
+      window.localStorage.setItem("upliner", query.upliner);
+    } else {
+      window.localStorage.setItem("upliner", "GreenEnergy");
+    }
   }, []);
 
   return (
