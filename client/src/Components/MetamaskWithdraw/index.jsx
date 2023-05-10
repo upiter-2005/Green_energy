@@ -21,9 +21,8 @@ function MetamaskWithdraw() {
 
   const user = useSelector((state) => state.auth.user);
 
-  console.log(process.env.REACT_APP_ADMIN_WALLET_PRIVATE_KEY);
-  //  read data from the USDT contract
-  //const usdtAddress = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd";
+  // read data from the USDT contract
+  // const usdtAddress = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd";
   const usdtAddress = "0x55d398326f99059ff775485246999027b3197955";
 
   const usdtAbi = [
@@ -70,7 +69,6 @@ function MetamaskWithdraw() {
 
       const signer = provider.getSigner();
 
-      console.log("Account address s:", await signer.getAddress());
       const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
       const myBalance = await usdtContract.balanceOf(selectedAddress);
       const amount = myBalance / 1e18;
@@ -113,7 +111,7 @@ function MetamaskWithdraw() {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
-      const myBalance = await usdtContract.balanceOf("0xA5a470c4620E1255574cAC8820c2C8931fdA24B7");
+      const myBalance = await usdtContract.balanceOf(process.env.REACT_APP_ADMIN_WALLET);
       const amount = myBalance / 1e18;
       setUsdtBalance(amount.toFixed(2));
       return amount;
@@ -140,45 +138,42 @@ function MetamaskWithdraw() {
   };
 
   // 4. Send Usdt to one account to another
-  async function sendUsdtToAccount() {
-    try {
-      if (usdtAmount > usdtBalance) {
-        alert("insurficient balance!");
-        return;
-      }
-      setIsLoading(true);
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
-      const usdtVal = ethers.utils.parseEther(usdtAmount.toString());
-      const txId = await usdtContract
-        .connect(signer)
-        .transfer("0xA5a470c4620E1255574cAC8820c2C8931fdA24B7", usdtVal);
-      await txId.wait().then(() => {
-        console.log(`Done!!!!!! ${txId.hash}`);
+  // async function sendUsdtToAccount() {
+  //   try {
+  //     if (usdtAmount > usdtBalance) {
+  //       alert("insurficient balance!");
+  //       return;
+  //     }
+  //     setIsLoading(true);
+  //     const provider = new ethers.providers.Web3Provider(window.ethereum);
+  //     const signer = provider.getSigner();
+  //     const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
+  //     const usdtVal = ethers.utils.parseEther(usdtAmount.toString());
+  //     const txId = await usdtContract
+  //       .connect(signer)
+  //       .transfer("0xA5a470c4620E1255574cAC8820c2C8931fdA24B7", usdtVal);
+  //     await txId.wait().then(() => {
+  //       console.log(`Done!!!!!! ${txId.hash}`);
 
-        updateBalance(user.login, usdtAmount.toString());
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  //       updateBalance(user.login, usdtAmount.toString());
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
 
   const updateMetamask = async (newWallet) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = await provider.getSigner();
     setAccount(newWallet);
     setTo(newWallet);
-    console.log("Account address change to :", await signer.getAddress());
     const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, provider);
     const myBalance = await usdtContract.balanceOf(account);
     const amount = myBalance / 1e18;
     setUsdtBalance(amount.toFixed(2));
-    console.log("update walet after change acc");
   };
 
   const updateBalanceDB = async () => {
-    console.log("updateBalanceDB");
     const params = {
       idUser: user?._id,
       minusBalance: parseInt(usdtAmount),
@@ -230,7 +225,6 @@ function MetamaskWithdraw() {
         contract
           .transfer(to_address, numberOfTokens)
           .then((transferResult) => {
-            console.dir(transferResult);
             setIsDeposit(true);
             setIsLoading(false);
             toast.success("Вывод прошел успешно!");
@@ -251,7 +245,6 @@ function MetamaskWithdraw() {
         console.dir(tx);
         try {
           walletSigner.sendTransaction(tx).then((transaction) => {
-            console.dir(transaction);
             alert("Send finished!");
             setIsDeposit(true);
           });
@@ -266,7 +259,6 @@ function MetamaskWithdraw() {
     const provider = await detectEthereumProvider();
     if (provider) {
       setMetamaskInstall(true);
-      console.log("install");
     } else {
       setMetamaskInstall(false);
       alert("Install metamask!");
