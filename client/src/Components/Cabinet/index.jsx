@@ -764,7 +764,7 @@ function Cabinet() {
                       className={styles.buy_pocket}
                       //onClick={buyPensia}
                       onClick={() => {
-                        toast.error("Покупка пакета будет активна 1-го мая");
+                        toast.error("Покупка пакета будет активна 1-го июля");
                       }}
                     />
                   ) : (

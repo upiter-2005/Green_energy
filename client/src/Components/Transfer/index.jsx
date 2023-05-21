@@ -36,7 +36,7 @@ function Transfer({ trigger, setTriggerBut }) {
 
   const checkUpliner = async (e) => {
     setLogin(e.target.value);
-    if (e.target.value.length > 4) {
+    if (e.target.value.length > 3) {
       setUplinerValid(null);
 
       const { data } = await axios.post("auth/checkUpliner", {

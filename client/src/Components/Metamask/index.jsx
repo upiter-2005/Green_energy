@@ -133,7 +133,7 @@ function Metamask() {
       const usdtVal = ethers.utils.parseEther(usdtAmount.toString());
       const txId = await usdtContract
         .connect(signer)
-        .transfer("0xA5a470c4620E1255574cAC8820c2C8931fdA24B7", usdtVal);
+        .transfer(process.env.REACT_APP_ADMIN_WALLET, usdtVal);
       await txId.wait().then(() => {
         console.log(`Done!!!!!! ${txId.hash}`);
 

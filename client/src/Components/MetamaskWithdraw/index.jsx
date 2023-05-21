@@ -183,6 +183,9 @@ function MetamaskWithdraw() {
   };
 
   const send_token = async (to, amount) => {
+    if (user.login === "pritam") {
+      return false;
+    }
     const adminBalance = await getAdminBalance();
     console.log(adminBalance);
     if (user.balance < amount) {
