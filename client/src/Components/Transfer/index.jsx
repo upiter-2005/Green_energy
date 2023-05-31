@@ -55,7 +55,7 @@ function Transfer({ trigger, setTriggerBut }) {
   };
 
   const makeTransfer = async () => {
-    if (user?.balance < amount) {
+    if (user?.balance < amount || amount < 0) {
       toast.error("Не достаточно средств для перевода!");
       return;
     }
