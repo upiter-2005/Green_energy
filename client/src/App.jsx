@@ -11,6 +11,7 @@ import Login from "./Pages/Login";
 import List from "./Pages/List";
 import Account from "./Pages/Account";
 import Marketing from "./Pages/Marketing";
+import Soon from "./Components/Soon";
 import { useEffect } from "react";
 import { getMe, checkIsAuth } from "./redux/slices/authSlice";
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/account" element={<Account />} />
       </Routes>
       <ToastContainer position="top-left" />
+      <Soon />
     </div>
   );
 }

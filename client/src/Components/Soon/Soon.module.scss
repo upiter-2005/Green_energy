@@ -1,0 +1,50 @@
+.soonWrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: radial-gradient(242.01% 472.64% at 0% 100%, #106156 0%, rgba(2, 11, 10, 0.141132) 25.8%, #0D4F46 45.32%) , #0C0B19;
+    z-index: 10000;
+    h1{
+        font-family: 'Red Hat Display', sans-serif;
+        font-style: italic;
+        max-width: 877px;
+        width: 100%;
+        text-align: center;
+        font-weight: 900;
+        font-size: 48px;
+        line-height: 64px;
+        color: #BAFB02;
+        text-transform: uppercase;
+    }
+    a{
+        display: flex;
+        flex-direction: column;
+        color: #B9B9B9;
+        font-size: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all .3s ease;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    .logoSoon{
+        position: absolute;
+        left: 24px;
+        top: 26px;
+    }
+}
+@media(max-width: 992px){
+    .soonWrapper{
+        h1{
+            font-size: 32px;
+            line-height: 48px;
+        }
+    }
+}
